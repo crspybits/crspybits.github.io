@@ -7,11 +7,16 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>SyncServerII</title> 
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Jumbotron Template for Bootstrap</title>
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="jumbotron.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -19,13 +24,329 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+    <style>
+      p {
+        font-size:14pt;
+      }
+      
+      .row-striped:nth-of-type(odd){
+        background-color: #efefef;
+      }
+
+      .row-striped:nth-of-type(even){
+        background-color: #F0F8FF;
+      }
+      
+      .padded {
+        padding: 1em;
+      }
+      
+      /* For the *destination* of an in-document anchor */
+      a.anchor {
+          display: block;
+          position: relative;
+          top: -50px;
+          visibility: hidden;
+      }
+      
+      ol, ul {
+        font-size:16pt;
+      }
+      
+      li {
+        padding-top:2pt;
+      }
+    </style>
   </head>
   <body>
-    <h1>Hello, world!</h1>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://github.com/crspybits/SyncServerII">SyncServerII</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>SyncServerII</h1>
+        <p>Main goals</p>
+        <ul>
+          <li>Enabling mobile apps to store user data in users cloud storage (e.g., Google Drive), and </li>
+          <li>Enabling mobile app users to share that cloud data with other users (e.g., Google, Facebook).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row row-striped padded">
+        <h2>Contents:</h2>
+        <h3><a href="#INTRO">Introduction</a></h3>
+        <h3><a href="#DEVSTATUS">Development Status</a></h3>
+        <h3><a href="#INSTALLSERVER">Standing up a Server</a></h3>
+        <h3><a href="#INSTALLAPP">Installation in a new iOS app</a></h3>
+        <h3><a href="#GOOGLE">Using Google Drive and Google Sign-In</a></h3>
+        <h3><a href="#FACEBOOK">Using Facebook Sign-In (optional)</a></h3>
+      </div>
+
+      <a class="anchor" id="INTRO"></a>
+      <div class="row row-striped padded">
+        <h2>Introduction</h2>
+        
+        <p>SyncServerII is the second version of SyncServer. So, we'll often just dispense with the "II". SyncServer has the following general goals:</p>
+
+        <ol>
+          <li>Giving end-users permanent access to their mobile app data</li>
+          <li>Allowing safe sharing of data with other users</li>
+          <li>Synchronizing mobile app data across end-user devices</li>
+          <li>Reducing data storage costs for app developers/publishers</li>
+          <li>Cross-platform synchronization (e.g., iOS, Android)</li>
+          <li>Enabling synchronized devices to only be [occasionally connected](https://msdn.microsoft.com/en-us/library/ff650163.aspx) to a network</li>
+        </ol>
+
+        <p>More detailed characteristics of SyncServer:</p>
+
+        <ol type="a">
+          <li>The large majority of file information (i.e., all of the file content information) is stored in end-user cloud storage accounts.</li> Only meta data for files, locks, and some user credentials information is stored in the mySQL database on the server.
+          <li>Client apps can operate offline.</li> The client API queues operations (e.g., uploads) until network access is available.
+          <li>Interrupted client operations are retried.</li> For example, if network access is lost during a series of client file uploads, then those uploads are retried when network access is available.
+        </ol>
+
+        <p>Contact: <a href="mailto:chris@SpasticMuffin.biz">chris@SpasticMuffin.biz</a> (primary developer)</p>
+      </div>
+      
+      <a class="anchor" id="DEVSTATUS"></a>
+      <div class="row row-striped padded">
+        <h2>Development Status</h2>
+        <ul>
+          <li>Previously, the server side of this project was implemented in Javascript and MongoDb.</li>
+            We are now in the process of rewriting the server in Swift, and using mySQL.
+          <li>Google Drive is supported in terms of cloud storage systems.</li>
+          <li>Google and Facebook sign-in's are supported (Facebook is only for sharing).</li>
+          <li>Sharing can be done with permissions of read, write (includes read), or admin (read, write and invite others to share).</li>
+          <li>An example server is currently running as an AWS EC2 instance.</li>
+          <li>There is a single demo app, <a href="http://github.com/crspybits/SharedImages">SharedImages</a>.</li>
+        </ul>  
+      </div>
+      
+      <a class="anchor" id="INSTALLSERVER"></a>
+      <div class="row row-striped padded">
+        <h2>Standing up a Server</h2>
+        <p>Each separate mobile app needs its own server. That is, for iOS, each app with a separate bundle id needs its own server.</p>
+
+        <p>This describes installing a server on AWS. If you can install the Swift compiler on it, you may be able to stand the server up on other hosts as well.</p>
+        
+        <ol>
+          <li>My process in this was very much a "roll your own" venture, starting from a fresh EC2 instance running Ubuntu 16.04.</li>
+          So you know the context, I had already gotten SyncServer running on Ubuntu on my local computer, and my need was to get it running on a remote server. The following takes place at the Ubuntu command line on the EC2 instance.
+          
+          <li><a href="https://askubuntu.com/questions/222348/what-does-sudo-apt-get-update-do">First, download updated package lists</a></li>
+            <pre>sudo apt-get update</pre>
+          
+          <li>Install Swift-related dependencies.</li>
+            <ol type="a">
+              <li><a href="https://bugs.swift.org/browse/SR-2743">See this for the rationale for these first two</a></li>
+                <pre>sudo apt-get install libpython2.7</pre>
+                <pre>sudo apt-get install libcurl3</pre>
+              
+              <li><a href="https://swift.org/download/#using-downloads">Following the Linux installation instructions you need to do:</a></li>
+                <pre>sudo apt-get install clang libicu-dev</pre>
+              
+              <li>Then, <a href="http://stackoverflow.com/questions/42928171">following this</a> you need to do:</li>
+                <pre>sudo apt-get install uuid-dev</pre>
+              
+              <li>Due to some complaints when building, I did:</li>
+                <pre>sudo apt-get install openssl libssl-dev</pre>
+                <pre>sudo apt-get install libcurl4-openssl-dev</pre>
+            </ol>
+          
+          <li>Now we need to download and install Swift itself</li>
+            The following downloads Swift 3.1.1. You can, of course, <a href="https://swift.org/download/">update this to download a different Swift version</a>.
+            <pre>wget https://swift.org/builds/swift-3.1.1-release/ubuntu1604/swift-3.1.1-RELEASE/swift-3.1.1-RELEASE-ubuntu16.04.tar.gz</pre>
+          
+          <li>Next, untar that baby:</li>
+            <pre>tar -xzf swift-3.1.1-RELEASE-ubuntu16.04.tar.gz</pre>
+
+          <li>I then moved it into my local "bin" directory:</li>
+            <pre>mkdir ~/bin</pre>
+            <pre>mv swift-3.1.1-RELEASE-ubuntu16.04 ~/bin</pre>
+          
+          <li>And I put Swift into my PATH by adding the following line to my .bashrc</li>
+            <pre>export PATH=~/bin/swift-3.1.1-RELEASE-ubuntu16.04/usr/bin:"${PATH}"</pre>
+
+          <li>Since SyncServer uses a mySQL database, I did a few extra steps:</li>
+            <pre>sudo apt-get install libmysqlclient-dev</pre>
+          
+          <li>Setup your mySQL database.</li>
+            I did it using <a href="https://aws.amazon.com/getting-started/tutorials/create-mysql-db/">AWS RDS</a>.
+
+          <li>There are then various steps you'll need to go through to create a user for your database, and create your specific schema's. I'll leave that to your inventiveness. :).</li>
+          
+          <li>Download SyncServer:</li>
+          <pre>git clone https://github.com/crspybits/SyncServerII.git</pre>
+          
+          <li>You'll need to setup SSL for SyncServer.</li> Personally, I'm using <a href="https://letsencrypt.org">letsencrypt</a>.
+          
+          <li>You'll need to setup a Server.json configuration file.</li> The structure of this file is implicit in the Constants.swift file on the server, but I need to document it!
+          
+          <li>SyncServer has a run.sh script to build and start it up.</li>
+        </ol>
+      </div>
+      
+      <a class="anchor" id="INSTALLAPP"></a>
+      <div class="row row-striped padded">
+        <h2>Installation in a new iOS app</h2>
+
+        <p>The best instructions for setting up a new iOS app are likely found by looking over the <a href="http://github.com/crspybits/SharedImages">SharedImages</a> app, but some details are also given below.</p>
+        
+        <p>The <a href="https://github.com/crspybits/SyncServer-iOSClient">example app in the iOS client repo</a> can also provide some information on setting up your iOS app.</p>
+        
+        <ol>
+          <li>Setup your <em>Podfile</em>. </li>
+              The SyncServer iOS client API is a Cocoapod. Google SignIn is the only option currently for cloud storage, and thus the Google SignIn Cocoapod is required. Facebook can be used to allow shared sign-in's, and is optional.
+          
+<pre>
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/crspybits/Specs.git'
+
+use_frameworks!
+
+target 'YourApp' do
+    # This is the iOS client.
+    pod 'SyncServer'
+    
+    # The next two are also used by the client and needed.
+    pod 'SMCoreLib'
+    pod 'SyncServer-Shared'
+
+    # For cloud storage and shared sign-in's
+    pod 'Google/SignIn'
+    
+    # Only needed if you are allowing Facebook users to share.
+    pod 'FacebookLogin'
+    pod 'FacebookCore'	
+
+    target 'YourAppTests' do
+        inherit! :search_paths
+    end
+end
+</pre>
+          
+          <li>Additions to your AppDelegate</li>
+          
+          <ol type="a">
+            <li>Add the following import</li>
+              <pre>import SyncServer</pre>
+
+            <li>Setup your sign-in's in the didFinishLaunchingWithOptions method</li>
+               At a minimum, this will involve:
+<pre>
+let googleSignIn = GoogleSignIn(serverClientId: serverClientId, appClientId: appClientId)
+SignInManager.session.addSignIn(googleSignIn, launchOptions: options)
+</pre>
+
+            If you are also using Facebook sign-in, you'll need:
+<pre>
+let facebookSignIn = FacebookSignIn()
+SignInManager.session.addSignIn(facebookSignIn, launchOptions: options)
+</pre>           
+            
+              <div style="position:relative; left: 2em;">
+              Where: <em>serverClientId</em> and <em>appClientId</em> come from setting up your app with Google. See below.
+              </div>
+            
+            <li>Also in the didFinishLaunchingWithOptions method, you need to call</li>
+              <pre>SyncServer.session.appLaunchSetup(withServerURL: serverURL, cloudFolderName:cloudFolderName)</pre>
+              <div style="position:relative; left: 2em;">
+              Where: 
+              <ul>
+                <li><em>serverURL</em> is the URL of your SyncServer server. </li>
+
+                <li><em>cloudFolderName</em> is the folder name (not a path, just a folder) within (currently) Google Drive in which your files will be stored. </li> 
+                  E.g., I'm using "SharedImages.Folder" for the SharedImages app.  
+              </ul>
+              </div>
+            
+            <li>Turn on build flags in Xcode for the sign-in's you are using.</li>
+            7/29/17. I'm just about to implement this. Currently the sign-in classes are outside of the SyncServer Cocoapod and you have to explicitly download the SyncServer repo to use the sign-in classes, but I'm going to bring them into the Cocoapod shortly.
+                    
+            <li>Add the following into the app:open:options: method</li>
+<pre>
+func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+    return SignInManager.session.application(app, open: url, options: options) ||
+    SharingInvitation.session.application(app, open: url, options: options)
+}
+</pre>            
+          </ol>
+          
+          <li>Setup the <em>SharingInvitationDelegate</em> to deal with sharing invitations received.</li>
+              For an example of how this is done, look in the <a href="http://github.com/crspybits/SharedImages">SharedImages</a> app.
+          
+          <li>Setup the UI for sign-in's in your app.</li>
+            You will need to do this for at least Google.
+            For an example of how this is done, look in the <a href="http://github.com/crspybits/SharedImages">SharedImages</a> app.
+        </ol>
+      </div>
+      
+      <a class="anchor" id="GOOGLE"></a>
+      <div class="row row-striped padded">
+        <h2>Using Google Drive and Google Sign-In</h2>
+        <ol>
+          <li>Create Google App/Developer Credentials</li>
+            To enable access to user Google Drive accounts, you must create Google Developer credentials for your iOS app and SyncServer server. These credentials need to be installed in your app making use of the SyncServer client Framework. Go to <a href="https://developers.google.com/identity/sign-in/ios/start">https://developers.google.com/identity/sign-in/ios/start</a> and click on `GET A CONFIGURATION FILE`. 
+            <p></p>
+            <p>You need to generate a configuration file-- this will typically be named: `GoogleService-Info.plist`, and add that file to your Xcode project. Amongst other information, this .plist file contains the Google `CLIENT_ID` for your iOS app.</p>
+
+          <li>You also need to make sure you enable the Google Drive API for your Google project.</li>
+           You can do this by going to <a href="https://console.developers.google.com">https://console.developers.google.com</a>, looking for `ENABLE API`, and then `Drive API`.
+          
+          <li>Obtain your `OAuth 2.0 client IDs`.</li>
+            Within <a href="https://console.developers.google.com">https://console.developers.google.com</a>, you also need to obtain the `OAuth 2.0 client IDs` for your `Web client` (see under "Credentials).
+            I call this the `GoogleServerClientId`. You will need both the `CLIENT_ID` (for your iOS app) and the `GoogleServerClientId` (for the SyncServer server) in order for users to sign in to Google Drive from your iOS app.
+          
+          <li>Add URL scheme for Google Sign in to your app.</li>
+            You do this in XCode under the "Info" tab. Look for "URL Types" and paste the CLIENT_ID into the "URL Schemes" field of a new URL Type (press the "+" button).
+        </ol>
+      </div>
+
+      <a class="anchor" id="FACEBOOK"></a>
+      <div class="row row-striped padded">
+        <h2>Using Facebook Sign-In (optional)</h2>
+        <ol>
+          <li>Create a new Facebook app</li>
+            To do this, go to <a href="https://developers.facebook.com">https://developers.facebook.com</a>.
+            You will need to sign in with a Facebook account. If you don't already have one, you'll have to make one.
+          
+            After signing in, in the upper right, under "My Apps", click on "Add a New App". Follow the instructions. They're pretty good.
+          
+          <li>For the Server: ClientId and Secret.</li>
+            You will need the Facebook ClientId (App ID) and Secret (App Secret) for the SyncServer server Server.json file from your new app on <a href="https://developers.facebook.com">https://developers.facebook.com</a>.
+        </ol>        
+      </div>
+      
+      <hr>
+
+      <footer>
+        <p>&copy; SyncServer and associated software is MIT licensed.</p>
+      </footer>
+    </div> <!-- /container -->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="jquery.min.js"><\/script>')</script>
+
+    <script src="bootstrap.min.js"></script>
+    
+    <script src="ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>

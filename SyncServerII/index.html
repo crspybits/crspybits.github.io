@@ -226,7 +226,7 @@
         
         <ol>
           <li>Setup your <em>Podfile</em>. </li>
-              The SyncServer iOS client API is a Cocoapod. Google SignIn is the only option currently for cloud storage, and thus the Google SignIn Cocoapod is required. Facebook can be used to allow shared sign-in's, and is optional.
+              The SyncServer iOS client API is a Cocoapod. Google is the only possibility currently for cloud storage, and thus the Google SignIn Cocoapod is required. Facebook can be used to allow shared sign-in's, and is optional.
           
 <pre>
 source 'https://github.com/CocoaPods/Specs.git'
@@ -235,25 +235,25 @@ source 'https://github.com/crspybits/Specs.git'
 use_frameworks!
 
 target 'YourApp' do
-    # This is the iOS client.
+    # The iOS client.
     pod 'SyncServer'
     
-    # The next two are also used by the client and needed.
-    pod 'SMCoreLib'
-    pod 'SyncServer-Shared'
-
-    # For cloud storage and shared sign-in's
-    pod 'Google/SignIn'
-    
     # Only needed if you are allowing Facebook users to share.
-    pod 'FacebookLogin'
-    pod 'FacebookCore'	
-
+    pod 'SyncServer/Facebook'
+    
+    # For cloud storage and shared sign-in's with Google Drive/Google.
+    pod 'GoogleSignIn', '4.0.2'
+    
     target 'YourAppTests' do
         inherit! :search_paths
     end
 end
 </pre>
+          
+          <li>Drag the `GoogleSignIn.swift` file into your project</li>
+            Due to technical issues, you will need to separately download the iOS client repo, and do this (The Google sign-in Cocoapod uses a static library and this causes transitive dependency issues if the GoogleSignIn pod is included in the SyncServer pod). Do:
+          <pre>git clone https://github.com/crspybits/SyncServer-iOSClient.git</pre>
+          Drag `SyncServer-iOSClient/Client/SignIn/GoogleSignIn.swift` into your Xcode project.
           
           <li>Additions to your AppDelegate</li>
           
@@ -289,9 +289,6 @@ SignInManager.session.addSignIn(facebookSignIn, launchOptions: options)
                   E.g., I'm using "SharedImages.Folder" for the SharedImages app.  
               </ul>
               </div>
-            
-            <li>Turn on build flags in Xcode for the sign-in's you are using.</li>
-            7/29/17. I'm just about to implement this. Currently the sign-in classes are outside of the SyncServer Cocoapod and you have to explicitly download the SyncServer repo to use the sign-in classes, but I'm going to bring them into the Cocoapod shortly.
                     
             <li>Add the following into the app:open:options: method</li>
 <pre>

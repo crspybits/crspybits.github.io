@@ -111,7 +111,7 @@
           <li>Synchronizing mobile app data across end-user devices</li>
           <li>Reducing data storage costs for app developers/publishers</li>
           <li>Cross-platform synchronization (e.g., iOS, Android)</li>
-          <li>Enabling synchronized devices to only be [occasionally connected](https://msdn.microsoft.com/en-us/library/ff650163.aspx) to a network</li>
+          <li>Enabling synchronized devices to only be <a href="https://msdn.microsoft.com/en-us/library/ff650163.aspx">occasionally connected</a> to a network</li>
         </ol>
 
         <p>More detailed characteristics of SyncServer:</p>
@@ -254,6 +254,8 @@ end
             Due to technical issues, you will need to separately download the iOS client repo, and do this (The Google sign-in Cocoapod uses a static library and this causes transitive dependency issues if the GoogleSignIn pod is included in the SyncServer pod). Do:
           <pre>git clone https://github.com/crspybits/SyncServer-iOSClient.git</pre>
           Drag `SyncServer-iOSClient/Client/SignIn/GoogleSignIn.swift` into your Xcode project.
+          
+          <li>Define SYNCSERVER_GOOGLE_SIGNIN in your Xcode build settings</li>
           
           <li>Additions to your AppDelegate</li>
           

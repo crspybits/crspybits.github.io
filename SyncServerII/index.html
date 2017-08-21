@@ -7,8 +7,6 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>SyncServerII</title> 
 
-    <title>Jumbotron Template for Bootstrap</title>
-
     <!-- Bootstrap core CSS -->
     <link href="bootstrap.min.css" rel="stylesheet">
 
@@ -255,9 +253,7 @@ end
             Due to technical issues, you will need to separately download the iOS client repo, and do this (The Google sign-in Cocoapod uses a static library and this causes transitive dependency issues if the GoogleSignIn pod is included in the SyncServer pod). Do:
           <pre>git clone https://github.com/crspybits/SyncServer-iOSClient.git</pre>
           Drag `SyncServer-iOSClient/Client/SignIn/GoogleSignIn.swift` into your Xcode project.
-          
-          <li>Define SYNCSERVER_GOOGLE_SIGNIN in your Xcode build settings</li>
-          
+                    
           <li>Additions to your AppDelegate</li>
           
           <ol type="a">
@@ -267,13 +263,13 @@ end
             <li>Setup your sign-in's in the didFinishLaunchingWithOptions method</li>
                At a minimum, this will involve:
 <pre>
-let googleSignIn = GoogleSignIn(serverClientId: serverClientId, appClientId: appClientId)
-SignInManager.session.addSignIn(googleSignIn, launchOptions: options)
+let googleSignIn = GoogleSyncServerSignIn(serverClientId: serverClientId, appClientId: appClientId)
+SignInManager.session.addSignIn(googleSignIn, launchOptions: options)        
 </pre>
 
             If you are also using Facebook sign-in, you'll need:
 <pre>
-let facebookSignIn = FacebookSignIn()
+let facebookSignIn = FacebookSyncServerSignIn()
 SignInManager.session.addSignIn(facebookSignIn, launchOptions: options)
 </pre>           
             
@@ -306,8 +302,30 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpe
               For an example of how this is done, look in the <a href="http://github.com/crspybits/SharedImages">SharedImages</a> app.
           
           <li>Setup the UI for sign-in's in your app.</li>
-            You will need to do this for at least Google.
-            For an example of how this is done, look in the <a href="http://github.com/crspybits/SharedImages">SharedImages</a> app.
+          	<ol type="a">
+              <li>You will need to do this for at least Google.</li>
+                    For an example of how this is done, look in the <a href="http://github.com/crspybits/SharedImages">SharedImages</a> app.
+              <li>Call the `setupSignInButton` and setup delegates for your selected sign-ins. For example:</li>
+<pre>
+// For the GoogleSyncServerSignIn, the delegate in this params argument must a view controller abiding by GoogleSignInUIProtocol
+let googleSignInButton = googleSignIn.setupSignInButton(params: ["delegate": self]) as! UIView
+googleSignIn.delegate = self // abiding by GenericSignInDelegate
+
+// If you are using Facebook sign-in:
+let facebookSignInButton = facebookSignIn.setupSignInButton(params:nil) as! UIView
+// Just to balance out the lengths of the sign-in buttons-- the Google button is shorter.
+facebookSignInButton.frameWidth = googleSignInButton.frameWidth
+facebookSignIn.delegate = self
+</pre>
+              
+              <li>For convenience if you are using multiple sign-in's (at this point, both Google and Facebook), the SyncServer SignIn widget will enable you to display the sign-in's automatically.</li>
+              
+<pre>
+let signIn:SignIn = SignIn.createFromXib()!
+// and add this SignIn view into an appropriate view controller in your UI.
+</pre>
+              The SignIn view uses the SyncServer SignInManager to determine which sign-in buttons to display. The <a href="http://github.com/crspybits/SharedImages">SharedImages</a> app uses the SignIn view, so see that for additional code details.
+          	</ol>
         </ol>
       </div>
       

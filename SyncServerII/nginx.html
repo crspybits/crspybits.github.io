@@ -77,7 +77,11 @@
       <div class="row row-striped padded">
         <h2>SSL and SyncServer</h2>
         
-        <p>When I started using SyncServer on AWS, I just directly incorporated SSL using <a href="https://letsencrypt.org">letsencrypt</a> into the Swift Kitura-based server. However, a few issues have led me away from that:
+        <p>When I started using SyncServer on AWS, I just directly incorporated SSL using <a href="https://letsencrypt.org">letsencrypt</a> into the Swift Kitura-based server. 
+          
+        This was following <a href="https://developer.ibm.com/swift/2016/09/22/securing-kitura-part-1-enabling-ssltls-on-your-swift-server/">IBM's advice</a>.
+          
+        However, a few issues have led me away from that:
         </p>
 
         <ol>
@@ -154,7 +158,7 @@ sudo systemctl reload nginx
           
           <li><a href="https://medium.com/@ankitank/deploy-a-basic-vapor-app-with-nginx-and-supervisor-1ef303320726">NGINX and Vapor</a></li>
           
-          <li><a href="https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04">More material on let's encrypt SSL certificates and NGINX</a>
+          <li><a href="https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04">More material on Let's Encrypt SSL certificates and NGINX</a>
           </li>
           
           <li><a href="https://gist.github.com/soheilhy/8b94347ff8336d971ad0">This is a bit general, but has some useful ideas.</a>

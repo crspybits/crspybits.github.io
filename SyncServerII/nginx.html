@@ -77,7 +77,7 @@
       <div class="row row-striped padded">
         <h2>SSL and SyncServer</h2>
         
-        <p>When I started using SyncServer on AWS, I just directly incorporated SSL using <a href="https://letsencrypt.org">letsencrypt</a> into the Swift Kitura-based server. However, a few issues have lead me away from that:
+        <p>When I started using SyncServer on AWS, I just directly incorporated SSL using <a href="https://letsencrypt.org">letsencrypt</a> into the Swift Kitura-based server. However, a few issues have led me away from that:
         </p>
 
         <ol>
@@ -135,15 +135,35 @@ sudo systemctl reload nginx
       <div class="row row-striped padded">
         <h2>Running SyncServer as a service on AWS/Ubuntu</h2>
 
-        This is next on my agenda.
+        <p>This is next on my agenda.
+        </p>
       </div>
       
-      <a class="anchor" id="FURTHERREADING"></a>
       <div class="row row-striped padded">
         <h2>Further Reading on devops matters</h2>
         <ol>
           <li><a href="https://gist.github.com/cecilemuller/a26737699a7e70a7093d4dc115915de8">
-                Setting up Let's Encrpyt for NGINX</a>
+                Setting up Let's Encrypt for NGINX</a>
+          </li>
+          
+          <li><a href="https://drewag.me/posts/2017/01/26/deploying-server-side-swift">
+              NGINX and Swift.
+            </a>
+          </li>
+          Has some good ideas about security, and Swift devops.
+          
+          <li><a href="https://medium.com/@ankitank/deploy-a-basic-vapor-app-with-nginx-and-supervisor-1ef303320726">NGINX and Vapor</a></li>
+          
+          <li><a href="https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04">More material on let's encrypt SSL certificates and NGINX</a>
+          </li>
+          
+          <li><a href="https://gist.github.com/soheilhy/8b94347ff8336d971ad0">This is a bit general, but has some useful ideas.</a>
+          </li>
+          
+          <li><a href="https://serverfault.com/questions/586970/nginx-is-not-forwarding-a-header-value-when-using-proxy-pass">At first I was missing some headers...</a>
+          </li>
+          
+          <li><a href="http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass">Documentation on NGINX proxy_pass</a>
           </li>
         </ol>        
       </div>

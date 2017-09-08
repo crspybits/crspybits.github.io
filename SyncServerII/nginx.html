@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>SyncServerII</title> 
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="jumbotron.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <style>
+      p {
+        font-size:14pt;
+      }
+      
+      .row-striped:nth-of-type(odd){
+        background-color: #efefef;
+      }
+
+      .row-striped:nth-of-type(even){
+        background-color: #F0F8FF;
+      }
+      
+      .padded {
+        padding: 1em;
+      }
+      
+      /* For the *destination* of an in-document anchor */
+      a.anchor {
+          display: block;
+          position: relative;
+          top: -50px;
+          visibility: hidden;
+      }
+      
+      ol, ul {
+        font-size:16pt;
+      }
+      
+      li {
+        padding-top:2pt;
+      }
+    </style>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://github.com/crspybits/SyncServerII">SyncServerII</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row row-striped padded">
+        <h2>SSL and SyncServer</h2>
+        
+        <p>When I started using SyncServer on AWS, I just directly incorporated SSL using <a href="https://letsencrypt.org">letsencrypt</a> into the Swift Kitura-based server. However, a few issues have lead me away from that:
+        </p>
+
+        <ol>
+          <li>It was necessary to run SyncServer as root.</li> It used port 443, which needs root access. Running programs as root is not a generally accepted security practice.
+          
+          <li>How do you run a dev or staging instance of the server?</li> With an instance of SyncServer using port 443, this disallows other server instances from using port 443. Since SyncServer uses credentials from live accounts (e.g., Google or Facebook), we *always* want to be using SSL even when running dev or staging instances of the server.
+          
+          <li>I wanted to experiment to try to solve a bug</li> More specifically, the <a href="https://github.com/crspybits/SyncServerII/issues/28">issue</a> could possibly be due to SSL problems. 
+          
+          <li>SSL might be handled more securely in other ways.</li> Until I started looking into this, I didn't realize that server configurations can play a role in SSL-related security. <a href="https://gist.github.com/cecilemuller/a26737699a7e70a7093d4dc115915de8">See for example.</a>
+        </ol>
+
+        <p>I am going to leave this direct use of SSL available as a SyncServer configuration option but this doesn't seem the advisable way to use SSL. 
+          Instead, I'm now using <a href="https://www.nginx.com">NGINX</a> to proxy requests into the SyncServer.
+          HTTPS requests come into NGINX, and are proxied to SyncServer as HTTP requests.
+        </p>
+        
+        <p>To get NGINX running on AWS, I did the following:
+        </p>
+        
+        <ol>
+          <li>I installed NGINX</li>
+<pre>
+sudo apt-get update
+sudo apt-get install nginx
+</pre>
+        </ol>
+
+      </div>
+      
+      <a class="anchor" id="DEVSTATUS"></a>
+      <div class="row row-striped padded">
+        <h2>Running SyncServer as a service on AWS/Ubuntu</h2>
+
+        This is next on my agenda.
+      </div>
+      
+      <a class="anchor" id="FURTHERREADING"></a>
+      <div class="row row-striped padded">
+        <h2>Further Reading on devops matters</h2>
+        <ol>
+          <li><a href="https://gist.github.com/cecilemuller/a26737699a7e70a7093d4dc115915de8">
+                Setting up Let's Encrpyt for NGINX</a>
+          </li>
+        </ol>        
+      </div>
+      
+      <hr>
+
+      <footer>
+        <p>&copy; SyncServer and associated software is MIT licensed.</p>
+      </footer>
+    </div> <!-- /container -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="jquery.min.js"><\/script>')</script>
+
+    <script src="bootstrap.min.js"></script>
+    
+    <script src="ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

@@ -81,7 +81,7 @@
         </p>
 
         <ol>
-          <li>It was necessary to run SyncServer as root.</li> It used port 443, which needs root access. Running programs as root is not a generally accepted security practice.
+          <li>It was necessary to run SyncServer as root.</li> Standard use of https and SSL uses port 443, which needs root access. Running programs as root is not a generally accepted security practice.
           
           <li>How do you run a dev or staging instance of the server?</li> With an instance of SyncServer using port 443, this disallows other server instances from using port 443. Since SyncServer uses credentials from live accounts (e.g., Google or Facebook), we *always* want to be using SSL even when running dev or staging instances of the server.
           
@@ -95,7 +95,7 @@
           HTTPS requests come into NGINX, and are proxied to SyncServer as HTTP requests.
         </p>
         
-        <p>To get NGINX running on AWS, I did the following:
+        <p>To get NGINX running on Ubuntu 16.04 on AWS, I did the following:
         </p>
         
         <ol>
@@ -104,8 +104,31 @@
 sudo apt-get update
 sudo apt-get install nginx
 </pre>
+          
+          <li>I checked to see if NGINX was running</li> The installation as above should start NGINX.
+<pre>
+systemctl status nginx
+</pre>
+          
+          <li>I modified the NGINX configuration at: /etc/nginx/sites-available/default</li>
+          You need to be signed in as `root` to edit this file. 
+          I read around on various references before making my changes (see references below). 
+          
+          <a href="https://gist.github.com/cecilemuller/a26737699a7e70a7093d4dc115915de8">
+                The bulk of my configuration came from this.</a> 
+          
+          I'm going to put this configuration in the file nginx.conf at the root of the SyncServer repo.
+          
+          <li>Check the syntax of your config changes:</li>
+<pre>
+sudo nginx -t
+</pre>
+          <li>Reload your conf changes:</li>
+<pre>
+sudo systemctl reload nginx
+</pre>
+           
         </ol>
-
       </div>
       
       <a class="anchor" id="DEVSTATUS"></a>

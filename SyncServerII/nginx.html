@@ -172,6 +172,28 @@ sudo systemctl reload nginx
         </ol>        
       </div>
       
+      <a class="anchor" id="DEVSTATUS"></a>
+      <div class="row row-striped padded">
+        <h2>Running SyncServer as a service on AWS/Ubuntu</h2>
+
+        <p>This is next on my agenda.
+        </p>
+      </div>
+      
+      <div class="row row-striped padded">
+        <h2>Other notes and issues</h2>
+        <ol>
+          <li>SyncServer.ServerAPI.DownloadFileError.couldNotObtainHeaderParameters</li>
+            9/9/17; After getting things initially working, I started receiving this error in the SharedImages app. From this message, it first appeared that NGINX was not sending all headers back down to the client. 
+          
+            More specifically, this error arises on the client when file download response messages don't have the header `SyncServer-Message-Params`.
+          
+            <a href="https://serverfault.com/questions/586970/nginx-is-not-forwarding-a-header-value-when-using-proxy-pass">I had a corresponding problem with http request message headers</a> but this has to do with <em>response</em> message headers.
+          
+            The problem, it turned out, was because response header keys were being returned in <em>lower-case</em>. I had them in camel-case. My change involved my client app, and using all lower-case response header keys.
+        </ol>        
+      </div>
+      
       <hr>
 
       <footer>

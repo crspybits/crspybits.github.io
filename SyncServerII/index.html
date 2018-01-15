@@ -93,8 +93,9 @@
         <h3><a href="#DEVSTATUS">Development Status</a></h3>
         <h3><a href="#INSTALLSERVER">Standing up a Server</a></h3>
         <h3><a href="#INSTALLAPP">Installation in a new iOS app</a></h3>
-        <h3><a href="#GOOGLE">Using Google Drive and Google Sign-In</a></h3>
+        <h3><a href="#GOOGLE">Using Google Drive and Google Sign-In (optional)</a></h3>
         <h3><a href="#FACEBOOK">Using Facebook Sign-In (optional)</a></h3>
+        <h3><a href="#DROPBOX">Using Dropbox Sign-In (optional)</a></h3>
         <h3><a href="#FURTHERREADING">Further Reading</a></h3>
       </div>
 
@@ -183,7 +184,7 @@
           <ol style="list-style-type: lower-alpha">
             <li>ease of deploying new versions of my server</li>
             <li>its ability to run servers from Docker images</li>
-            <li>the relative ease of spinning up (and down) of new server environments-- so I can create staging or testing environment for just a few hours</li>
+            <li>the relative ease of spinning up (and down) of new server environments-- so I can create and use a staging or testing environment for just a few hours</li>
             <li>my (potential) eventual need for scaling the server to deal with a larger load from client apps.</li>
           </ol>
         </p>
@@ -216,9 +217,12 @@ target 'YourApp' do
     
     # Only needed if you are allowing Facebook users to share.
     pod 'SyncServer/Facebook'
+
+    # Only needed if you are using Dropbox for cloud storage
+    pod 'SyncServer/Dropbox'
     
     # For cloud storage and shared sign-in's with Google Drive/Google.
-    pod 'GoogleSignIn', '4.0.2'
+    pod 'GoogleSignIn', '4.1'
     
     target 'YourAppTests' do
         inherit! :search_paths
@@ -248,7 +252,13 @@ SignInManager.session.addSignIn(googleSignIn, launchOptions: options)
 <pre>
 let facebookSignIn = FacebookSyncServerSignIn()
 SignInManager.session.addSignIn(facebookSignIn, launchOptions: options)
-</pre>           
+</pre>     
+
+            if you are also using Dropbox sign-in, you'll need:
+<pre>
+let dropboxSignIn = DropboxSyncServerSignIn(appKey: dropboxAppKey)
+SignInManager.session.addSignIn(dropboxSignIn, launchOptions: options)
+</pre>
             
               <div style="position:relative; left: 2em;">
               Where: <em>serverClientId</em> and <em>appClientId</em> come from setting up your app with Google. See below.
@@ -261,7 +271,7 @@ SignInManager.session.addSignIn(facebookSignIn, launchOptions: options)
               <ul>
                 <li><em>serverURL</em> is the URL of your SyncServer server. </li>
 
-                <li><em>cloudFolderName</em> is the folder name (not a path, just a folder) within (currently) Google Drive in which your files will be stored. </li> 
+                <li><em>cloudFolderName</em> is the folder name (not a path, just a folder) within Google Drive in which your files will be stored (if you are using Google Drive). Dropbox, if you are using that, doesn't need this.</li> 
                   E.g., I'm using "SharedImages.Folder" for the SharedImages app.  
               </ul>
               </div>
@@ -272,7 +282,14 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpe
     return SignInManager.session.application(app, open: url, options: options) ||
     SharingInvitation.session.application(app, open: url, options: options)
 }
-</pre>            
+</pre>         
+
+            <li>To enable background downloading/uploading add this into your AppDelegate</li>
+<pre>
+func application(_ application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: @escaping () -> Void) {
+  SyncServer.session.application(application, handleEventsForBackgroundURLSession: identifier, completionHandler: completionHandler)
+}
+</pre>
           </ol>
           
           <li>Setup the <em>SharingInvitationDelegate</em> to deal with sharing invitations received.</li>
@@ -285,14 +302,19 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpe
               <li>Call the `setupSignInButton` and setup delegates for your selected sign-ins. For example:</li>
 <pre>
 // For the GoogleSyncServerSignIn, the delegate in this params argument must a view controller abiding by GoogleSignInUIProtocol
-let googleSignInButton = googleSignIn.setupSignInButton(params: ["delegate": self]) as! UIView
+let googleSignInButton = googleSignIn.setupSignInButton(params: ["delegate": self])
 googleSignIn.delegate = self // abiding by GenericSignInDelegate
 
 // If you are using Facebook sign-in:
-let facebookSignInButton = facebookSignIn.setupSignInButton(params:nil) as! UIView
+let facebookSignInButton = facebookSignIn.setupSignInButton(params:nil)
 // Just to balance out the lengths of the sign-in buttons-- the Google button is shorter.
 facebookSignInButton.frameWidth = googleSignInButton.frameWidth
 facebookSignIn.delegate = self
+
+// If you are using Dropbox sign-in:
+let dropboxSignInButton = dropboxSignIn.setupSignInButton(params: ["viewController": self])
+dropboxSignInButton.frameSize = CGSize(width: googleSignInButton.frameWidth, height: googleSignInButton.frameHeight * 0.75)
+dropboxSignIn.delegate = self
 </pre>
               
               <li>For convenience if you are using multiple sign-in's (at this point, both Google and Facebook), the SyncServer SignIn widget will enable you to display the sign-in's automatically.</li>
@@ -308,7 +330,7 @@ let signIn:SignIn = SignIn.createFromXib()!
       
       <a class="anchor" id="GOOGLE"></a>
       <div class="row row-striped padded">
-        <h2>Using Google Drive and Google Sign-In</h2>
+        <h2>Using Google Drive and Google Sign-In (optional)</h2>
         <ol>
           <li>Create Google App/Developer Credentials</li>
             To enable access to user Google Drive accounts, you must create Google Developer credentials for your iOS app and SyncServer server. These credentials need to be installed in your app making use of the SyncServer client Framework. Go to <a href="https://developers.google.com/identity/sign-in/ios/start">https://developers.google.com/identity/sign-in/ios/start</a> and click on `GET A CONFIGURATION FILE`. 
@@ -341,12 +363,21 @@ let signIn:SignIn = SignIn.createFromXib()!
             You will need the Facebook ClientId (App ID) and Secret (App Secret) for the SyncServer server Server.json file from your new app on <a href="https://developers.facebook.com">https://developers.facebook.com</a>.
         </ol>        
       </div>
+
+      <a class="anchor" id="DROPBOX"></a>
+      <div class="row row-striped padded">
+        <h2>Using Dropbox Sign-In (optional)</h2>
+        <ol>
+          <li></li>
+          <li></li>
+        </ol>        
+      </div>
       
       <a class="anchor" id="FURTHERREADING"></a>
       <div class="row row-striped padded">
         <h2>Further Reading</h2>
         <ol>
-          <li>Talk to be given to the Boulder iOS Meetup (Scheduled for 11/21/17)</li>
+          <li>Talk given to the Boulder iOS Meetup (11/21/17)</li>
             <a href="presentations/SyncServerII-11-21-17.pptx">PowerPoint slides</a>
             <a href="https://youtu.be/Xid_vZ3nlCQ">YouTube video (teaser-- first 10 minutes! :) ).</a>
           

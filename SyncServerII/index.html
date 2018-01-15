@@ -155,65 +155,16 @@
       <a class="anchor" id="INSTALLSERVER"></a>
       <div class="row row-striped padded">
         <h2>Standing up a Server</h2>
+        
         <p>Each separate mobile app needs its own server. That is, for iOS, each app with a separate bundle id needs its own server.</p>
 
-        <p>This describes installing a server on AWS. If you can install the Swift compiler on it, you may be able to stand the server up on other hosts as well.</p>
-        
-        <ol>
-          <li>My process in this was very much a "roll your own" venture, starting from a fresh EC2 instance running Ubuntu 16.04.</li>
-          So you know the context, I had already gotten SyncServer running on Ubuntu on my local computer, and my need was to get it running on a remote server. The following takes place at the Ubuntu command line on the EC2 instance.
-          
-          <li><a href="https://askubuntu.com/questions/222348/what-does-sudo-apt-get-update-do">First, download updated package lists</a></li>
-            <pre>sudo apt-get update</pre>
-          
-          <li>Install Swift-related dependencies.</li>
-            <ol type="a">
-              <li><a href="https://bugs.swift.org/browse/SR-2743">See this for the rationale for these first two</a></li>
-                <pre>sudo apt-get install libpython2.7</pre>
-                <pre>sudo apt-get install libcurl3</pre>
-              
-              <li><a href="https://swift.org/download/#using-downloads">Following the Linux installation instructions you need to do:</a></li>
-                <pre>sudo apt-get install clang libicu-dev</pre>
-              
-              <li>Then, <a href="http://stackoverflow.com/questions/42928171">following this</a> you need to do:</li>
-                <pre>sudo apt-get install uuid-dev</pre>
-              
-              <li>Due to some complaints when building, I did:</li>
-                <pre>sudo apt-get install openssl libssl-dev</pre>
-                <pre>sudo apt-get install libcurl4-openssl-dev</pre>
-            </ol>
-          
-          <li>Now we need to download and install Swift itself</li>
-            The following downloads Swift 3.1.1. You can, of course, <a href="https://swift.org/download/">update this to download a different Swift version</a>.
-            <pre>wget https://swift.org/builds/swift-3.1.1-release/ubuntu1604/swift-3.1.1-RELEASE/swift-3.1.1-RELEASE-ubuntu16.04.tar.gz</pre>
-          
-          <li>Next, untar that baby:</li>
-            <pre>tar -xzf swift-3.1.1-RELEASE-ubuntu16.04.tar.gz</pre>
+        <p>I have gone through a few incarnations of methods for installing the server, each of them on AWS. Currently, I am using a Docker image, and also use AWS Elastic Beanstalk. <a href="runningServerOnEC2.html">Previously, I was building the server directly on an AWS EC2 instance.</a></p>
 
-          <li>I then moved it into my local "bin" directory:</li>
-            <pre>mkdir ~/bin</pre>
-            <pre>mv swift-3.1.1-RELEASE-ubuntu16.04 ~/bin</pre>
-          
-          <li>And I put Swift into my PATH by adding the following line to my .bashrc</li>
-            <pre>export PATH=~/bin/swift-3.1.1-RELEASE-ubuntu16.04/usr/bin:"${PATH}"</pre>
+        The two basic parts of my current deployment method are:
 
-          <li>Since SyncServer uses a mySQL database, I did a few extra steps:</li>
-            <pre>sudo apt-get install libmysqlclient-dev</pre>
-          
-          <li>Setup your mySQL database.</li>
-            I did it using <a href="https://aws.amazon.com/getting-started/tutorials/create-mysql-db/">AWS RDS</a>.
+        <h3>Docker</h3>
 
-          <li>There are then various steps you'll need to go through to create a user for your database, and create your specific schema's. I'll leave that to your inventiveness. :).</li>
-          
-          <li>Download SyncServer:</li>
-          <pre>git clone https://github.com/crspybits/SyncServerII.git</pre>
-          
-          <li><a href="nginx.html">SSL and SyncServer.</a></li> 
-          
-          <li>You'll need to setup a Server.json configuration file.</li> The structure of this file is implicit in the Constants.swift file on the server, but I need to document it!
-          
-          <li>SyncServer has a run.sh script to build and start it up.</li>
-        </ol>
+        <h3>Starting a server environment on Elastic Beanstalk</h3>
       </div>
       
       <a class="anchor" id="INSTALLAPP"></a>

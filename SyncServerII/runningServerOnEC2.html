@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>SyncServerII: Running Server on an AWS EC2 Instance</title> 
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="jumbotron.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <style>
+      p {
+        font-size:14pt;
+      }
+      
+      .row-striped:nth-of-type(odd){
+        background-color: #efefef;
+      }
+
+      .row-striped:nth-of-type(even){
+        background-color: #F0F8FF;
+      }
+      
+      .padded {
+        padding: 1em;
+      }
+      
+      /* For the *destination* of an in-document anchor */
+      a.anchor {
+          display: block;
+          position: relative;
+          top: -50px;
+          visibility: hidden;
+      }
+      
+      ol, ul {
+        font-size:16pt;
+      }
+      
+      li {
+        padding-top:2pt;
+      }
+    </style>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://github.com/crspybits/SyncServerII">SyncServerII</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row row-striped padded">
+        <h2>Installing SyncServerII Server on an AWS EC2 Instance</h2>
+
+        <p>This describes installing a server on AWS. If you can install the Swift compiler on it, you may be able to stand the server up on other hosts as well. Note that this is not the currently recommended way to install the server, but I include it for historical reference and in case someone finds it useful. The recommended way is via a Docker image. <a href="./#INSTALLSERVER">See the main documentation page</a>.
+        </p>
+        
+        <ol>
+          <li>My process in this was very much a "roll your own" venture, starting from a fresh EC2 instance running Ubuntu 16.04.</li>
+          So you know the context, I had already gotten SyncServer running on Ubuntu on my local computer, and my need was to get it running on a remote server. The following takes place at the Ubuntu command line on the EC2 instance.
+          
+          <li><a href="https://askubuntu.com/questions/222348/what-does-sudo-apt-get-update-do">First, download updated package lists</a></li>
+            <pre>sudo apt-get update</pre>
+          
+          <li>Install Swift-related dependencies.</li>
+            <ol type="a">
+              <li><a href="https://bugs.swift.org/browse/SR-2743">See this for the rationale for these first two</a></li>
+                <pre>sudo apt-get install libpython2.7</pre>
+                <pre>sudo apt-get install libcurl3</pre>
+              
+              <li><a href="https://swift.org/download/#using-downloads">Following the Linux installation instructions you need to do:</a></li>
+                <pre>sudo apt-get install clang libicu-dev</pre>
+              
+              <li>Then, <a href="http://stackoverflow.com/questions/42928171">following this</a> you need to do:</li>
+                <pre>sudo apt-get install uuid-dev</pre>
+              
+              <li>Due to some complaints when building, I did:</li>
+                <pre>sudo apt-get install openssl libssl-dev</pre>
+                <pre>sudo apt-get install libcurl4-openssl-dev</pre>
+            </ol>
+          
+          <li>Now we need to download and install Swift itself</li>
+            The following downloads Swift 3.1.1. You can, of course, <a href="https://swift.org/download/">update this to download a different Swift version</a>.
+            <pre>wget https://swift.org/builds/swift-3.1.1-release/ubuntu1604/swift-3.1.1-RELEASE/swift-3.1.1-RELEASE-ubuntu16.04.tar.gz</pre>
+          
+          <li>Next, untar that baby:</li>
+            <pre>tar -xzf swift-3.1.1-RELEASE-ubuntu16.04.tar.gz</pre>
+
+          <li>I then moved it into my local "bin" directory:</li>
+            <pre>mkdir ~/bin</pre>
+            <pre>mv swift-3.1.1-RELEASE-ubuntu16.04 ~/bin</pre>
+          
+          <li>And I put Swift into my PATH by adding the following line to my .bashrc</li>
+            <pre>export PATH=~/bin/swift-3.1.1-RELEASE-ubuntu16.04/usr/bin:"${PATH}"</pre>
+
+          <li>Since SyncServer uses a mySQL database, I did a few extra steps:</li>
+            <pre>sudo apt-get install libmysqlclient-dev</pre>
+          
+          <li>Setup your mySQL database.</li>
+            I did it using <a href="https://aws.amazon.com/getting-started/tutorials/create-mysql-db/">AWS RDS</a>.
+
+          <li>There are then various steps you'll need to go through to create a user for your database, and create your specific schema's. I'll leave that to your inventiveness. :).</li>
+          
+          <li>Download SyncServer:</li>
+          <pre>git clone https://github.com/crspybits/SyncServerII.git</pre>
+          
+          <li><a href="nginx.html">SSL and SyncServer.</a></li> 
+          
+          <li>You'll need to setup a Server.json configuration file.</li> The structure of this file is implicit in the Constants.swift file on the server, but I need to document it!
+          
+          <li>SyncServer has a run.sh script to build and start it up.</li>
+        </ol>
+      </div>
+      
+      <hr>
+
+      <footer>
+        <p>&copy; SyncServer and associated software is MIT licensed.</p>
+      </footer>
+    </div> <!-- /container -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="jquery.min.js"><\/script>')</script>
+
+    <script src="bootstrap.min.js"></script>
+    
+    <script src="ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

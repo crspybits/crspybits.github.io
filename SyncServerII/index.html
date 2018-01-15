@@ -160,7 +160,7 @@
 
         <p>I have gone through a few incarnations of methods for installing the server, each of them on AWS. Currently, I am using a Docker image, and also use AWS Elastic Beanstalk. <a href="runningServerOnEC2.html">Previously, I was building the server directly on an AWS EC2 instance.</a></p>
 
-        <p>The two basic parts of my current deployment method are:</p>
+        <p>The two basic parts of my current deployment method are described below.</p>
 
         <h3>Docker</h3>
         <p><a href="https://www.docker.com">Docker</a> is now central to my testing and deployment process for the server.
@@ -173,12 +173,16 @@
 
         <p>And this builds the server:</p>
         <code>swift build -Xswiftc -DDEBUG -Xswiftc -DSERVER</code>
-
+        <p></p>
         <p>For runtime, I use <a href="https://github.com/crspybits/SyncServerII/blob/master/devops/Docker/Runtime/Dockerfile"> this Docker base-image</a> 
         and I <a href="https://github.com/crspybits/SyncServerII/blob/master/devops/release.sh">run the script</a> to create a Docker image for a specific release of the SyncServerII server code. Those release builds of the server Docker images live at <a href="https://hub.docker.com/r/crspybits/syncserver-runner/">hub.docker.</a>
         </p>
 
-        <h3>Starting a server environment on Elastic Beanstalk</h3>
+        <h3>AWS Elastic Beanstalk</h3>
+        <p>I use <a href="https://aws.amazon.com/elasticbeanstalk/">AWS's Elastic Beanstalk</a> for reasons including: a) ease of deploying new versions of my server, b) its ability to run servers from Docker images, c) the relative ease of spinning up (and down) of new server environments-- so I can create staging or testing environment for just a few hours, and d) my (potential) eventual need for scaling the server to deal with a larger load from client apps.
+        </p>
+
+        
       </div>
       
       <a class="anchor" id="INSTALLAPP"></a>

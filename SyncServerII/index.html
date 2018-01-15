@@ -165,16 +165,17 @@
         <h3>Docker</h3>
         <p><a href="https://www.docker.com">Docker</a> is now central to my testing and deployment process for the server.
           For testing, I use the <a href="https://github.com/crspybits/SyncServerII/blob/master/devops/Docker/Building/Dockerfile">same Docker image that I use for building</a>.
+        </p>
 
-          <p>On my system, the following command launches that Docker image:</p>
-          <code>docker run --rm -i -t -v /Users/chris/Desktop/Apps/:/root/Apps crspybits/swift-ubuntu:4.0.0</code>
-          <p>And, of course, the path `/Users/chris/Desktop/Apps/` is specific to my system.</p>
+        <p>On my system, the following command launches that Docker image:</p>
+        <code>docker run --rm -i -t -v /Users/chris/Desktop/Apps/:/root/Apps crspybits/swift-ubuntu:4.0.0</code>
+        <p>And, of course, the path `/Users/chris/Desktop/Apps/` is specific to my system.</p>
 
-          <p>And this builds the server:</p>
-          <code>swift build -Xswiftc -DDEBUG -Xswiftc -DSERVER</code>
+        <p>And this builds the server:</p>
+        <code>swift build -Xswiftc -DDEBUG -Xswiftc -DSERVER</code>
 
-          For runtime, I use <a href="https://github.com/crspybits/SyncServerII/blob/master/devops/Docker/Runtime/Dockerfile"> this Docker base-image</a> 
-          and I <a href="https://github.com/crspybits/SyncServerII/blob/master/devops/release.sh">run the script</a> to create a Docker image for a specific release of the SyncServerII server code. Those release builds of the server Docker images live at <a href="https://hub.docker.com/r/crspybits/syncserver-runner/">hub.docker.</a>
+        <p>For runtime, I use <a href="https://github.com/crspybits/SyncServerII/blob/master/devops/Docker/Runtime/Dockerfile"> this Docker base-image</a> 
+        and I <a href="https://github.com/crspybits/SyncServerII/blob/master/devops/release.sh">run the script</a> to create a Docker image for a specific release of the SyncServerII server code. Those release builds of the server Docker images live at <a href="https://hub.docker.com/r/crspybits/syncserver-runner/">hub.docker.</a>
         </p>
 
         <h3>Starting a server environment on Elastic Beanstalk</h3>

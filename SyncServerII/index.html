@@ -201,7 +201,7 @@
         
         <p>The <a href="https://github.com/crspybits/SyncServer-iOSClient">example app in the iOS client repo</a> can also provide some information on setting up your iOS app.</p>
         
-        <ol>
+        <ol id="PODFILE">
           <li>Setup your <em>Podfile</em>. </li>
               The SyncServer iOS client API is a Cocoapod. Google is the only possibility currently for cloud storage, and thus the Google SignIn Cocoapod is required. Facebook can be used to allow shared sign-in's, and is optional.
           
@@ -317,7 +317,7 @@ dropboxSignInButton.frameSize = CGSize(width: googleSignInButton.frameWidth, hei
 dropboxSignIn.delegate = self
 </pre>
               
-              <li>For convenience if you are using multiple sign-in's (at this point, both Google and Facebook), the SyncServer SignIn widget will enable you to display the sign-in's automatically.</li>
+              <li>For convenience if you are using multiple sign-in's (say, Google, Facebook, and Dropbox), the SyncServer SignIn widget will enable you to display the sign-in's automatically.</li>
               
 <pre>
 let signIn:SignIn = SignIn.createFromXib()!
@@ -366,10 +366,12 @@ let signIn:SignIn = SignIn.createFromXib()!
 
       <a class="anchor" id="DROPBOX"></a>
       <div class="row row-striped padded">
-        <h2>Using Dropbox Sign-In (optional)</h2>
+        <h2>Using Dropbox Sign-In and Cloud Storage (optional)</h2>
         <ol>
-          <li></li>
-          <li></li>
+          <li>Register your application with Dropbox</li>
+            To do this, use <a href="https://www.dropbox.com/developers/apps">this Dropbox link</a>. The <a href="https://github.com/dropbox/SwiftyDropbox#get-started">more general Dropbox docs are here</a>.
+          <li>Configure your project</li>
+          You will need to then follow the steps under "Configure your project" in the <a href="https://github.com/dropbox/SwiftyDropbox#get-started">more general Dropbox docs</a>. You do *not* need to explicitly include the Dropbox Cocoapod in your Podfile for your Xcode project if you have followed the above <a href="#PODFILE">Podfile instructions</a>.
         </ol>        
       </div>
       

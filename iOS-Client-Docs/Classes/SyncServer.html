@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SyncServer Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/SyncServer" class="dashAnchor"></a>
+    <a title="SyncServer Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">SyncServer Docs</a> (42% documented)</p>
+        <p class="header-right"><a href="https://github.com/crspybits/SyncServer-iOSClient.git"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">SyncServer Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        SyncServer Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../File Synchronization.html">File Synchronization</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/SyncServer.html">SyncServer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SyncServer/Stats.html">– Stats</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SyncServer/ResetType.html">– ResetType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SyncServer/LocalConsistencyResults.html">– LocalConsistencyResults</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SyncAttributes.html">SyncAttributes</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SyncServerDelegate.html">SyncServerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SyncEvent.html">SyncEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/EventDesired.html">EventDesired</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SyncServerError.html">SyncServerError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/FileUUID.html">FileUUID</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DownloadOperation.html">DownloadOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DownloadOperation/OperationType.html">– OperationType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ServerVersion.html">ServerVersion</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Conflict Resolution.html">Conflict Resolution</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/SyncServerConflict.html">SyncServerConflict</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ContentDownloadResolution.html">ContentDownloadResolution</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ContentDownloadResolution/UploadResolution.html">– UploadResolution</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/DownloadDeletionResolution.html">DownloadDeletionResolution</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/DownloadDeletionResolution/ContentUploadResolution.html">– ContentUploadResolution</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ConflictingClientOperation.html">ConflictingClientOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ConflictingClientOperation/ContentType.html">– ContentType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ServerContentType.html">ServerContentType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Users and Sharing.html">Users and Sharing</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/SignInManager.html">SignInManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SignInManagerDelegate.html">SignInManagerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SignIn.html">SignIn</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SignInStart.html">SignInStart</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SyncServerUser.html">SyncServerUser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SyncServerUser/CheckForExistingUserResult.html">– CheckForExistingUserResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SharingInvitation.html">SharingInvitation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SharingInvitation/Invitation.html">– Invitation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SharingInvitationDelegate.html">SharingInvitationDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SignInAccount.html">SignInAccount</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SignInSubviewDelegate.html">SignInSubviewDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/UserActionNeeded.html">UserActionNeeded</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/UserActionOccurred.html">UserActionOccurred</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SignInState.html">SignInState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SignInUIState.html">SignInUIState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/GenericCredentials.html">GenericCredentials</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/GenericSignIn.html">GenericSignIn</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/GenericSignInDelegate.html">GenericSignInDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/GenericSignOutDelegate.html">GenericSignOutDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Tappable.html">Tappable</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Specific Sign-in&#39;s.html">Specific Sign-in&#39;s</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/DropboxCredentials.html">DropboxCredentials</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DropboxSyncServerSignIn.html">DropboxSyncServerSignIn</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FacebookCredentials.html">FacebookCredentials</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FacebookSyncServerSignIn.html">FacebookSyncServerSignIn</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Typealiases.html">Other Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Other Typealiases.html#/s:10SyncServer14TappableButtona">TappableButton</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Typealiases.html#/s:10SyncServer10UUIDStringa">UUIDString</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>SyncServer</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">SyncServer</span></code></pre>
+
+                </div>
+              </div>
+            <p>Synchronize files and app meta data with other instances of the same client sapp.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServerAAC7sessionABvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/session" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC7sessionABvpZ">session</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The singleton for this class.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">session</span><span class="p">:</span> <span class="kt">SyncServer</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServerAAC13eventsDesiredAA05EventD0Vvp"></a>
+                    <a name="//apple_ref/swift/Property/eventsDesired" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC13eventsDesiredAA05EventD0Vvp">eventsDesired</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Enable reporting of only events desired by the client app.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">eventsDesired</span><span class="p">:</span> <span class="kt"><a href="../Structs/EventDesired.html">EventDesired</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServerAAC8delegateSQyAA0aB8Delegate_pGXwvp"></a>
+                    <a name="//apple_ref/swift/Property/delegate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC8delegateSQyAA0aB8Delegate_pGXwvp">delegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The delegate enables operations such as file downloads &amp; conflict resolution.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/SyncServerDelegate.html">SyncServerDelegate</a></span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServerAAC14appLaunchSetupy10Foundation3URLV04withbG0_SSSg15cloudFolderNameAA0B7VersionVSg07minimumbL0tF"></a>
+                    <a name="//apple_ref/swift/Method/appLaunchSetup(withServerURL:cloudFolderName:minimumServerVersion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC14appLaunchSetupy10Foundation3URLV04withbG0_SSSg15cloudFolderNameAA0B7VersionVSg07minimumbL0tF">appLaunchSetup(withServerURL:cloudFolderName:minimumServerVersion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Put a call to this in your AppDelegate or other place early in the launch sequence of your app.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">appLaunchSetup</span><span class="p">(</span><span class="n">withServerURL</span> <span class="nv">serverURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="nv">cloudFolderName</span><span class="p">:</span><span class="kt">String</span><span class="p">?,</span> <span class="nv">minimumServerVersion</span><span class="p">:</span><span class="kt"><a href="../Structs/ServerVersion.html">ServerVersion</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>withServerURL</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>URL for the SyncServerII server.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>cloudFolderName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>In the cloud storage service, the path of the directory/folder in which to put files. <code>cloudFolderName</code> is optional because it&rsquo;s only needed for some of the cloud storage services (e.g., Google Drive).</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>minimumServerVersion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The minimum SyncServerII server version needed by your app. Leave nil if your app doesn&rsquo;t have a specific server version requirement.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServerAAC11applicationySo13UIApplicationC_SS35handleEventsForBackgroundURLSessionyyc17completionHandlertF"></a>
+                    <a name="//apple_ref/swift/Method/application(_:handleEventsForBackgroundURLSession:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC11applicationySo13UIApplicationC_SS35handleEventsForBackgroundURLSessionyyc17completionHandlertF">application(_:handleEventsForBackgroundURLSession:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>For dealing with background uploading/downloading. Call this from the same named delegate method in your AppDelegate.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">handleEventsForBackgroundURLSession</span> <span class="nv">identifier</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServerAAC15uploadImmutabley9SMCoreLib18SMRelativeLocalURLC9localFile_AA0A10AttributesV04withL0tKF"></a>
+                    <a name="//apple_ref/swift/Method/uploadImmutable(localFile:withAttributes:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC15uploadImmutabley9SMCoreLib18SMRelativeLocalURLC9localFile_AA0A10AttributesV04withL0tKF">uploadImmutable(localFile:withAttributes:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <h2 id='enqueue-a-local-immutable-file-for-subsequent-upload' class='heading'>Enqueue a local immutable file for subsequent upload.</h2>
+
+<p>Immutable files are assumed to not change (at least until after the upload has completed). This immutable characteristic is not enforced by this class but needs to be enforced by the caller of this class.</p>
+
+<p>This operation survives app launches, as long as the call itself completes.</p>
+
+<p>If there are contents with the same uuid, which have been enqueued for upload (file upload or appMetaData upload) but not yet <code>sync</code>&lsquo;ed, they will be replaced by this upload request. That is, if you want to do both a file upload and an appMetaData upload in the same sync, then set the SyncAttributes with the appMetaData, and use one of the file upload operations.</p>
+
+<p>This operation does not access the server, and thus runs quickly and synchronously.</p>
+
+<p>You can only set the fileGroupUUID (in the SyncAttributes) when the file is first uploaded.</p>
+<h3 id='when-uploading-a-file-for-the-2nd-or-more-time-q-multi-version-upload-q' class='heading'>When uploading a file for the 2nd or more time (<q>multi-version upload</q>):</h3>
+
+<ol>
+<li>the 2nd and following updates must have the same mimeType as the first version of the file.</li>
+<li>If the attr.appMetaData is given as nil, and an earlier version had non-nil appMetaData, then the nil appMetaData is ignored&ndash; i.e., the existing app meta data is not set to nil.</li>
+</ol>
+
+<p><code>Warning</code>: If you indicate that the mime type is <q>text/plain</q>, and you are using Google Drive and the text contains unusual characters, you may run into problems&ndash; e.g., downloading the files may fail.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">uploadImmutable</span><span class="p">(</span><span class="nv">localFile</span><span class="p">:</span> <span class="kt">SMRelativeLocalURL</span><span class="p">,</span> <span class="n">withAttributes</span> <span class="nv">attr</span><span class="p">:</span> <span class="kt"><a href="../Structs/SyncAttributes.html">SyncAttributes</a></span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>localFile</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>URL for the file to upload.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>withAttributes</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Attributes of the file to upload.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServerAAC10uploadCopyy9SMCoreLib18SMRelativeLocalURLC9localFile_AA0A10AttributesV04withL0tKF"></a>
+                    <a name="//apple_ref/swift/Method/uploadCopy(localFile:withAttributes:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC10uploadCopyy9SMCoreLib18SMRelativeLocalURLC9localFile_AA0A10AttributesV04withL0tKF">uploadCopy(localFile:withAttributes:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A copy of the file is made, and that is used for uploading. The caller can then change their original and it doesn&rsquo;t affect the upload. The copy is removed after the upload completes. This operation proceeds like <code>uploadImmutable</code> otherwise.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">uploadCopy</span><span class="p">(</span><span class="nv">localFile</span><span class="p">:</span> <span class="kt">SMRelativeLocalURL</span><span class="p">,</span> <span class="n">withAttributes</span> <span class="nv">attr</span><span class="p">:</span> <span class="kt"><a href="../Structs/SyncAttributes.html">SyncAttributes</a></span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServerAAC17uploadAppMetaDatayAA0A10AttributesV4attr_tKF"></a>
+                    <a name="//apple_ref/swift/Method/uploadAppMetaData(attr:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC17uploadAppMetaDatayAA0A10AttributesV4attr_tKF">uploadAppMetaData(attr:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Enqueue an upload of changed app meta data for an existing file.</p>
+<h3 id='like-the-other-uploads-above' class='heading'>Like the other uploads above:</h3>
+
+<ol>
+<li>This operation survives app launches, as long as the call itself completes,</li>
+<li>This operation does not access the server, and thus runs quickly and synchronously, and</li>
+<li>If there is a file with the same uuid, which has been enqueued for upload (file contents or appMetaData) but not yet <code>sync</code>&lsquo;ed, it will be replaced by this upload request.</li>
+</ol>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">uploadAppMetaData</span><span class="p">(</span><span class="nv">attr</span><span class="p">:</span> <span class="kt"><a href="../Structs/SyncAttributes.html">SyncAttributes</a></span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>attr</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>These attributes must have non-nil <code>appMetaData</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServerAAC6deleteySS12fileWithUUID_tKF"></a>
+                    <a name="//apple_ref/swift/Method/delete(fileWithUUID:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC6deleteySS12fileWithUUID_tKF">delete(fileWithUUID:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This  method enqueues an upload deletion operation. The operation persists across app launches. It is an error to try again later to upload, or delete the file referenced by this UUID. You can only delete files that are already known to the SyncServer (e.g., that you&rsquo;ve uploaded).</p>
+
+<p>If there is a file with the same uuid, which has been enqueued for upload but not yet <code>sync</code>&lsquo;ed, it will be removed.</p>
+
+<p>This operation does not access the server, and thus runss quickly and synchronously.</p>
+
+<p>This operation undoes its work if it throws an error.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">delete</span><span class="p">(</span><span class="n">fileWithUUID</span> <span class="nv">uuid</span><span class="p">:</span> <span class="kt"><a href="../Other Typealiases.html#/s:10SyncServer10UUIDStringa">UUIDString</a></span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fileWithUUID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The UUID of the file to delete.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServerAAC6deleteySaySSG14filesWithUUIDs_tKF"></a>
+                    <a name="//apple_ref/swift/Method/delete(filesWithUUIDs:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC6deleteySaySSG14filesWithUUIDs_tKF">delete(filesWithUUIDs:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>As above, but you can give multiple UUIDs.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">delete</span><span class="p">(</span><span class="n">filesWithUUIDs</span> <span class="nv">uuids</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Other Typealiases.html#/s:10SyncServer10UUIDStringa">UUIDString</a></span><span class="p">])</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>filesWithUUIDs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The UUID of the files to delete.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServerAAC4syncyyF"></a>
+                    <a name="//apple_ref/swift/Method/sync()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC4syncyyF">sync()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>If no other <code>sync</code> is taking place, this will asynchronously do pending downloads, file uploads, and upload deletions. If there is a <code>sync</code> currently taking place, this closes the collection of uploads/deletions queued, and will wait until after the current sync is done, and try again.</p>
+
+<p>If a stopSync is currently pending, then this call will be ignored.</p>
+
+<p>Non-blocking in all cases.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">sync</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServerAAC04stopA0yyF"></a>
+                    <a name="//apple_ref/swift/Method/stopSync()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC04stopA0yyF">stopSync()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Stop an ongoing sync operation. This will stop the operation at the next <q>natural</q> stopping point. E.g., after a next download completes. No effect if no ongoing sync operation. Any delayed sync is cancelled.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">stopSync</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServerAAC13getAttributesAA0aD0VSS7forUUID_tKF"></a>
+                    <a name="//apple_ref/swift/Method/getAttributes(forUUID:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC13getAttributesAA0aD0VSS7forUUID_tKF">getAttributes(forUUID:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Operates synchronously and quickly. A file must have already been uploaded (or downloaded) for you to be able to get its attributes. It is an error to call this for a uuid that doesn&rsquo;t yet exist, or for one that has already been deleted.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getAttributes</span><span class="p">(</span><span class="n">forUUID</span> <span class="nv">uuid</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/SyncAttributes.html">SyncAttributes</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>forUUID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The UUID of the file to get attributes for.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServerAAC5StatsV"></a>
+                    <a name="//apple_ref/swift/Struct/Stats" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC5StatsV">Stats</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Object returned by call to <code>getStats</code>.</p>
+
+                        <a href="../Classes/SyncServer/Stats.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Stats</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServerAAC8getStatsyyAB0D0VSgc10completion_tF"></a>
+                    <a name="//apple_ref/swift/Method/getStats(completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC8getStatsyyAB0D0VSgc10completion_tF">getStats(completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This information is for general purpose use (e.g., UI) and makes no guarantees about files to be downloaded when you next do a <code>sync</code> operation.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getStats</span><span class="p">(</span><span class="nv">completion</span><span class="p">:</span><span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Classes/SyncServer/Stats.html">Stats</a></span><span class="p">?)</span><span class="o">-&gt;</span><span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Gives stats about downloads that are currently available; gives nil if there was an error.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServerAAC9ResetTypeO"></a>
+                    <a name="//apple_ref/swift/Enum/ResetType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC9ResetTypeO">ResetType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The type of reset to perform with a call to <code>reset</code>.</p>
+
+                        <a href="../Classes/SyncServer/ResetType.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ResetType</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServerAAC5resetyAB9ResetTypeO4type_tKF"></a>
+                    <a name="//apple_ref/swift/Method/reset(type:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC5resetyAB9ResetTypeO4type_tKF">reset(type:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Does a reset of local (not server) tracking data.</p>
+
+<p>Doesn&rsquo;t sign the user out or require that the user is signed in.</p>
+
+<p>This method may only be called when the client is not doing any sync operations.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">reset</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Classes/SyncServer/ResetType.html">ResetType</a></span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>type</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>type of reset to perform.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServerAAC14logAllTrackingyyycSg10completion_tF"></a>
+                    <a name="//apple_ref/swift/Method/logAllTracking(completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC14logAllTrackingyyycSg10completion_tF">logAllTracking(completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Logs information about all tracking internal meta data.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">logAllTracking</span><span class="p">(</span><span class="nv">completion</span><span class="p">:</span> <span class="p">(()</span><span class="o">-&gt;</span><span class="p">())?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServerAAC23LocalConsistencyResultsV"></a>
+                    <a name="//apple_ref/swift/Struct/LocalConsistencyResults" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC23LocalConsistencyResultsV">LocalConsistencyResults</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Return result from <code>localConsistencyCheck</code>.</p>
+
+                        <a href="../Classes/SyncServer/LocalConsistencyResults.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">LocalConsistencyResults</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServerAAC21localConsistencyCheckAB05LocalD7ResultsVSgSaySSG11clientFiles_tKF"></a>
+                    <a name="//apple_ref/swift/Method/localConsistencyCheck(clientFiles:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC21localConsistencyCheckAB05LocalD7ResultsVSgSaySSG11clientFiles_tKF">localConsistencyCheck(clientFiles:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Performs a similar operation to a file system consistency or integrity check. Only operates if not currently synchronizing. Suitable for running at app startup.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">localConsistencyCheck</span><span class="p">(</span><span class="nv">clientFiles</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Other Typealiases.html#/s:10SyncServer10UUIDStringa">UUIDString</a></span><span class="p">])</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/SyncServer/LocalConsistencyResults.html">LocalConsistencyResults</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>clientFiles</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>UUID&rsquo;s of files known to the client.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/"></a>
+                    <a name="//apple_ref/swift/Method/consistencyCheck(localFiles:repair:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/">consistencyCheck(localFiles:repair:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://github.com/crspybits/SyncServer-iOSClient" target="_blank" rel="external">Spastic Muffin, LLC</a>. All rights reserved. (Last updated: 2018-05-30)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

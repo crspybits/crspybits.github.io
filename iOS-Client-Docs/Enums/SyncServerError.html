@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SyncServerError Enumeration Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Enum/SyncServerError" class="dashAnchor"></a>
+    <a title="SyncServerError Enumeration Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">SyncServer Docs</a> (42% documented)</p>
+        <p class="header-right"><a href="https://github.com/crspybits/SyncServer-iOSClient.git"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">SyncServer Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        SyncServerError Enumeration Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../File Synchronization.html">File Synchronization</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/SyncServer.html">SyncServer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SyncServer/Stats.html">– Stats</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SyncServer/ResetType.html">– ResetType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SyncServer/LocalConsistencyResults.html">– LocalConsistencyResults</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SyncAttributes.html">SyncAttributes</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SyncServerDelegate.html">SyncServerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SyncEvent.html">SyncEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/EventDesired.html">EventDesired</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SyncServerError.html">SyncServerError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/FileUUID.html">FileUUID</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DownloadOperation.html">DownloadOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DownloadOperation/OperationType.html">– OperationType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ServerVersion.html">ServerVersion</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Conflict Resolution.html">Conflict Resolution</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/SyncServerConflict.html">SyncServerConflict</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ContentDownloadResolution.html">ContentDownloadResolution</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ContentDownloadResolution/UploadResolution.html">– UploadResolution</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/DownloadDeletionResolution.html">DownloadDeletionResolution</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/DownloadDeletionResolution/ContentUploadResolution.html">– ContentUploadResolution</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ConflictingClientOperation.html">ConflictingClientOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ConflictingClientOperation/ContentType.html">– ContentType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ServerContentType.html">ServerContentType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Users and Sharing.html">Users and Sharing</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/SignInManager.html">SignInManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SignInManagerDelegate.html">SignInManagerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SignIn.html">SignIn</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SignInStart.html">SignInStart</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SyncServerUser.html">SyncServerUser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SyncServerUser/CheckForExistingUserResult.html">– CheckForExistingUserResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SharingInvitation.html">SharingInvitation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SharingInvitation/Invitation.html">– Invitation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SharingInvitationDelegate.html">SharingInvitationDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SignInAccount.html">SignInAccount</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SignInSubviewDelegate.html">SignInSubviewDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/UserActionNeeded.html">UserActionNeeded</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/UserActionOccurred.html">UserActionOccurred</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SignInState.html">SignInState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SignInUIState.html">SignInUIState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/GenericCredentials.html">GenericCredentials</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/GenericSignIn.html">GenericSignIn</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/GenericSignInDelegate.html">GenericSignInDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/GenericSignOutDelegate.html">GenericSignOutDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Tappable.html">Tappable</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Specific Sign-in&#39;s.html">Specific Sign-in&#39;s</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/DropboxCredentials.html">DropboxCredentials</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DropboxSyncServerSignIn.html">DropboxSyncServerSignIn</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FacebookCredentials.html">FacebookCredentials</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FacebookSyncServerSignIn.html">FacebookSyncServerSignIn</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Typealiases.html">Other Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Other Typealiases.html#/s:10SyncServer14TappableButtona">TappableButton</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Typealiases.html#/s:10SyncServer10UUIDStringa">UUIDString</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>SyncServerError</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">SyncServerError</span> <span class="p">:</span> <span class="kt">Error</span></code></pre>
+
+                </div>
+              </div>
+            <p>Many of these only have internal meaning to the client interface. Some are documented because they can be useful to the code using the client.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO24noCellularDataConnectionA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/noCellularDataConnection" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO24noCellularDataConnectionA2CmF">noCellularDataConnection</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>If this is reported, it is diagnostic of a network error. It is not reported simply due to a check for a cellular data connection. i.e., no network was present and this may be the reason why.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">noCellularDataConnection</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO09noNetworkC0A2CmF"></a>
+                    <a name="//apple_ref/swift/Element/noNetworkError" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO09noNetworkC0A2CmF">noNetworkError</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The network connection was lost.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">noNetworkError</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO03badB7VersionAcA0bE0VSg06actualbE0_tcACmF"></a>
+                    <a name="//apple_ref/swift/Element/badServerVersion" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO03badB7VersionAcA0bE0VSg06actualbE0_tcACmF">badServerVersion</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The minimum server version you gave in <code>appLaunchSetup</code> was not met. Immediately this is raised as an error, the SyncServer client stops operating.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">badServerVersion</span><span class="p">(</span><span class="nv">actualServerVersion</span><span class="p">:</span> <span class="kt"><a href="../Structs/ServerVersion.html">ServerVersion</a></span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO21mimeTypeOfFileChangedA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/mimeTypeOfFileChanged" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO21mimeTypeOfFileChangedA2CmF">mimeTypeOfFileChanged</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">mimeTypeOfFileChanged</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO10noMimeTypeA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/noMimeType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO10noMimeTypeA2CmF">noMimeType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">noMimeType</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO11badMimeTypeA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/badMimeType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO11badMimeTypeA2CmF">badMimeType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">badMimeType</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO42downloadedFileVersionNotGreaterThanCurrentA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/downloadedFileVersionNotGreaterThanCurrent" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO42downloadedFileVersionNotGreaterThanCurrentA2CmF">downloadedFileVersionNotGreaterThanCurrent</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">downloadedFileVersionNotGreaterThanCurrent</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO18fileAlreadyDeletedA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/fileAlreadyDeleted" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO18fileAlreadyDeletedA2CmF">fileAlreadyDeleted</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">fileAlreadyDeleted</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO20fileGroupUUIDChangedA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/fileGroupUUIDChanged" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO20fileGroupUUIDChangedA2CmF">fileGroupUUIDChanged</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">fileGroupUUIDChanged</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO21fileQueuedForDeletionA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/fileQueuedForDeletion" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO21fileQueuedForDeletionA2CmF">fileQueuedForDeletion</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">fileQueuedForDeletion</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO19deletingUnknownFileA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/deletingUnknownFile" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO19deletingUnknownFileA2CmF">deletingUnknownFile</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">deletingUnknownFile</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO27getAttributesForUnknownFileA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/getAttributesForUnknownFile" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO27getAttributesForUnknownFileA2CmF">getAttributesForUnknownFile</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">getAttributesForUnknownFile</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO15syncIsOperatingA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/syncIsOperating" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO15syncIsOperatingA2CmF">syncIsOperating</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">syncIsOperating</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO23alreadyDownloadingAFileA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/alreadyDownloadingAFile" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO23alreadyDownloadingAFileA2CmF">alreadyDownloadingAFile</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">alreadyDownloadingAFile</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO21alreadyUploadingAFileA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/alreadyUploadingAFile" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO21alreadyUploadingAFileA2CmF">alreadyUploadingAFile</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">alreadyUploadingAFile</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO20couldNotFindFileUUIDACSScACmF"></a>
+                    <a name="//apple_ref/swift/Element/couldNotFindFileUUID" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO20couldNotFindFileUUIDACSScACmF">couldNotFindFileUUID</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">couldNotFindFileUUID</span><span class="p">(</span><span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO20versionForFileWasNilACSS9fileUUUID_tcACmF"></a>
+                    <a name="//apple_ref/swift/Element/versionForFileWasNil" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO20versionForFileWasNilACSS9fileUUUID_tcACmF">versionForFileWasNil</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">versionForFileWasNil</span><span class="p">(</span><span class="nv">fileUUUID</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO18noRefreshAvailableA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/noRefreshAvailable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO18noRefreshAvailableA2CmF">noRefreshAvailable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">noRefreshAvailable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO22couldNotCreateResponseA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/couldNotCreateResponse" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO22couldNotCreateResponseA2CmF">couldNotCreateResponse</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">couldNotCreateResponse</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO21couldNotCreateRequestA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/couldNotCreateRequest" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO21couldNotCreateRequestA2CmF">couldNotCreateRequest</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">couldNotCreateRequest</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO20didNotGetDownloadURLA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/didNotGetDownloadURL" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO20didNotGetDownloadURLA2CmF">didNotGetDownloadURL</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">didNotGetDownloadURL</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO24couldNotMoveDownloadFileA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/couldNotMoveDownloadFile" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO24couldNotMoveDownloadFileA2CmF">couldNotMoveDownloadFile</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">couldNotMoveDownloadFile</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO21couldNotCreateNewFileA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/couldNotCreateNewFile" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO21couldNotCreateNewFileA2CmF">couldNotCreateNewFile</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">couldNotCreateNewFile</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO25couldNotRemoveFileTrackerA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/couldNotRemoveFileTracker" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO25couldNotRemoveFileTrackerA2CmF">couldNotRemoveFileTracker</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">couldNotRemoveFileTracker</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO14badAppMetaDataA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/badAppMetaData" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO14badAppMetaDataA2CmF">badAppMetaData</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">badAppMetaData</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO19noExpectedResultKeyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/noExpectedResultKey" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO19noExpectedResultKeyA2CmF">noExpectedResultKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">noExpectedResultKey</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO11nilResponseA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/nilResponse" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO11nilResponseA2CmF">nilResponse</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">nilResponse</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO30couldNotObtainHeaderParametersA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/couldNotObtainHeaderParameters" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO30couldNotObtainHeaderParametersA2CmF">couldNotObtainHeaderParameters</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">couldNotObtainHeaderParameters</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO23resultURLObtainedWasNilA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/resultURLObtainedWasNil" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO23resultURLObtainedWasNilA2CmF">resultURLObtainedWasNil</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">resultURLObtainedWasNil</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO015errorConvertingB8ResponseA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/errorConvertingServerResponse" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO015errorConvertingB8ResponseA2CmF">errorConvertingServerResponse</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">errorConvertingServerResponse</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO017jsonSerializationC0ACs0C0_pcACmF"></a>
+                    <a name="//apple_ref/swift/Element/jsonSerializationError" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO017jsonSerializationC0ACs0C0_pcACmF">jsonSerializationError</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">jsonSerializationError</span><span class="p">(</span><span class="kt">Error</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO010urlSessionC0ACs0C0_pcACmF"></a>
+                    <a name="//apple_ref/swift/Element/urlSessionError" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO010urlSessionC0ACs0C0_pcACmF">urlSessionError</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">urlSessionError</span><span class="p">(</span><span class="kt">Error</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO26couldNotGetHTTPURLResponseA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/couldNotGetHTTPURLResponse" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO26couldNotGetHTTPURLResponseA2CmF">couldNotGetHTTPURLResponse</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">couldNotGetHTTPURLResponse</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO16non200StatusCodeACSicACmF"></a>
+                    <a name="//apple_ref/swift/Element/non200StatusCode" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO16non200StatusCodeACSicACmF">non200StatusCode</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">non200StatusCode</span><span class="p">(</span><span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO13badCheckCredsA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/badCheckCreds" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO13badCheckCredsA2CmF">badCheckCreds</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">badCheckCreds</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO10badAddUserA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/badAddUser" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO10badAddUserA2CmF">badAddUser</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">badAddUser</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO34appMetaDataUploadUndeletionAttemptA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/appMetaDataUploadUndeletionAttempt" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO34appMetaDataUploadUndeletionAttemptA2CmF">appMetaDataUploadUndeletionAttempt</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">appMetaDataUploadUndeletionAttempt</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO07unknownbC0A2CmF"></a>
+                    <a name="//apple_ref/swift/Element/unknownServerError" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO07unknownbC0A2CmF">unknownServerError</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">unknownServerError</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO08coreDataC0ACs0C0_pcACmF"></a>
+                    <a name="//apple_ref/swift/Element/coreDataError" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO08coreDataC0ACs0C0_pcACmF">coreDataError</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">coreDataError</span><span class="p">(</span><span class="kt">Error</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO05otherC0ACs0C0_pcACmF"></a>
+                    <a name="//apple_ref/swift/Element/otherError" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO05otherC0ACs0C0_pcACmF">otherError</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">otherError</span><span class="p">(</span><span class="kt">Error</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO011fileManagerC0ACs0C0_pcACmF"></a>
+                    <a name="//apple_ref/swift/Element/fileManagerError" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO011fileManagerC0ACs0C0_pcACmF">fileManagerError</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">fileManagerError</span><span class="p">(</span><span class="kt">Error</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO7genericACSScACmF"></a>
+                    <a name="//apple_ref/swift/Element/generic" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO7genericACSScACmF">generic</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">generic</span><span class="p">(</span><span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/"></a>
+                    <a name="//apple_ref/swift/Element/testRefreshFailure" class="dashAnchor"></a>
+                    <a class="token" href="#/">testRefreshFailure</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB5ErrorO018credentialsRefreshC0A2CmF"></a>
+                    <a name="//apple_ref/swift/Element/credentialsRefreshError" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB5ErrorO018credentialsRefreshC0A2CmF">credentialsRefreshError</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">credentialsRefreshError</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://github.com/crspybits/SyncServer-iOSClient" target="_blank" rel="external">Spastic Muffin, LLC</a>. All rights reserved. (Last updated: 2018-05-30)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

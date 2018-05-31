@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Users and Sharing  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Section/Users and Sharing" class="dashAnchor"></a>
+    <a title="Users and Sharing  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">SyncServer Docs</a> (42% documented)</p>
+        <p class="header-right"><a href="https://github.com/crspybits/SyncServer-iOSClient.git"><img src="img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">SyncServer Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Users and Sharing  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="File Synchronization.html">File Synchronization</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/SyncServer.html">SyncServer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/SyncServer/Stats.html">– Stats</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/SyncServer/ResetType.html">– ResetType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/SyncServer/LocalConsistencyResults.html">– LocalConsistencyResults</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SyncAttributes.html">SyncAttributes</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/SyncServerDelegate.html">SyncServerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/SyncEvent.html">SyncEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/EventDesired.html">EventDesired</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/SyncServerError.html">SyncServerError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/FileUUID.html">FileUUID</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/DownloadOperation.html">DownloadOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/DownloadOperation/OperationType.html">– OperationType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ServerVersion.html">ServerVersion</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Conflict Resolution.html">Conflict Resolution</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/SyncServerConflict.html">SyncServerConflict</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/ContentDownloadResolution.html">ContentDownloadResolution</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/ContentDownloadResolution/UploadResolution.html">– UploadResolution</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/DownloadDeletionResolution.html">DownloadDeletionResolution</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/DownloadDeletionResolution/ContentUploadResolution.html">– ContentUploadResolution</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/ConflictingClientOperation.html">ConflictingClientOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/ConflictingClientOperation/ContentType.html">– ContentType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/ServerContentType.html">ServerContentType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Users and Sharing.html">Users and Sharing</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/SignInManager.html">SignInManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/SignInManagerDelegate.html">SignInManagerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/SignIn.html">SignIn</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/SignInStart.html">SignInStart</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/SyncServerUser.html">SyncServerUser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/SyncServerUser/CheckForExistingUserResult.html">– CheckForExistingUserResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/SharingInvitation.html">SharingInvitation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/SharingInvitation/Invitation.html">– Invitation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/SharingInvitationDelegate.html">SharingInvitationDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/SignInAccount.html">SignInAccount</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/SignInSubviewDelegate.html">SignInSubviewDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/UserActionNeeded.html">UserActionNeeded</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/UserActionOccurred.html">UserActionOccurred</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/SignInState.html">SignInState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/SignInUIState.html">SignInUIState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/GenericCredentials.html">GenericCredentials</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/GenericSignIn.html">GenericSignIn</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/GenericSignInDelegate.html">GenericSignInDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/GenericSignOutDelegate.html">GenericSignOutDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/Tappable.html">Tappable</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Specific Sign-in&#39;s.html">Specific Sign-in&#39;s</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/DropboxCredentials.html">DropboxCredentials</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/DropboxSyncServerSignIn.html">DropboxSyncServerSignIn</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/FacebookCredentials.html">FacebookCredentials</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/FacebookSyncServerSignIn.html">FacebookSyncServerSignIn</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Other Typealiases.html">Other Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Other Typealiases.html#/s:10SyncServer14TappableButtona">TappableButton</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Other Typealiases.html#/s:10SyncServer10UUIDStringa">UUIDString</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Users and Sharing</h1>
+            
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@SyncServer@objc(cs)SignInManager"></a>
+                    <a name="//apple_ref/swift/Class/SignInManager" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@SyncServer@objc(cs)SignInManager">SignInManager</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                        <a href="Classes/SignInManager.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">SignInManager</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer21SignInManagerDelegateP"></a>
+                    <a name="//apple_ref/swift/Protocol/SignInManagerDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer21SignInManagerDelegateP">SignInManagerDelegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                        <a href="Protocols/SignInManagerDelegate.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">SignInManagerDelegate</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer16UserActionNeededO"></a>
+                    <a name="//apple_ref/swift/Enum/UserActionNeeded" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer16UserActionNeededO">UserActionNeeded</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                        <a href="Enums/UserActionNeeded.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">UserActionNeeded</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer18UserActionOccurredO"></a>
+                    <a name="//apple_ref/swift/Enum/UserActionOccurred" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer18UserActionOccurredO">UserActionOccurred</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                        <a href="Enums/UserActionOccurred.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">UserActionOccurred</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer11SignInStateO"></a>
+                    <a name="//apple_ref/swift/Enum/SignInState" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer11SignInStateO">SignInState</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                        <a href="Enums/SignInState.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">SignInState</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer18GenericCredentialsP"></a>
+                    <a name="//apple_ref/swift/Protocol/GenericCredentials" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer18GenericCredentialsP">GenericCredentials</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                        <a href="Protocols/GenericCredentials.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">GenericCredentials</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer13GenericSignInP"></a>
+                    <a name="//apple_ref/swift/Protocol/GenericSignIn" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer13GenericSignInP">GenericSignIn</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                        <a href="Protocols/GenericSignIn.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">GenericSignIn</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer21GenericSignInDelegateP"></a>
+                    <a name="//apple_ref/swift/Protocol/GenericSignInDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer21GenericSignInDelegateP">GenericSignInDelegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                        <a href="Protocols/GenericSignInDelegate.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">GenericSignInDelegate</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer22GenericSignOutDelegateP"></a>
+                    <a name="//apple_ref/swift/Protocol/GenericSignOutDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer22GenericSignOutDelegateP">GenericSignOutDelegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                        <a href="Protocols/GenericSignOutDelegate.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">GenericSignOutDelegate</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer8TappableP"></a>
+                    <a name="//apple_ref/swift/Protocol/Tappable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer8TappableP">Tappable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                        <a href="Protocols/Tappable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Tappable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@SyncServer@objc(cs)SignIn"></a>
+                    <a name="//apple_ref/swift/Class/SignIn" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@SyncServer@objc(cs)SignIn">SignIn</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                        <a href="Classes/SignIn.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">SignIn</span> <span class="p">:</span> <span class="kt">UIView</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer21SignInSubviewDelegateP"></a>
+                    <a name="//apple_ref/swift/Protocol/SignInSubviewDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer21SignInSubviewDelegateP">SignInSubviewDelegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                        <a href="Protocols/SignInSubviewDelegate.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">SignInSubviewDelegate</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer13SignInUIStateO"></a>
+                    <a name="//apple_ref/swift/Enum/SignInUIState" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer13SignInUIStateO">SignInUIState</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                        <a href="Enums/SignInUIState.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">SignInUIState</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@SyncServer@objc(cs)SignInStart"></a>
+                    <a name="//apple_ref/swift/Class/SignInStart" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@SyncServer@objc(cs)SignInStart">SignInStart</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                        <a href="Classes/SignInStart.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">SignInStart</span> <span class="p">:</span> <span class="kt">UIView</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB4UserC"></a>
+                    <a name="//apple_ref/swift/Class/SyncServerUser" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB4UserC">SyncServerUser</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                        <a href="Classes/SyncServerUser.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">SyncServerUser</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer17SharingInvitationC"></a>
+                    <a name="//apple_ref/swift/Class/SharingInvitation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer17SharingInvitationC">SharingInvitation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                        <a href="Classes/SharingInvitation.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">SharingInvitation</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer25SharingInvitationDelegateP"></a>
+                    <a name="//apple_ref/swift/Protocol/SharingInvitationDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer25SharingInvitationDelegateP">SharingInvitationDelegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                        <a href="Protocols/SharingInvitationDelegate.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">SharingInvitationDelegate</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer13SignInAccountO"></a>
+                    <a name="//apple_ref/swift/Enum/SignInAccount" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer13SignInAccountO">SignInAccount</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                        <a href="Enums/SignInAccount.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">SignInAccount</span> <span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://github.com/crspybits/SyncServer-iOSClient" target="_blank" rel="external">Spastic Muffin, LLC</a>. All rights reserved. (Last updated: 2018-05-30)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

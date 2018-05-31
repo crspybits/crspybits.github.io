@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SignInManager Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/SignInManager" class="dashAnchor"></a>
+    <a title="SignInManager Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">SyncServer Docs</a> (42% documented)</p>
+        <p class="header-right"><a href="https://github.com/crspybits/SyncServer-iOSClient.git"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">SyncServer Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        SignInManager Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../File Synchronization.html">File Synchronization</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/SyncServer.html">SyncServer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SyncServer/Stats.html">– Stats</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SyncServer/ResetType.html">– ResetType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SyncServer/LocalConsistencyResults.html">– LocalConsistencyResults</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SyncAttributes.html">SyncAttributes</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SyncServerDelegate.html">SyncServerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SyncEvent.html">SyncEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/EventDesired.html">EventDesired</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SyncServerError.html">SyncServerError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/FileUUID.html">FileUUID</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DownloadOperation.html">DownloadOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DownloadOperation/OperationType.html">– OperationType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ServerVersion.html">ServerVersion</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Conflict Resolution.html">Conflict Resolution</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/SyncServerConflict.html">SyncServerConflict</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ContentDownloadResolution.html">ContentDownloadResolution</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ContentDownloadResolution/UploadResolution.html">– UploadResolution</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/DownloadDeletionResolution.html">DownloadDeletionResolution</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/DownloadDeletionResolution/ContentUploadResolution.html">– ContentUploadResolution</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ConflictingClientOperation.html">ConflictingClientOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ConflictingClientOperation/ContentType.html">– ContentType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ServerContentType.html">ServerContentType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Users and Sharing.html">Users and Sharing</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/SignInManager.html">SignInManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SignInManagerDelegate.html">SignInManagerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SignIn.html">SignIn</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SignInStart.html">SignInStart</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SyncServerUser.html">SyncServerUser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SyncServerUser/CheckForExistingUserResult.html">– CheckForExistingUserResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SharingInvitation.html">SharingInvitation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SharingInvitation/Invitation.html">– Invitation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SharingInvitationDelegate.html">SharingInvitationDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SignInAccount.html">SignInAccount</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SignInSubviewDelegate.html">SignInSubviewDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/UserActionNeeded.html">UserActionNeeded</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/UserActionOccurred.html">UserActionOccurred</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SignInState.html">SignInState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SignInUIState.html">SignInUIState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/GenericCredentials.html">GenericCredentials</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/GenericSignIn.html">GenericSignIn</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/GenericSignInDelegate.html">GenericSignInDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/GenericSignOutDelegate.html">GenericSignOutDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Tappable.html">Tappable</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Specific Sign-in&#39;s.html">Specific Sign-in&#39;s</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/DropboxCredentials.html">DropboxCredentials</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DropboxSyncServerSignIn.html">DropboxSyncServerSignIn</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FacebookCredentials.html">FacebookCredentials</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FacebookSyncServerSignIn.html">FacebookSyncServerSignIn</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Typealiases.html">Other Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Other Typealiases.html#/s:10SyncServer14TappableButtona">TappableButton</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Typealiases.html#/s:10SyncServer10UUIDStringa">UUIDString</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>SignInManager</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">SignInManager</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                </div>
+              </div>
+            
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer13SignInManagerC20currentUIDisplayName9SMCoreLib19SMPersistItemStringCvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/currentUIDisplayName" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer13SignInManagerC20currentUIDisplayName9SMCoreLib19SMPersistItemStringCvpZ">currentUIDisplayName</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>These must be stored in user defaults&ndash; so that if they delete the app, we lose it, and can start again. Storing both the currentUIDisplayName and userId because the userId (at least for Google) is just a number and not intelligible in the UI.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">currentUIDisplayName</span><span class="p">:</span> <span class="kt">SMPersistItemString</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer13SignInManagerC13currentUserId9SMCoreLib19SMPersistItemStringCvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/currentUserId" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer13SignInManagerC13currentUserId9SMCoreLib19SMPersistItemStringCvpZ">currentUserId</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">currentUserId</span><span class="p">:</span> <span class="kt">SMPersistItemString</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer13SignInManagerC7sessionACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/session" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer13SignInManagerC7sessionACvpZ">session</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">session</span><span class="p">:</span> <span class="kt">SignInManager</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer13SignInManagerC04signD12StateChangedSo19TargetsAndSelectors_pvp"></a>
+                    <a name="//apple_ref/swift/Property/signInStateChanged" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer13SignInManagerC04signD12StateChangedSo19TargetsAndSelectors_pvp">signInStateChanged</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">signInStateChanged</span><span class="p">:</span> <span class="kt">TargetsAndSelectors</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer13SignInManagerC025lastStateChangeSignedUserD0Sbvp"></a>
+                    <a name="//apple_ref/swift/Property/lastStateChangeSignedUserIn" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer13SignInManagerC025lastStateChangeSignedUserD0Sbvp">lastStateChangeSignedUserIn</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">fileprivate</span><span class="p">(</span><span class="k">set</span><span class="p">)</span> <span class="k">var</span> <span class="nv">lastStateChangeSignedUserIn</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer13SignInManagerC03getC3InsSayAA07GenericcD0_pG0aB7_Shared0cD4TypeV3for_tF"></a>
+                    <a name="//apple_ref/swift/Method/getSignIns(for:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer13SignInManagerC03getC3InsSayAA07GenericcD0_pG0aB7_Shared0cD4TypeV3for_tF">getSignIns(for:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getSignIns</span><span class="p">(</span><span class="k">for</span> <span class="nv">signInType</span><span class="p">:</span> <span class="kt">SignInType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Protocols/GenericSignIn.html">GenericSignIn</a></span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer13SignInManagerC07currentcD0AA07GenericcD0_pSgvp"></a>
+                    <a name="//apple_ref/swift/Property/currentSignIn" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer13SignInManagerC07currentcD0AA07GenericcD0_pSgvp">currentSignIn</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Set this to establish the current SignIn mechanism in use in the app.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">currentSignIn</span><span class="p">:</span> <span class="kt"><a href="../Protocols/GenericSignIn.html">GenericSignIn</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer13SignInManagerC012userIsSignedD0Sbvp"></a>
+                    <a name="//apple_ref/swift/Property/userIsSignedIn" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer13SignInManagerC012userIsSignedD0Sbvp">userIsSignedIn</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A shorthand&ndash; because it&rsquo;s often used.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">userIsSignedIn</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer13SignInManagerC03addcD0yAA07GenericcD0_p_s10DictionaryVySC29UIApplicationLaunchOptionsKeyVypGSg06launchK0tF"></a>
+                    <a name="//apple_ref/swift/Method/addSignIn(_:launchOptions:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer13SignInManagerC03addcD0yAA07GenericcD0_p_s10DictionaryVySC29UIApplicationLaunchOptionsKeyVypGSg06launchK0tF">addSignIn(_:launchOptions:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>At launch, you must set up all the SignIn&rsquo;s that you&rsquo;ll be presenting to the user. This will call their <code>appLaunchSetup</code> method.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">addSignIn</span><span class="p">(</span><span class="n">_</span> <span class="nv">signIn</span><span class="p">:</span> <span class="kt"><a href="../Protocols/GenericSignIn.html">GenericSignIn</a></span><span class="p">,</span> <span class="n">launchOptions</span> <span class="nv">options</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplicationLaunchOptionsKey</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer13SignInManagerC11applicationSbSo13UIApplicationC_10Foundation3URLV4opens10DictionaryVySC0G17OpenURLOptionsKeyVypG7optionstF"></a>
+                    <a name="//apple_ref/swift/Method/application(_:open:options:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer13SignInManagerC11applicationSbSo13UIApplicationC_10Foundation3URLV4opens10DictionaryVySC0G17OpenURLOptionsKeyVypG7optionstF">application(_:open:options:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Based on the currently active signin method, this will call the corresponding method on that class.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">app</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="kd">open</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplicationOpenURLOptionsKey</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">[:])</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer13SignInManagerC04signD12StateChangedyAA0cdG0O2to_AA07GenericcD0_p3fortF"></a>
+                    <a name="//apple_ref/swift/Method/signInStateChanged(to:for:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer13SignInManagerC04signD12StateChangedyAA0cdG0O2to_AA07GenericcD0_p3fortF">signInStateChanged(to:for:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">signInStateChanged</span><span class="p">(</span><span class="n">to</span> <span class="nv">state</span><span class="p">:</span> <span class="kt"><a href="../Enums/SignInState.html">SignInState</a></span><span class="p">,</span> <span class="k">for</span> <span class="nv">signIn</span><span class="p">:</span> <span class="kt"><a href="../Protocols/GenericSignIn.html">GenericSignIn</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://github.com/crspybits/SyncServer-iOSClient" target="_blank" rel="external">Spastic Muffin, LLC</a>. All rights reserved. (Last updated: 2018-05-30)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SyncAttributes Structure Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Struct/SyncAttributes" class="dashAnchor"></a>
+    <a title="SyncAttributes Structure Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">SyncServer Docs</a> (42% documented)</p>
+        <p class="header-right"><a href="https://github.com/crspybits/SyncServer-iOSClient.git"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">SyncServer Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        SyncAttributes Structure Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../File Synchronization.html">File Synchronization</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/SyncServer.html">SyncServer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SyncServer/Stats.html">– Stats</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SyncServer/ResetType.html">– ResetType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SyncServer/LocalConsistencyResults.html">– LocalConsistencyResults</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SyncAttributes.html">SyncAttributes</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SyncServerDelegate.html">SyncServerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SyncEvent.html">SyncEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/EventDesired.html">EventDesired</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SyncServerError.html">SyncServerError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/FileUUID.html">FileUUID</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DownloadOperation.html">DownloadOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DownloadOperation/OperationType.html">– OperationType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ServerVersion.html">ServerVersion</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Conflict Resolution.html">Conflict Resolution</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/SyncServerConflict.html">SyncServerConflict</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ContentDownloadResolution.html">ContentDownloadResolution</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ContentDownloadResolution/UploadResolution.html">– UploadResolution</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/DownloadDeletionResolution.html">DownloadDeletionResolution</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/DownloadDeletionResolution/ContentUploadResolution.html">– ContentUploadResolution</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ConflictingClientOperation.html">ConflictingClientOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ConflictingClientOperation/ContentType.html">– ContentType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ServerContentType.html">ServerContentType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Users and Sharing.html">Users and Sharing</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/SignInManager.html">SignInManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SignInManagerDelegate.html">SignInManagerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SignIn.html">SignIn</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SignInStart.html">SignInStart</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SyncServerUser.html">SyncServerUser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SyncServerUser/CheckForExistingUserResult.html">– CheckForExistingUserResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SharingInvitation.html">SharingInvitation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SharingInvitation/Invitation.html">– Invitation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SharingInvitationDelegate.html">SharingInvitationDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SignInAccount.html">SignInAccount</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SignInSubviewDelegate.html">SignInSubviewDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/UserActionNeeded.html">UserActionNeeded</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/UserActionOccurred.html">UserActionOccurred</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SignInState.html">SignInState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SignInUIState.html">SignInUIState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/GenericCredentials.html">GenericCredentials</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/GenericSignIn.html">GenericSignIn</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/GenericSignInDelegate.html">GenericSignInDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/GenericSignOutDelegate.html">GenericSignOutDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Tappable.html">Tappable</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Specific Sign-in&#39;s.html">Specific Sign-in&#39;s</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/DropboxCredentials.html">DropboxCredentials</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DropboxSyncServerSignIn.html">DropboxSyncServerSignIn</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FacebookCredentials.html">FacebookCredentials</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FacebookSyncServerSignIn.html">FacebookSyncServerSignIn</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Typealiases.html">Other Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Other Typealiases.html#/s:10SyncServer14TappableButtona">TappableButton</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Typealiases.html#/s:10SyncServer10UUIDStringa">UUIDString</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>SyncAttributes</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">SyncAttributes</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/FileUUID.html">FileUUID</a></span><span class="p">,</span> <span class="kt">Hashable</span></code></pre>
+
+                </div>
+              </div>
+            <p>Attributes for a file being synced.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0A10AttributesV8mimeTypeSQy0aB7_Shared04MimeE0OGvp"></a>
+                    <a name="//apple_ref/swift/Property/mimeType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0A10AttributesV8mimeTypeSQy0aB7_Shared04MimeE0OGvp">mimeType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">mimeType</span><span class="p">:</span> <span class="kt">MimeType</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0A10AttributesV8fileUUIDSQySSGvp"></a>
+                    <a name="//apple_ref/swift/Property/fileUUID" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0A10AttributesV8fileUUIDSQySSGvp">fileUUID</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">fileUUID</span><span class="p">:</span> <span class="kt"><a href="../Other Typealiases.html#/s:10SyncServer10UUIDStringa">UUIDString</a></span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0A10AttributesV13fileGroupUUIDSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/fileGroupUUID" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0A10AttributesV13fileGroupUUIDSSSgvp">fileGroupUUID</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Supplied by the client (and only stored by the server, not used by the server otherwise). Used to indicate that a collection of files needs to be upload and downloaded as a group. Once a particular fileUUID is associated with a fileGroupUUID, it must always be associated with that fileGroupUUID. If not provided, then the file is a group of one and that fileUUID must always be a group of one (have a nil fileGroupUUID).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">fileGroupUUID</span><span class="p">:</span> <span class="kt"><a href="../Other Typealiases.html#/s:10SyncServer10UUIDStringa">UUIDString</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0A10AttributesV12creationDate10Foundation0E0VSgvp"></a>
+                    <a name="//apple_ref/swift/Property/creationDate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0A10AttributesV12creationDate10Foundation0E0VSgvp">creationDate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>These dates only get used for responses from the server&ndash; because it is the authority on dates.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">creationDate</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0A10AttributesV10updateDate10Foundation0E0VSgvp"></a>
+                    <a name="//apple_ref/swift/Property/updateDate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0A10AttributesV10updateDate10Foundation0E0VSgvp">updateDate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">updateDate</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0A10AttributesV11appMetaDataSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/appMetaData" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0A10AttributesV11appMetaDataSSSgvp">appMetaData</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">appMetaData</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0A10AttributesVACSS8fileUUID_0aB7_Shared8MimeTypeO04mimeH0SSSg0d5GroupE010Foundation4DateVSg08creationL0AN06updateL0tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(fileUUID:mimeType:fileGroupUUID:creationDate:updateDate:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0A10AttributesVACSS8fileUUID_0aB7_Shared8MimeTypeO04mimeH0SSSg0d5GroupE010Foundation4DateVSg08creationL0AN06updateL0tcfc">init(fileUUID:mimeType:fileGroupUUID:creationDate:updateDate:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">fileUUID</span><span class="p">:</span><span class="kt"><a href="../Other Typealiases.html#/s:10SyncServer10UUIDStringa">UUIDString</a></span><span class="p">,</span> <span class="nv">mimeType</span><span class="p">:</span><span class="kt">MimeType</span><span class="p">,</span> <span class="nv">fileGroupUUID</span><span class="p">:</span> <span class="kt"><a href="../Other Typealiases.html#/s:10SyncServer10UUIDStringa">UUIDString</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">creationDate</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">updateDate</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:s8HashableP9hashValueSivp"></a>
+                    <a name="//apple_ref/swift/Property/hashValue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:s8HashableP9hashValueSivp">hashValue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">hashValue</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:s9EquatableP2eeoiSbx_xtFZ"></a>
+                    <a name="//apple_ref/swift/Method/==(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:s9EquatableP2eeoiSbx_xtFZ">==(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="o">==</span> <span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="kt">SyncAttributes</span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="kt">SyncAttributes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://github.com/crspybits/SyncServer-iOSClient" target="_blank" rel="external">Spastic Muffin, LLC</a>. All rights reserved. (Last updated: 2018-05-30)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

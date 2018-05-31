@@ -150,10 +150,10 @@
             <li>Privacy &amp; Security</li>
 
             <li>File Data Representation</li>
-              <p>An intent of SyncServerII based apps is to allow users to own their data (e.g., if an app developer stops maintaining an app a user won't be stranded and lose their data). To this end, file data representations should be chosen where that file data content is available to end users.
+              <p>An intent of SyncServerII based apps is to allow users to own their data. For example, if an app developer stops maintaining an app a user shouldn't be stranded and lose their data. To this end, file data representations should be chosen where that file data content is available to end users.
               </p>
               <p>
-                For example, two types of files are used in SharedImages: jpeg image files and text files for discussion threads (and some other miscellaneous purposes). The image files are directly usable by users. For example, if an owning user stores their files in Google Drive, then they can open their Google Drive and view the images. The text discussion threads are a little more difficult. They are stored in JSON format, and so will likely be at least a little cryptic to an end user. However, *all* of the discussion thread content is present in these files.
+                For example, two types of files are used in <a href="http://github.com/crspybits/SharedImages">SharedImages</a>: jpeg image files and text files for discussion threads (and some other miscellaneous purposes). The image files are directly usable by users. For example, if an owning user stores their files in Google Drive, then they can open their Google Drive and view the images. The text discussion threads are a little more difficult. They are stored in JSON format, and so will likely be at least a little cryptic to an end user. However, *all* of the discussion thread content is present in these files.
               </p>
               <p>
                 Similarly, an app developer should judiciously make use of the `appMetaData` capabilities of SyncServer. This data is stored in a mySQL database -- and is thus not available to an end-user.
@@ -164,7 +164,7 @@
             <li>File Groups</li>
           </ul>
 
-          <li>Client</li>
+          <li><a href="https://github.com/crspybits/SyncServer-iOSClient">Client</a></li>
           <ul>
             <li>Sync Queues</li>
               Each time you call the `sync` method of the SyncServer iOS client, the current pending queue of upload items is "closed", and readied for upload. A suitable use of this capability is to only call `sync` when you have queued uploads for all files in a single file group.
@@ -173,7 +173,7 @@
           <li><a href="https://github.com/crspybits/SyncServerII">Server</a></li>
           <ul>
             <li>A single server supports a single type of app.</li>
-              E.g., suppose you have two apps, each with different Apple iOS bundle id's-- then, you'll need to run two different SyncServers
+              E.g., suppose you have two apps, each with different Apple iOS bundle id's-- then, you'll need to run two different SyncServers.
             
             <li>File naming and file name extensions</li>
           </ul>

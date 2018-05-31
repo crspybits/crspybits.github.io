@@ -86,10 +86,12 @@
     </div>
 
     <div class="container">
-      <!-- Example row of columns -->
       <div class="row row-striped padded">
         <h2>Contents:</h2>
         <h3><a href="#DEVSTATUS">Development Status</a></h3>
+        <h3><a href="#USECASES">Use Cases</a></h3>
+        <h3><a href="#CONCEPTS">Concepts</a></h3>
+        <h3><a href="#LIMITATIONS">Limitations</a></h3>
         <h3><a href="#INSTALLSERVER">Standing up a Server</a></h3>
         <h3><a href="#INSTALLAPP">Installation in a new iOS app</a></h3>
         <h3><a href="#GOOGLE">Using Google Drive and Google Sign-In (optional)</a></h3>
@@ -107,8 +109,7 @@
           <li>Optimistic synchronization is used for ensuring clients have a consistent view of data (e.g., <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.8.7606&rep=rep1&type=pdf">see</a>).</li>
           <li>Sharing can be done with permissions of read, write (includes read), or admin (read, write and invite others to share).</li>
           <li>Multi-version files and multi-version per-file meta data.</li>
-          <li>File content conflicts and meta-data conflicts are resolved with
-            with application defined conflict resolution rules.</li>
+          <li>File content conflicts and meta-data conflicts are resolved with application defined conflict resolution rules.</li>
           <li>Support for application-specific groups of files so that downloads are presented to applications in terms of changes to those groups.</li>
           <li>Builds of releases of the server are published to <a href="https://hub.docker.com/r/crspybits/syncserver-runner/">hub.docker.</a>.</li>
           <li>An example server is currently running on the AWS Elastic Beanstalk, 
@@ -127,6 +128,65 @@
                 Demo iOS app-- Uses the <a href="https://github.com/crspybits/SyncServer-iOSClient">iOS Client</a>, enables images and discussion threads to be synchronized across mobile devices &amp; user-owned cloud storage, enables safe sharing of those images with others, and safe sharing of discussion threads.
             </ul>
         </ul>  
+      </div>
+
+      <a class="anchor" id="USECASES"></a>
+      <div class="row row-striped padded">
+        <h2>Use Cases</h2>
+      </div>
+
+      <a class="anchor" id="CONCEPTS"></a>
+      <div class="row row-striped padded">
+        <h2>Concepts</h2>
+        <ul>
+          <li>General</li>
+          <ul>
+            <li>Versioned Files</li>
+
+            <li>Versioned App Meta Data</li>
+
+            <li>Optimistic Synchronization and the Master Version</li>
+
+            <li>Privacy &amp; Security</li>
+
+            <li>File Data Representation</li>
+              <p>An intent of SyncServerII based apps is to allow users to own their data (e.g., if an app developer stops maintaining an app a user won't be stranded and lose their data). To this end, file data representations should be chosen where that file data content is available to end users.
+              </p>
+              <p>
+                For example, two types of files are used in SharedImages: jpeg image files and text files for discussion threads (and some other miscellaneous purposes). The image files are directly usable by users. For example, if an owning user stores their files in Google Drive, then they can open their Google Drive and view the images. The text discussion threads are a little more difficult. They are stored in JSON format, and so will likely be at least a little cryptic to an end user. However, *all* of the discussion thread content is present in these files.
+              </p>
+              <p>
+                Similarly, an app developer should judiciously make use of the `appMetaData` capabilities of SyncServer. This data is stored in a mySQL database -- and is thus not available to an end-user.
+              </p>
+
+            <li>Risks of User Modification of File Data</li>
+
+            <li>File Groups</li>
+          </ul>
+
+          <li>Client</li>
+          <ul>
+            <li>Sync Queues</li>
+              Each time you call the `sync` method of the SyncServer iOS client, the current pending queue of upload items is "closed", and readied for upload. A suitable use of this capability is to only call `sync` when you have queued uploads for all files in a single file group.
+          </ul>
+
+          <li><a href="https://github.com/crspybits/SyncServerII">Server</a></li>
+          <ul>
+            <li>A single server supports a single type of app.</li>
+              E.g., suppose you have two apps, each with different Apple iOS bundle id's-- then, you'll need to run two different SyncServers
+            
+            <li>File naming and file name extensions</li>
+          </ul>
+        </ul>
+      </div>
+
+      <a class="anchor" id="LIMITATIONS"></a>
+      <div class="row row-striped padded">
+        <h2>Limitations</h2>
+        <ul>
+            <li>Client</li>
+            <li>Server</li>
+        </ul>
       </div>
       
       <a class="anchor" id="INSTALLSERVER"></a>

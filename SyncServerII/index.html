@@ -79,7 +79,7 @@
         <h1>SyncServerII</h1>
         <p>Main goals</p>
         <ul>
-          <li>Synchronize a mobile app’s data across mobile devices and user-owned cloud storage systems (e.g., Google Drive), and</li>
+          <li>Synchronize a mobile app’s data across mobile devices and user-owned cloud storage systems (e.g., Google Drive, Dropbox), and</li>
           <li>Enable mobile app users to safely share that cloud data with other users (e.g., Google, Facebook, Dropbox).</li>
         </ul>
       </div>
@@ -90,8 +90,8 @@
         <h2>Contents:</h2>
         <h3><a href="#DEVSTATUS">Development Status</a></h3>
         <h3><a href="#USECASES">Use Cases</a></h3>
-        <h3><a href="#CONCEPTS">Concepts</a></h3>
-        <h3><a href="#LIMITATIONS">Limitations</a></h3>
+        <h3><a href="#CONCEPTS">Concepts and Terminology</a></h3>
+        <h3><a href="#LIMITATIONS">Current Limitations</a></h3>
         <h3><a href="#INSTALLSERVER">Standing up a Server</a></h3>
         <h3><a href="#INSTALLAPP">Installation in a new iOS app</a></h3>
         <h3><a href="#GOOGLE">Using Google Drive and Google Sign-In (optional)</a></h3>
@@ -133,56 +133,190 @@
       <a class="anchor" id="USECASES"></a>
       <div class="row row-striped padded">
         <h2>Use Cases</h2>
+
+        <div style="margin-left: 1em">
+          <h3>1) Private Social Media</h3>
+          <div style="margin-left: 2em">
+            <p><em>Current social media</em>: Data is stored on corporate servers; you can lose  
+                ownership of data both “physically” and in terms of intellectual property.
+            </p>
+            <p><em>If mobile app developer makes use of SyncServer</em>:
+              <ul>
+                <li>Data content (e.g., images) is stored in app users cloud (e.g., Google Drive)</li>
+                <li>Data can also be safely shared with friends through various sign-in methods (e.g., Facebook)</li>
+                <li>User retains intellectual property ownership</li>
+                <li>The data is not searchable on search engines, and has that privacy.</li>
+              </ul>
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-left: 1em">
+          <h3>2) Data Longevity</h3>
+          <div style="margin-left: 2em">
+            <p><em>Apps sometimes hide their data</em>:
+              For example, you enter your favorite restaurant meals and preferences, and images of those events into an app
+              <ul>
+                <li>App stores data internally</li>
+                <li>If app stops being supported, you lose access to data</li>
+                <li>If you lose your device or your backup fails, you lose access to data</li>
+              </ul>
+            </p>
+
+            <p><em>If mobile app developer makes use of SyncServer</em>:
+              <ul>
+                <li>Data is stored in normal files (not in special database or 
+                  otherwise obscured formats)</li>
+                <li>Data is stored in normal places in your cloud storage.</li>
+                  E.g., in Dropbox, /Apps/AppName/YourFiles
+                <li>Also enables backup and recovery in the same manner</li>
+              </ul>
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-left: 1em">
+          <h3>3) Developers Save $$$</h3>
+          <div style="margin-left: 2em">
+            <ul>
+              <li>Why should developers or small companies pay for storing users data?</li>
+              <li>SyncServer stores content data in users own cloud storage</li>
+              <li>Meta-data, &amp; some user credentials stored on server</li>
+              <li>Estimate: Server data is about 1/100th size of content data</li>
+            </ul>
+          </div>
+        </div>
       </div>
 
       <a class="anchor" id="CONCEPTS"></a>
       <div class="row row-striped padded">
-        <h2>Concepts</h2>
+        <h2>Concepts and Terminology</h2>
         <ul>
           <li>General</li>
           <ul>
-            <li>Versioned Files</li>
+            <li>Files and fileUUID's</li>
+              <p style="margin-left: 1em">
+                Files are the main unit of user data storage in SyncServer. 
+                These files are stored in a users cloud storage (e.g., Google Drive, Dropbox), and synchronized with a mobile app.
+              </p>
+              <p style="margin-left: 1em">
+                Files are uniquely identified by UUID's. These are called <em>fileUUID</em>'s. 
+                Clients are responsible for creating these fileUUID's and giving them to the client interface.
+              </p>
+
+            <li>File Versioning</li>
+              <p style="margin-left: 1em">
+                SyncServer stores files in a versioned manner in the sense that when a new file replaces an existing file, it is stored with the successive next version number. 
+                Prior versions are deleted immediately beforehand.
+                File versioning is part of a mechanism to make sure apps stay up to date with the latest uploaded data on the server. 
+                That is, to make sure that a client app stays up to date with the latest version of a file.
+                Much of this versioning is concealed beneath the layer of the iOS client library-- but if you look at the program code, or if you look at the <a href="#FILENAMING">file names in cloud storage</a>, you will see versioning.
+              </p>
+
+            <li>App Meta Data</li>
+              <p style="margin-left: 1em">
+                SyncServer also supports per-file app-specific meta data. This is referred to as <em>appMetaData</em>. 
+                This data is stored in the mySQL database used by the server, and for this reason, <a href="#MINIMIZE-APPMETADATA">its use should be minimized in any particular app design</a>.
+              </p>
 
             <li>Versioned App Meta Data</li>
+              <p style="margin-left: 1em">
+                Similar to files, appMetaData is stored in a versioned manner-- when and if the appMetaData is updated for a particular file, the version of the appMetaData gets incremented to the next successive number.
+                Again, the purpose of this versioning is to make sure that client apps stay up to date with the latest versions of the appMetaData for files.
+              </p>
+
+            <li>File Groups and fileGroupUUID's</li>
+              <p style="margin-left: 1em">
+                When an app developer design a mobile app, it may be convenient to group together collections of files.
+                For example, in the <a href="http://github.com/crspybits/SharedImages">SharedImages</a> app, pairs of images and discussion thread text files are considered to be groups.
+                These file groupings are supported by SyncServer.
+              </p>
+              <p style="margin-left: 1em">
+                  File Groups are uniquely identified by UUID's. These are called <em>fileGroupUUID</em>'s. 
+                  Clients are responsible for creating these fileGroupUUID's and giving them to the client interface.
+                </p>
+
+            <li>Conflicts and Conflict Resolution</li>
 
             <li>Optimistic Synchronization and the Master Version</li>
+              <p style="margin-left: 1em">
+                Synchronization has been a key element in the design of the SyncServer.
+                The goal is that each mobile app should have a consistent snapshot of the data present in the system.
+                To this end, a type of so-called optimistic synchronization is used.
+                The synchronization is optimistic in that it is generally assumed that simultaneous updates of the data being shared by a group of users will be relatively infrequent.
+              </p>
+              <p style="margin-left: 1em">
+                For the data for a group of users, a single integer called the <em>master version</em> is persistently maintained (in the SyncServer mySQL database).
+                Each time a group of files is uploaded by an app, to change the files (or appMetaData) for a single group of users, the master version is incremented.
+                Thus, the master version represents the overall (or <em>master</em>) version of a collection of files (and appMetaData) being shared by a group of users.
+                Every time a client app asks for or sends data to the server, it gives what it thinks is the current master version.
+                If that master version is actually out of date (i.e., doesn't match the master version known to the server), then the server rejects the client request.
+                And then the client must recover from this rejection.
+                Since synchronization, and hence these rejections, should occur only infrequently, this recovery is infrequent.
+                This rejection recovery occurs purely within the iOS client layer, and is not seen by the mobile app developer (except perhaps for some event reporting).
+              </p>
 
             <li>Privacy &amp; Security</li>
+              <p style="margin-left: 1em">
+                A second key element in the design of SyncServer has been sharing. 
+                We want to enable data to be safely shared amongst groups of users.
+                We are aiming to provide privacy and safety in the sense that the files and other information stored in SyncServer will not be searchable by search engines.
+                Only the people that are explicitly in the group of users sharing your data will have access to your data.
+                If you trust this group of users to protect the intellectual property aspects of your data, then your data should be secure in terms of intellectual property as well.
+              </p>
+              <p style="margin-left: 1em">
+                We do not aim to provide strong degrees of security (e.g., that security can be in the hands of the developer creating the mobile app and deploying the SyncServer server) -- but if you are happy with the security of your data in a cloud storage service, e.g., Google Drive or Dropbox, you will likely be happy with the security of storage in SyncServer.
+              </p>
+              <p style="margin-left: 1em">
+                SyncServer <em>does</em> persistently store authorization tokens for which ever cloud storage service you are using, when you are an owning user.
+                For example, suppose you are using Google Drive to save your files in a mobile app which is using SyncServer.
+                Then, SyncServer persistently saves an Oauth2 token for accessing Google Drive in its mySQL database.
+                It is necessary for SyncServer to store these authentication tokens to enable sharing of your data, with users you allow.
+                SyncServer <em>never</em> has access to your username or password on cloud storage services (or other sign-in methods such as Facebook).
+              </p>
 
             <li>File Data Representation</li>
-              <p>An intent of SyncServerII based apps is to allow users to own their data. For example, if an app developer stops maintaining an app a user shouldn't be stranded and lose their data. To this end, file data representations should be chosen where that file data content is available to end users.
+              <p style="margin-left: 1em">
+                An intent of SyncServerII based apps is to allow users to own their data. 
+                For example, if an app developer stops maintaining an app a user shouldn't be stranded and lose their data. 
+                To this end, file data representations should be chosen where that file data content is available to end-users.
               </p>
-              <p>
-                For example, two types of files are used in <a href="http://github.com/crspybits/SharedImages">SharedImages</a>: jpeg image files and text files for discussion threads (and some other miscellaneous purposes). The image files are directly usable by users. For example, if an owning user stores their files in Google Drive, then they can open their Google Drive and view the images. The text discussion threads are a little more difficult. They are stored in JSON format, and so will likely be at least a little cryptic to an end user. However, *all* of the discussion thread content is present in these files.
+              <p style="margin-left: 1em">
+                For example, two types of files are used in <a href="http://github.com/crspybits/SharedImages">SharedImages</a>: JPEG image files and text files for discussion threads. The image files are directly usable by users. For example, if an owning user stores their files in Google Drive, then they can open their Google Drive and view the images. The text discussion threads are a little more difficult. They are stored in JSON format, and so will likely be at least a little cryptic to an end-user. However, *all* of the discussion thread content is present in these files.
               </p>
-              <p>
-                Similarly, an app developer should judiciously make use of the `appMetaData` capabilities of SyncServer. This data is stored in a mySQL database -- and is thus not available to an end-user.
+              <p style="margin-left: 1em">
+                <a id="MINIMIZE-APPMETADATA"></a>
+                Similarly, an app developer should make minimal use of the `appMetaData` capabilities of SyncServer. This data is stored in a mySQL database -- and is thus not available to an end-user.
               </p>
 
             <li>Risks of User Modification of File Data</li>
 
-            <li>File Groups</li>
+
           </ul>
 
           <li><a href="https://github.com/crspybits/SyncServer-iOSClient">Client</a></li>
           <ul>
             <li>Sync Queues</li>
-              Each time you call the `sync` method of the SyncServer iOS client, the current pending queue of upload items is "closed", and readied for upload. A suitable use of this capability is to only call `sync` when you have queued uploads for all files in a single file group.
+              <p style="margin-left: 1em">
+                Each time you call the `sync` method of the SyncServer iOS client, the current pending queue of upload items is "closed", and readied for upload. A suitable use of this capability is to only call `sync` when you have queued uploads for all files in a single file group.
+            </p>
           </ul>
 
           <li><a href="https://github.com/crspybits/SyncServerII">Server</a></li>
           <ul>
             <li>A single server supports a single type of app.</li>
-              E.g., suppose you have two apps, each with different Apple iOS bundle id's-- then, you'll need to run two different SyncServers.
+              <p style="margin-left: 1em">
+                  E.g., suppose you have two apps, each with different Apple iOS bundle id's-- then, you'll need to run two different SyncServers.
+              </p>
             
-            <li>File naming and file name extensions</li>
+            <li><a id="FILENAMING"></a>File naming and file name extensions</li>
           </ul>
         </ul>
       </div>
 
       <a class="anchor" id="LIMITATIONS"></a>
       <div class="row row-striped padded">
-        <h2>Limitations</h2>
+        <h2>Current Limitations</h2>
         <ul>
             <li>Client</li>
             <li>Server</li>

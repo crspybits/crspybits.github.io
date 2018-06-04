@@ -181,8 +181,8 @@
             <ul>
               <li>Why should developers or small companies pay for storing users data?</li>
               <li>SyncServer stores content data in users own cloud storage</li>
-              <li>Meta-data, &amp; some user credentials stored on server</li>
-              <li>Estimate: Server data is about 1/100th size of content data</li>
+              <li>Meta-data, &amp; some user credentials stored on in SyncServerII</li>
+              <li>Estimate from SharedImages: SyncServerII data is about 1/100th size of user owned content data</li>
             </ul>
           </div>
         </div>
@@ -194,6 +194,28 @@
         <ul>
           <li>General</li>
           <ul>
+            <li>Sharing User Groups</li>
+              <div>
+                <p style="margin-left: 1em">
+                  Sharing is a key element in the design of SyncServer: It enables groups of users to share files.
+                  An initial user starts a sharing group by creating an account on a SyncServer-based app -- using their cloud storage system credentials (e.g., Google Drive or Dropbox).
+                  This initial user is termed an <em>owning</em> user because they own the files they upload to the cloud storage system.
+                  They can then expand the number of the users in the group by inviting other users to share their files-- these other users are invited with specific permissions: read, write, or admin.
+                  Users invited with admin permissions can invite others to the group, and expand the number of users sharing the files in the group.
+                  Currently (6/2/18), only the initial user in a group can be the owning user.
+                  When other users upload files, they all are uploaded into that owning users cloud storage.
+                  This situation is planned to change shortly, however.
+                  <a href="https://github.com/crspybits/SyncServerII/issues/74">Other users who join the sharing group with cloud storage credentials will own the files they upload.</a>
+                </p>
+                <p></p>
+                <img src="Figures/SingleUserSharingGroup.png" style="width: 100%; height: auto;"/>
+                <p></p>
+                <p style="margin-left: 1em">
+                  The figure above depicts a user group after <a href="https://github.com/crspybits/SyncServerII/issues/74">the change to have multiple owning users per sharing group</a>.
+                  Note that all access to cloud storage is routed through the SyncServerII server, and so controls the access that others have to a single users cloud storage.
+                  That is, I only grant the sharing group access to specific files in my cloud storage, and only with specific permissions.
+                </p>
+              </div>
             <li>Files and fileUUID's</li>
               <p style="margin-left: 1em">
                 Files are the main unit of user data storage in SyncServer. 
@@ -227,20 +249,18 @@
 
             <li>File Groups and fileGroupUUID's</li>
               <p style="margin-left: 1em">
-                When an app developer design a mobile app, it may be convenient to group together collections of files.
-                For example, in the <a href="http://github.com/crspybits/SharedImages">SharedImages</a> app, pairs of images and discussion thread text files are considered to be groups.
+                When an app developer designs a mobile app, it may be convenient to group together collections of files.
+                For example, in the <a href="http://github.com/crspybits/SharedImages">SharedImages</a> app, each pair of image and discussion thread text files are considered to be groups.
                 These file groupings are supported by SyncServer.
               </p>
               <p style="margin-left: 1em">
                   File Groups are uniquely identified by UUID's. These are called <em>fileGroupUUID</em>'s. 
                   Clients are responsible for creating these fileGroupUUID's and giving them to the client interface.
-                </p>
-
-            <li>Conflicts and Conflict Resolution</li>
+              </p>
 
             <li>Optimistic Synchronization and the Master Version</li>
               <p style="margin-left: 1em">
-                Synchronization has been a key element in the design of the SyncServer.
+                Another key element in the design of SyncServer is Synchronization.
                 The goal is that each mobile app should have a consistent snapshot of the data present in the system.
                 To this end, a type of so-called optimistic synchronization is used.
                 The synchronization is optimistic in that it is generally assumed that simultaneous updates of the data being shared by a group of users will be relatively infrequent.
@@ -256,16 +276,21 @@
                 This rejection recovery occurs purely within the iOS client layer, and is not seen by the mobile app developer (except perhaps for some event reporting).
               </p>
 
+              <img src="Figures/MasterVersion.png" style="width: 100%; height: auto;"/>
+              <p></p>
+              <p style="margin-left: 1em">
+                The left panel of the above figure depicts a successful exchange between the client app and the SyncServerII server-- the client knows the exact value of the current master version for the sharing group.
+                The right panel of the above figure depicts an unsuccessful exchange between the client app and the SyncServerII server-- the client's value for the master version is out of date.
+                Note that in the case of an unsuccessful exchange, the client can still perform certain server requests -- for example, the client can do a FileIndex request to get (a) the current master version value, and (b) the meta data for the current collection of files in the file sharing group (e.g., fileUUID's, and file versions.
+              </p>   
+
             <li>Privacy &amp; Security</li>
               <p style="margin-left: 1em">
-                A second key element in the design of SyncServer has been sharing. 
-                We want to enable data to be safely shared amongst groups of users.
-                We are aiming to provide privacy and safety in the sense that the files and other information stored in SyncServer will not be searchable by search engines.
-                Only the people that are explicitly in the group of users sharing your data will have access to your data.
-                If you trust this group of users to protect the intellectual property aspects of your data, then your data should be secure in terms of intellectual property as well.
+                SyncServerII enables data to be safely shared amongst groups of users.
+                SyncServerII provides privacy and safety in the sense that the files and other information stored in SyncServer will not be searchable by search engines, and only users who you have granted access to your files get access to the specific set of files involved in SyncServer.
               </p>
               <p style="margin-left: 1em">
-                We do not aim to provide strong degrees of security (e.g., that security can be in the hands of the developer creating the mobile app and deploying the SyncServer server) -- but if you are happy with the security of your data in a cloud storage service, e.g., Google Drive or Dropbox, you will likely be happy with the security of storage in SyncServer.
+                SyncServerII emphasizes privacy and safety over security (e.g., that security can be in the hands of the developer creating the mobile app and deploying the SyncServer server) -- but if you are happy with the security of your data in a cloud storage service, e.g., Google Drive or Dropbox, you will likely be happy with the security of storage in SyncServer.
               </p>
               <p style="margin-left: 1em">
                 SyncServer <em>does</em> persistently store authorization tokens for which ever cloud storage service you are using, when you are an owning user.
@@ -282,24 +307,70 @@
                 To this end, file data representations should be chosen where that file data content is available to end-users.
               </p>
               <p style="margin-left: 1em">
-                For example, two types of files are used in <a href="http://github.com/crspybits/SharedImages">SharedImages</a>: JPEG image files and text files for discussion threads. The image files are directly usable by users. For example, if an owning user stores their files in Google Drive, then they can open their Google Drive and view the images. The text discussion threads are a little more difficult. They are stored in JSON format, and so will likely be at least a little cryptic to an end-user. However, *all* of the discussion thread content is present in these files.
+                For example, two types of files are used in <a href="http://github.com/crspybits/SharedImages">SharedImages</a>: JPEG image files and text files for discussion threads. 
+                The image files are directly usable by users. 
+                For example, if an owning user stores their files in Google Drive, then they can open their Google Drive and view the images. 
+                The text discussion threads are a little more difficult. 
+                They are stored in JSON format, and so will likely be cryptic to an end-user. However, *all* of the discussion thread content is present in these files in plain text.
               </p>
               <p style="margin-left: 1em">
                 <a id="MINIMIZE-APPMETADATA"></a>
-                Similarly, an app developer should make minimal use of the `appMetaData` capabilities of SyncServer. This data is stored in a mySQL database -- and is thus not available to an end-user.
+                Similarly, an app developer should make minimal use of the `appMetaData` capabilities of SyncServer. 
+                This data is stored in a mySQL database -- and is thus not available to an end-user.
               </p>
 
             <li>Risks of User Modification of File Data</li>
-
-
           </ul>
 
           <li><a href="https://github.com/crspybits/SyncServer-iOSClient">Client</a></li>
           <ul>
             <li>Sync Queues</li>
               <p style="margin-left: 1em">
-                Each time you call the `sync` method of the SyncServer iOS client, the current pending queue of upload items is "closed", and readied for upload. A suitable use of this capability is to only call `sync` when you have queued uploads for all files in a single file group.
-            </p>
+                  Each time you call the `sync` method of the SyncServer iOS client, the current pending queue of upload items is "closed", and readied for upload. 
+                  A suitable use of this capability is to only call `sync` when you have queued uploads for all files in a single file group.
+              </p>
+
+            <li>Conflicts and Conflict Resolution</li>
+              <p style="margin-left: 1em">
+                Consider the SharedImages app, and suppose that user Chris makes a discussion thread comment, and the app uploads that comment.
+                Next, without first refreshing, another user, Dany, in the same group comments on the same image.
+                This is now a conflict situation: The comment thread (a file) on the server, as modified by Chris, is different than the file that Dany's app is uploading.
+                Dealing with these conflicts is known as conflict resolution.
+                Similarly, a conflict can also occur if Chris deletes a file (say, an image and discussion thread in SharedImages), uploads that change to the server, and Dany, without first refreshing, makes a modification to the discussion thread associated with that image.
+              </p>
+              <p style="margin-left: 1em">
+                The SyncServer client leaves the details of conflict resolution decisions to the app developer, but provides some mechanisms to assist in this process.
+                One reason that the details of conflict resolution are left to the app developer is because app developers can chose representations, in some cases, to make conflict resolution eaiser.
+                For example, in the first conflict situation above, between two changes in a discussion thread file, SharedImages handles this relatively easily by disallowing individual comments to be modified, by giving each discussion comment a unique identifier, and by putting timestamps onto each comment.
+                These app-specific decisions enable two conflicting versions of the same discussion thread file to be easily merged, and thus conflict resolution in this case is simplified.
+              </p>
+              <p style="margin-left: 1em">
+                The SyncServer client provides mechananisms to assist in dealing with conflicts in the following manner. 
+                First, conflicts are categorized into <em>content download</em> and <em>download deletion</em> conflicts.
+                Content download conflicts are between a modified file and/or appMetaData being downloaded from the server, and the same file and/or appMetaData, modified (or deleted) by the local user and being uploaded.
+                When these conflicts occur, the following SyncServer delegate method is called:
+              </p>
+                <pre>
+                  <code>
+func syncServerMustResolveContentDownloadConflict(
+    _ downloadContent: ServerContentType, 
+    downloadedContentAttributes: SyncAttributes, 
+    uploadConflict: SyncServerConflict<ContentDownloadResolution>)
+                  </code>
+                </pre>
+              <p style="margin-left: 1em">
+                Download deletion conflicts are between a file that was deleted on the server, and now that deletion is being downloaded, and the same file and/or appMetaData having been modified locally, and being uploaded.
+                When these conflicts occur, the following SyncServer delegate method is called:
+              </p>
+                <pre>
+                  <code>
+func syncServerMustResolveDownloadDeletionConflicts(
+    conflicts:[DownloadDeletionConflict]) 
+                  </code>
+                </pre>
+              <p style="margin-left: 1em">
+                See also <a href="https://crspybits.github.io/iOS-Client-Docs/Conflict%20Resolution.html">https://crspybits.github.io/iOS-Client-Docs/Conflict%20Resolution.html</a> and <a href="https://crspybits.github.io/iOS-Client-Docs/Protocols/SyncServerDelegate.html">https://crspybits.github.io/iOS-Client-Docs/Protocols/SyncServerDelegate.html</a>.
+              </p>
           </ul>
 
           <li><a href="https://github.com/crspybits/SyncServerII">Server</a></li>
@@ -318,8 +389,13 @@
       <div class="row row-striped padded">
         <h2>Current Limitations</h2>
         <ul>
-            <li>Client</li>
-            <li>Server</li>
+          <li><a href="https://github.com/crspybits/SyncServerII/issues/74">
+            Only the initial user in a sharing group can be the owning user.</a>     
+          </li>
+          <li><a href="https://github.com/crspybits/SyncServerII/issues/27">
+            A user can only be a member of a single sharing group.</a></li>
+          <li>No streaming or chunking of file uploads/downloads</li>
+            This will presumably result in file size limitations and/or performance limitations with the server.
         </ul>
       </div>
       

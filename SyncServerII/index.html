@@ -88,16 +88,22 @@
     <div class="container">
       <div class="row row-striped padded">
         <h2>Contents:</h2>
-        <h3><a href="#DEVSTATUS">Development Status</a></h3>
-        <h3><a href="#USECASES">Use Cases</a></h3>
-        <h3><a href="#CONCEPTS">Concepts and Terminology</a></h3>
-        <h3><a href="#LIMITATIONS">Current Limitations</a></h3>
-        <h3><a href="#INSTALLSERVER">Standing up a Server</a></h3>
-        <h3><a href="#INSTALLAPP">Installation in a new iOS app</a></h3>
-        <h3><a href="#GOOGLE">Using Google Drive and Google Sign-In (optional)</a></h3>
-        <h3><a href="#FACEBOOK">Using Facebook Sign-In (optional)</a></h3>
-        <h3><a href="#DROPBOX">Using Dropbox Sign-In (optional)</a></h3>
-        <h3><a href="#FURTHERREADING">Further Reading & Viewing</a></h3>
+        <ul>
+          <li>General</li>
+            <h3><a href="#DEVSTATUS">Development Status</a></h3>
+            <h3><a href="#USECASES">Use Cases</a></h3>
+            <h3><a href="#CONCEPTS">Concepts and Terminology</a></h3>
+            <h3><a href="#LIMITATIONS">Current Limitations</a></h3>
+          <li>Code Docs</li>
+            <h3><a href="#CLIENT_API">Client Interface Documentation</a></h3>
+          <li>Installation</li>
+            <h3><a href="#INSTALLSERVER">Standing up a Server</a></h3>
+            <h3><a href="#INSTALLAPP">Installation in a new iOS app</a></h3>
+            <h3><a href="#GOOGLE">Using Google Drive and Google Sign-In (optional)</a></h3>
+            <h3><a href="#FACEBOOK">Using Facebook Sign-In (optional)</a></h3>
+            <h3><a href="#DROPBOX">Using Dropbox Sign-In (optional)</a></h3>
+            <h3><a href="#FURTHERREADING">Further Reading &amp; Viewing</a></h3>
+        </ul>
       </div>
       
       <a class="anchor" id="DEVSTATUS"></a>
@@ -226,12 +232,13 @@
                 Clients are responsible for creating these fileUUID's and giving them to the client interface.
               </p>
 
-            <li>File Versioning</li>
+            <li><a id="FILE_VERSION"></a>File Versioning</li>
               <p style="margin-left: 1em">
                 SyncServer stores files in a versioned manner in the sense that when a new file replaces an existing file, it is stored with the successive next version number. 
                 Prior versions are deleted immediately beforehand.
                 File versioning is part of a mechanism to make sure apps stay up to date with the latest uploaded data on the server. 
                 That is, to make sure that a client app stays up to date with the latest version of a file.
+                File versioning also helps allow concurrent upload of revised file data.
                 Much of this versioning is concealed beneath the layer of the iOS client library-- but if you look at the program code, or if you look at the <a href="#FILENAMING">file names in cloud storage</a>, you will see versioning.
               </p>
 
@@ -247,7 +254,7 @@
                 Again, the purpose of this versioning is to make sure that client apps stay up to date with the latest versions of the appMetaData for files.
               </p>
 
-            <li>File Groups and fileGroupUUID's</li>
+            <li><a id="FILE_GROUP"></a>File Groups and fileGroupUUID's</li>
               <p style="margin-left: 1em">
                 When an app developer designs a mobile app, it may be convenient to group together collections of files.
                 For example, in the <a href="http://github.com/crspybits/SharedImages">SharedImages</a> app, each pair of image and discussion thread text files are considered to be groups.
@@ -320,14 +327,46 @@
               </p>
 
             <li>Risks of User Modification of File Data</li>
+              <p style="margin-left: 1em">
+                Because an app's files live in end-users cloud storage, there is a risk that these users might alter or remove these files.
+                Currently, SyncServerII has two strategies for dealing with this:
+                <ol>
+                  <li>Warning file</li>
+                    When a user account is first created, <a href="#SERVER_CONFIG">a non-shared file can be written into that users data files</a> (e.g., named "IMPORTANT_README.txt"). 
+                    The intent of this file is to warn users not to change or remove the apps data files, unless they are going to discontinue using the app.
+                  <li>File Sizes &amp; File checksums</li>
+                    Currently, the SyncServer uses file sizes to detect changes in files.
+                    <a href="https://github.com/crspybits/SyncServerII/issues/63">A planned change to SyncServerII is to incorporate the use of checksums</a>. 
+                    This is better because some changes a user might make to a file do not have to be fatal to an app.
+                    For example, a user on a MacOS system can easily open an image file and rotate the image. 
+                    That does not need to be fatal to the SharedImages app.
+                </ol>
+              </p>
           </ul>
 
           <li><a href="https://github.com/crspybits/SyncServer-iOSClient">Client</a></li>
           <ul>
-            <li>Sync Queues</li>
+            <li>Sync and Sync Queues</li>
               <p style="margin-left: 1em">
+                  A typical pattern of using the iOS client interface is the following:
+              </p>
+<pre>
+  <code>
+    do {
+        try SyncServer.session.uploadImmutable(localFile: url1, withAttributes: attr1)
+        try SyncServer.session.uploadImmutable(localFile: url1, withAttributes: attr2)
+    } catch {
+    }
+
+    SyncServer.session.sync()
+  </code>
+</pre>
+
+              <p style="margin-left: 1em">
+                  That is, you typically queue up some files for upload (e.g., using uploadImmutable) and then call `sync`.
                   Each time you call the `sync` method of the SyncServer iOS client, the current pending queue of upload items is "closed", and readied for upload. 
-                  A suitable use of this capability is to only call `sync` when you have queued uploads for all files in a single file group.
+                  This collection of files is uploaded atomically-- either all of the files make it to the server, or none of the files make it.
+                  A suitable use of this capability is to only call `sync` when you have queued uploads for all files in a single <a href="#FILE_GROUP">file group</a>.
               </p>
 
             <li>Conflicts and Conflict Resolution</li>
@@ -381,8 +420,36 @@ func syncServerMustResolveDownloadDeletionConflicts(
               </p>
             
             <li><a id="FILENAMING"></a>File naming and file name extensions</li>
+            <p style="margin-left: 1em">
+              Files are uploaded from clients to cloud storage with the naming convention: 
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<em>fileUUID</em>.<em>deviceUUID</em>.<em>fileVersion</em>.<em>FileExtension</em>
+            </p>
+            <p style="margin-left: 1em">
+              A `deviceUUID` is an identifier assigned by the SyncServer iOS client library to the particular device to identify it to the server.
+              The `fileVersion` is an integer corresponding to the <a href="#FILE_VERSION">file version as discussed above</a>.
+              We do not use just the fileUUID to name the file in the cloud service because the server does not hold a lock across multiple file uploads, and we need to make sure that we don't have a conflict when two or more devices attempt to concurrently upload the same file. 
+              `FileExtension`s correspond directly to the mime type of a file used when uploading using the client interface.
+            </p>
+            <p style="margin-left: 1em">For example, here is a example of files stored in a Google Drive account by the SharedImages app:
+            </p>
+            <p></p>
+            <img src="Figures/SharedImagesFiles.png" style="width: 100%; height: auto;"/>
+            <p></p>
+            <p style="margin-left: 1em">
+              In the above figure, you can notice that all of the image (.jpg) file are at version 0-- SharedImages doesn't generally let you modify an image once uploaded.
+              You can also notice that some of the .txt files (used for discussion threads) are at versions &gt; 0-- this is because various users of the SharedImages app contribute to the discussion threads, and upload different versions of disussion thread files corresponding to those changes.
+            </p>
           </ul>
         </ul>
+      </div>
+
+      <a class="anchor" id="CLIENT_API"></a>
+      <div class="row row-striped padded">
+        <h2>Client Interface Documentation</h2>
+        <p style="margin-left: 1em">
+        <a href="https://crspybits.github.io/iOS-Client-Docs/">The API for the iOS client interface is documented here.</a>
+        </p>
       </div>
 
       <a class="anchor" id="LIMITATIONS"></a>
@@ -396,6 +463,7 @@ func syncServerMustResolveDownloadDeletionConflicts(
             A user can only be a member of a single sharing group.</a></li>
           <li>No streaming or chunking of file uploads/downloads</li>
             This will presumably result in file size limitations and/or performance limitations with the server.
+          <li><a href="https://github.com/crspybits/SyncServerII/issues/63">No file checksums yet</a>.</li>
         </ul>
       </div>
       
@@ -437,6 +505,38 @@ func syncServerMustResolveDownloadDeletionConflicts(
         <p>
         My <a href="https://github.com/crspybits/SyncServerII/blob/master/devops/AWS-ElasticBeanstalk/Docs/LaunchingEnvironment.md">deployment process to the AWS Elastic Beanstalk</a> takes several steps, some of them manual.
         </p>
+
+        <h3><a id="SERVER_CONFIG"></a>Server configuration</h3>
+        <p>
+        When the server starts, it reads configuration information from a JSON file. 
+        The following details the format of that configuration file.
+        </p>
+        <pre>
+          <code>
+{
+  "mySQL.host": "URL-for-mySQL-server",
+  "mySQL.user": "usernameForMySQL",
+  "mySQL.password": "passwordForMySQL",
+  "mySQL.database": "mySQL-database-name",
+  "port": "8080",
+  "allowedSignInTypes.Facebook": "true",
+  "allowedSignInTypes.Google": "true",
+  "allowedSignInTypes.Dropbox": "true",
+  "ssl.selfSigning": "false",
+  "GoogleServerClientId": "Get this when you create your Google app",
+  "GoogleServerSecret": "as above",
+  "FacebookClientId" : "Get this when you create your Facebook app",
+  "FacebookClientSecret": "as above",
+  "owningUserAccountCreation.initialFileName": "IMPORTANT_README.txt",
+  "owningUserAccountCreation.initialFileContents": "IMPORTANT: The files placed in this directory should not be changed in any way. They were created by the EXAMPLE app. If they are changed, that can cause the EXAMPLE app to crash or behave unpredictably. Of course, if you want to stop using EXAMPLE, these are your files, and you are fully able to use them as you wish."
+}
+          </code>
+        </pre>
+      
+        <p>
+          When a new owning user account is created (i.e., one with cloud storage), a single non-shareable file is first created. That file has a name given by <em>owningUserAccountCreation.initialFileName</em> and contents given by <em>owningUserAccountCreation.initialFileContents</em>. 
+          The intent is that this file serve as a warning to users to not modify the files used by the app.
+        </p>
       </div>
       
       <a class="anchor" id="INSTALLAPP"></a>
@@ -449,8 +549,9 @@ func syncServerMustResolveDownloadDeletionConflicts(
 
         <ol id="PODFILE">
           <li>Setup your <em>Podfile</em>. </li>
-              The SyncServer iOS client API is a Cocoapod. Google is the only possibility currently for cloud storage, and thus the Google SignIn Cocoapod is required. Facebook can be used to allow shared sign-in's, and is optional.
-          
+              The SyncServer iOS client API is a Cocoapod. 
+              Google Drive and Dropbox are the current options for cloud storage.
+              Facebook can be used to allow shared sign-in's, and is optional.
 <pre>
 source 'https://github.com/CocoaPods/Specs.git'
 source 'https://github.com/crspybits/Specs.git'

@@ -143,14 +143,14 @@
         <div style="margin-left: 1em">
           <h3>1) Private Social Media</h3>
           <div style="margin-left: 2em">
-            <p><em>Current social media</em>: Data is stored on corporate servers; you can lose  
+            <p><em>Current social media</em>: Data is stored on corporate servers; users can lose  
                 ownership of data both “physically” and in terms of intellectual property.
             </p>
             <p><em>If mobile app developer makes use of SyncServer</em>:
               <ul>
                 <li>Data content (e.g., images) is stored in app users cloud (e.g., Google Drive)</li>
                 <li>Data can also be safely shared with friends through various sign-in methods (e.g., Facebook)</li>
-                <li>User retains intellectual property ownership</li>
+                <li>Users retain intellectual property rights</li>
                 <li>The data is not searchable on search engines, and has that privacy.</li>
               </ul>
             </p>
@@ -164,7 +164,7 @@
               For example, you enter your favorite restaurant meals and preferences, and images of those events into an app
               <ul>
                 <li>App stores data internally</li>
-                <li>If app stops being supported, you lose access to data</li>
+                <li>If app stops being supported, users lose access to data</li>
                 <li>If you lose your device or your backup fails, you lose access to data</li>
               </ul>
             </p>
@@ -173,7 +173,7 @@
               <ul>
                 <li>Data is stored in normal files (not in special database or 
                   otherwise obscured formats)</li>
-                <li>Data is stored in normal places in your cloud storage.</li>
+                <li>Data is stored in normal places in users cloud storage.</li>
                   E.g., in Dropbox, /Apps/AppName/YourFiles
                 <li>Also enables backup and recovery in the same manner</li>
               </ul>
@@ -187,7 +187,7 @@
             <ul>
               <li>Why should developers or small companies pay for storing users data?</li>
               <li>SyncServer stores content data in users own cloud storage</li>
-              <li>Meta-data, &amp; some user credentials stored on in SyncServerII</li>
+              <li>Meta-data (e.g., file identifiers, version numbers), &amp; some user credentials are stored in SyncServerII</li>
               <li>Estimate from SharedImages: SyncServerII data is about 1/100th size of user owned content data</li>
             </ul>
           </div>
@@ -222,6 +222,13 @@
                   That is, I only grant the sharing group access to specific files in my cloud storage, and only with specific permissions.
                 </p>
               </div>
+
+            <li>Owning versus Sharing</li>
+              <p style="margin-left: 1em">
+                Users who have their uploaded files stored in their own cloud storage are termed <em>owning users</em>. 
+                Users who sign in with non-cloud storage accounts (e.g., Facebook) are termed <em>sharing users</em>-- any files they upload must be stored in an owning users cloud storage.
+              </p>
+
             <li>Files and fileUUID's</li>
               <p style="margin-left: 1em">
                 Files are the main unit of user data storage in SyncServer. 
@@ -234,10 +241,10 @@
 
             <li><a id="FILE_VERSION"></a>File Versioning</li>
               <p style="margin-left: 1em">
-                SyncServer stores files in a versioned manner in the sense that when a new file replaces an existing file, it is stored with the successive next version number. 
-                Prior versions are deleted immediately beforehand.
+                SyncServer stores files in a versioned manner in the sense that when a new file replaces an existing file in cloud storage, it is stored with the successive next version number. 
+                Any prior version is deleted immediately beforehand.
                 File versioning is part of a mechanism to make sure apps stay up to date with the latest uploaded data on the server. 
-                That is, to make sure that a client app stays up to date with the latest version of a file.
+                That is, the most recent version of a file has the contents a client should download.
                 File versioning also helps allow concurrent upload of revised file data.
                 Much of this versioning is concealed beneath the layer of the iOS client library-- but if you look at the program code, or if you look at the <a href="#FILENAMING">file names in cloud storage</a>, you will see versioning.
               </p>
@@ -246,12 +253,13 @@
               <p style="margin-left: 1em">
                 SyncServer also supports per-file app-specific meta data. This is referred to as <em>appMetaData</em>. 
                 This data is stored in the mySQL database used by the server, and for this reason, <a href="#MINIMIZE-APPMETADATA">its use should be minimized in any particular app design</a>.
+                The <a href="https://github.com/crspybits/SharedImages">SharedImages app</a> makes use of appMetaData to store more specialized file type information than recorded in the mime type for the file. 
               </p>
 
             <li>Versioned App Meta Data</li>
               <p style="margin-left: 1em">
-                Similar to files, appMetaData is stored in a versioned manner-- when and if the appMetaData is updated for a particular file, the version of the appMetaData gets incremented to the next successive number.
-                Again, the purpose of this versioning is to make sure that client apps stay up to date with the latest versions of the appMetaData for files.
+                Similar to files, appMetaData is stored in a versioned manner-- when and if the appMetaData is updated for a particular file, the version of the appMetaData gets incremented to the next successive whole number.
+                The purpose of this versioning is to enable client apps to stay up to date with the latest versions of the appMetaData for files.
               </p>
 
             <li><a id="FILE_GROUP"></a>File Groups and fileGroupUUID's</li>
@@ -261,25 +269,26 @@
                 These file groupings are supported by SyncServer.
               </p>
               <p style="margin-left: 1em">
-                  File Groups are uniquely identified by UUID's. These are called <em>fileGroupUUID</em>'s. 
+                  File Groups are uniquely identified by UUID's. 
+                  These are called <em>fileGroupUUID</em>'s. 
                   Clients are responsible for creating these fileGroupUUID's and giving them to the client interface.
               </p>
 
             <li>Optimistic Synchronization and the Master Version</li>
               <p style="margin-left: 1em">
-                Another key element in the design of SyncServer is Synchronization.
-                The goal is that each mobile app should have a consistent snapshot of the data present in the system.
-                To this end, a type of so-called optimistic synchronization is used.
+                Another key element in the design of SyncServer is synchronization.
+                The goal is that each mobile app should have a consistent snapshot of the data being shared by a group of users.
+                To this end, a type of optimistic synchronization is used.
                 The synchronization is optimistic in that it is generally assumed that simultaneous updates of the data being shared by a group of users will be relatively infrequent.
               </p>
               <p style="margin-left: 1em">
                 For the data for a group of users, a single integer called the <em>master version</em> is persistently maintained (in the SyncServer mySQL database).
-                Each time a group of files is uploaded by an app, to change the files (or appMetaData) for a single group of users, the master version is incremented.
+                Each time a group of files is uploaded by an app, the master version is incremented.
                 Thus, the master version represents the overall (or <em>master</em>) version of a collection of files (and appMetaData) being shared by a group of users.
                 Every time a client app asks for or sends data to the server, it gives what it thinks is the current master version.
                 If that master version is actually out of date (i.e., doesn't match the master version known to the server), then the server rejects the client request.
                 And then the client must recover from this rejection.
-                Since synchronization, and hence these rejections, should occur only infrequently, this recovery is infrequent.
+                Since synchronization, and hence these rejections, should occur only infrequently, this recovery shuld be infrequent.
                 This rejection recovery occurs purely within the iOS client layer, and is not seen by the mobile app developer (except perhaps for some event reporting).
               </p>
 
@@ -288,23 +297,24 @@
               <p style="margin-left: 1em">
                 The left panel of the above figure depicts a successful exchange between the client app and the SyncServerII server-- the client knows the exact value of the current master version for the sharing group.
                 The right panel of the above figure depicts an unsuccessful exchange between the client app and the SyncServerII server-- the client's value for the master version is out of date.
-                Note that in the case of an unsuccessful exchange, the client can still perform certain server requests -- for example, the client can do a FileIndex request to get (a) the current master version value, and (b) the meta data for the current collection of files in the file sharing group (e.g., fileUUID's, and file versions.
+                Note that in the case of an unsuccessful exchange, the client can still perform certain server requests -- for example, the client can do a FileIndex endpoint request to get (a) the current master version value, and (b) the file meta data (<em>not</em> the appMetaData) for the current collection of files in the file sharing group (e.g., fileUUID's, and file versions.
               </p>   
 
-            <li>Privacy &amp; Security</li>
+            <li>Privacy, Safety, &amp; Security</li>
               <p style="margin-left: 1em">
                 SyncServerII enables data to be safely shared amongst groups of users.
-                SyncServerII provides privacy and safety in the sense that the files and other information stored in SyncServer will not be searchable by search engines, and only users who you have granted access to your files get access to the specific set of files involved in SyncServer.
+                SyncServerII provides privacy and safety in the sense that the files and other information stored in SyncServer will not be searchable by search engines, and only users who you have granted access to your files get access to the specific set of files in the sharing group in SyncServer.
               </p>
               <p style="margin-left: 1em">
-                SyncServerII emphasizes privacy and safety over security (e.g., that security can be in the hands of the developer creating the mobile app and deploying the SyncServer server) -- but if you are happy with the security of your data in a cloud storage service, e.g., Google Drive or Dropbox, you will likely be happy with the security of storage in SyncServer.
+                SyncServerII emphasizes privacy and safety over security (e.g., that security can be in the hands of the developer creating the mobile app and deploying the SyncServer server) -- but if a user is happy with the security of their data in a cloud storage service, e.g., Google Drive or Dropbox, they will likely be happy with the security of storage in SyncServer.
               </p>
               <p style="margin-left: 1em">
-                SyncServer <em>does</em> persistently store authorization tokens for which ever cloud storage service you are using, when you are an owning user.
-                For example, suppose you are using Google Drive to save your files in a mobile app which is using SyncServer.
-                Then, SyncServer persistently saves an Oauth2 token for accessing Google Drive in its mySQL database.
-                It is necessary for SyncServer to store these authentication tokens to enable sharing of your data, with users you allow.
-                SyncServer <em>never</em> has access to your username or password on cloud storage services (or other sign-in methods such as Facebook).
+                SyncServer <em>does</em> persistently store authorization tokens for the cloud storage service for owning users.
+                For example, suppose an owning user is using Google Drive to save their files in a mobile app incorporating SyncServer.
+                Then, SyncServer persistently saves an Oauth2 token for accessing Google Drive for that user in its mySQL database.
+                It is necessary for SyncServer to store these authentication tokens to enable sharing of a users data, when that sharing is authorized.
+                SyncServer <em>never</em> has access to a users username or password on cloud storage services (or other sign-in methods such as Facebook). 
+                Sign in is handled using the sign-in mechanism specific to that sign-in method.
               </p>
 
             <li>File Data Representation</li>
@@ -328,18 +338,18 @@
 
             <li>Risks of User Modification of File Data</li>
               <p style="margin-left: 1em">
-                Because an app's files live in end-users cloud storage, there is a risk that these users might alter or remove these files.
+                Because an app's files live in end-users cloud storage, there is a risk that users might alter or remove these files.
                 Currently, SyncServerII has two strategies for dealing with this:
                 <ol>
                   <li>Warning file</li>
-                    When a user account is first created, <a href="#SERVER_CONFIG">a non-shared file can be written into that users data files</a> (e.g., named "IMPORTANT_README.txt"). 
+                    When a user account is first created, <a href="#SERVER_CONFIG">a non-shared file can be written into that users collection of data files</a> (e.g., named "IMPORTANT_README.txt"). 
                     The intent of this file is to warn users not to change or remove the apps data files, unless they are going to discontinue using the app.
                   <li>File Sizes &amp; File checksums</li>
-                    Currently, the SyncServer uses file sizes to detect changes in files.
+                    Currently, SyncServer uses file sizes to detect changes in files.
                     <a href="https://github.com/crspybits/SyncServerII/issues/63">A planned change to SyncServerII is to incorporate the use of checksums</a>. 
                     This is better because some changes a user might make to a file do not have to be fatal to an app.
                     For example, a user on a MacOS system can easily open an image file and rotate the image. 
-                    That does not need to be fatal to the SharedImages app.
+                    That change to the file does not need to be fatal to the SharedImages app.
                 </ol>
               </p>
           </ul>
@@ -348,7 +358,9 @@
           <ul>
             <li>Sync and Sync Queues</li>
               <p style="margin-left: 1em">
-                  A typical pattern of using the iOS client interface is the following:
+                  A typical pattern of using 
+                  <a href="https://github.com/crspybits/SyncServer-iOSClient">the iOS client interface</a>
+                   is the following:
               </p>
 <pre>
   <code>
@@ -369,11 +381,24 @@
                   A suitable use of this capability is to only call `sync` when you have queued uploads for all files in a single <a href="#FILE_GROUP">file group</a>.
               </p>
 
-            <li>Conflicts and Conflict Resolution</li>
+            <li>Download Prioritization</li>
               <p style="margin-left: 1em">
-                Consider the SharedImages app, and suppose that user Chris makes a discussion thread comment, and the app uploads that comment.
+                The server, and the cloud storage it references, is generally taken to be the "source of truth" -- or real value of data.
+                Therefore, downloads from the server to the client are prioritized over uploads from the client to the server.
+                This prioritization of downloads has an impact on how we discuss conflicts -- we talk about conflicts as stemming from downloads, though they involve an interaction between changes on the server and changes on the client.
+              </p>
+
+            <li>Conflicts and Conflict Resolution</li>
+              <img src="Figures/Conflicts.png" style="width: 100%; height: auto;"/>
+              <p></p>
+              <p style="margin-left: 1em">
+                The left and right panels of the above figure illustrate the two main categories of conflicts: Content download conflicts and download deletion conflicts.
+              </p>
+
+              <p style="margin-left: 1em">
+                Consider the <a href="http://github.com/crspybits/SharedImages">SharedImages app</a>, and suppose that user Chris makes a discussion thread comment, and the app uploads that comment.
                 Next, without first refreshing, another user, Dany, in the same group comments on the same image.
-                This is now a conflict situation: The comment thread (a file) on the server, as modified by Chris, is different than the file that Dany's app is uploading.
+                This is now a conflict situation: The comment thread (a file) referenced by the server, as modified by Chris, is different than the file that Dany's app is uploading.
                 Dealing with these conflicts is known as conflict resolution.
                 Similarly, a conflict can also occur if Chris deletes a file (say, an image and discussion thread in SharedImages), uploads that change to the server, and Dany, without first refreshing, makes a modification to the discussion thread associated with that image.
               </p>
@@ -386,7 +411,7 @@
               <p style="margin-left: 1em">
                 The SyncServer client provides mechananisms to assist in dealing with conflicts in the following manner. 
                 First, conflicts are categorized into <em>content download</em> and <em>download deletion</em> conflicts.
-                Content download conflicts are between a modified file and/or appMetaData being downloaded from the server, and the same file and/or appMetaData, modified (or deleted) by the local user and being uploaded.
+                Content download conflicts are conflicts between a modified file and/or appMetaData being downloaded from the server, and the same file and/or appMetaData, modified (or deleted) by the local user and being uploaded.
                 When these conflicts occur, the following SyncServer delegate method is called:
               </p>
                 <pre>
@@ -398,7 +423,12 @@ func syncServerMustResolveContentDownloadConflict(
                   </code>
                 </pre>
               <p style="margin-left: 1em">
-                Download deletion conflicts are between a file that was deleted on the server, and now that deletion is being downloaded, and the same file and/or appMetaData having been modified locally, and being uploaded.
+                The above delegate method enables client apps to chose how they want to deal with the content download conflict.
+                For example, a client app might chose to always prioritize downloads from the server and ignore conflicting uploads.
+              </p>
+
+              <p style="margin-left: 1em">
+                Download deletion conflicts are between a file that was deleted on the server, and the same file and/or appMetaData having been modified or deleted locally and being uploaded.
                 When these conflicts occur, the following SyncServer delegate method is called:
               </p>
                 <pre>
@@ -407,6 +437,12 @@ func syncServerMustResolveDownloadDeletionConflicts(
     conflicts:[DownloadDeletionConflict]) 
                   </code>
                 </pre>
+
+              <p style="margin-left: 1em">
+                  The above delegate method enables client apps to chose how they want to deal with the download deletion conflicts.
+                  For example, a client app might chose to always prioritize download deletions from the server and ignore conflicting uploads.
+                </p>
+
               <p style="margin-left: 1em">
                 See also <a href="https://crspybits.github.io/iOS-Client-Docs/Conflict%20Resolution.html">https://crspybits.github.io/iOS-Client-Docs/Conflict%20Resolution.html</a> and <a href="https://crspybits.github.io/iOS-Client-Docs/Protocols/SyncServerDelegate.html">https://crspybits.github.io/iOS-Client-Docs/Protocols/SyncServerDelegate.html</a>.
               </p>
@@ -416,20 +452,20 @@ func syncServerMustResolveDownloadDeletionConflicts(
           <ul>
             <li>A single server supports a single type of app.</li>
               <p style="margin-left: 1em">
-                  E.g., suppose you have two apps, each with different Apple iOS bundle id's-- then, you'll need to run two different SyncServers.
+                  E.g., suppose you have two apps, each with different Apple iOS bundle id's-- then you'll need to run two different SyncServers.
               </p>
             
             <li><a id="FILENAMING"></a>File naming and file name extensions</li>
             <p style="margin-left: 1em">
               Files are uploaded from clients to cloud storage with the naming convention: 
             <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<em>fileUUID</em>.<em>deviceUUID</em>.<em>fileVersion</em>.<em>FileExtension</em>
+            &nbsp;&nbsp;&nbsp;&nbsp;<em>fileUUID</em>.<em style="color:green">deviceUUID</em>.<em>fileVersion</em>.<em style="color:green">FileExtension</em>
             </p>
             <p style="margin-left: 1em">
-              A `deviceUUID` is an identifier assigned by the SyncServer iOS client library to the particular device to identify it to the server.
-              The `fileVersion` is an integer corresponding to the <a href="#FILE_VERSION">file version as discussed above</a>.
+              A <em>deviceUUID</em> is an identifier assigned by the SyncServer iOS client library to the particular device to identify it to the server.
+              The <em>fileVersion</em> is an integer corresponding to the <a href="#FILE_VERSION">file version as discussed above</a>.
               We do not use just the fileUUID to name the file in the cloud service because the server does not hold a lock across multiple file uploads, and we need to make sure that we don't have a conflict when two or more devices attempt to concurrently upload the same file. 
-              `FileExtension`s correspond directly to the mime type of a file used when uploading using the client interface.
+              <em>FileExtension</em>'s correspond directly to the mime type of a file used when uploading using the client interface.
             </p>
             <p style="margin-left: 1em">For example, here is a example of files stored in a Google Drive account by the SharedImages app:
             </p>
@@ -464,215 +500,217 @@ func syncServerMustResolveDownloadDeletionConflicts(
           <li>No streaming or chunking of file uploads/downloads</li>
             This will presumably result in file size limitations and/or performance limitations with the server.
           <li><a href="https://github.com/crspybits/SyncServerII/issues/63">No file checksums yet</a>.</li>
+          <li>Cryptic file names in cloud storage.</li>
+            It would be good to have an <a href="https://github.com/crspybits/SyncServerII/issues/68">index.html</a> file that could let the users see the purpose of the files in some organized manner.
         </ul>
       </div>
       
       <a class="anchor" id="INSTALLSERVER"></a>
       <div class="row row-striped padded">
         <h2>Standing up a Server</h2>
+        <div style="margin-left: 1em">
+          <p>Each separate mobile app needs its own server. That is, for iOS, each app with a separate bundle id needs its own server.</p>
 
-        <p>Each separate mobile app needs its own server. That is, for iOS, each app with a separate bundle id needs its own server.</p>
+          <p>I have gone through a few incarnations of methods for installing the server, each of them on AWS. Currently, I am using a Docker image, and also use AWS Elastic Beanstalk. <a href="runningServerOnEC2.html">Previously, I was building the server directly on an AWS EC2 instance.</a></p>
 
-        <p>I have gone through a few incarnations of methods for installing the server, each of them on AWS. Currently, I am using a Docker image, and also use AWS Elastic Beanstalk. <a href="runningServerOnEC2.html">Previously, I was building the server directly on an AWS EC2 instance.</a></p>
+          <p>The two basic parts of my current deployment method are described below.</p>
 
-        <p>The two basic parts of my current deployment method are described below.</p>
+          <h3>Docker</h3>
+          <p><a href="https://www.docker.com">Docker</a> is now central to my testing and deployment process for the server.
+            For testing, I use the <a href="https://github.com/crspybits/SyncServerII/blob/master/devops/Docker/Building/Dockerfile">same Docker image that I use for building</a>.
+          </p>
 
-        <h3>Docker</h3>
-        <p><a href="https://www.docker.com">Docker</a> is now central to my testing and deployment process for the server.
-          For testing, I use the <a href="https://github.com/crspybits/SyncServerII/blob/master/devops/Docker/Building/Dockerfile">same Docker image that I use for building</a>.
-        </p>
+          <p>On my system, the following command launches that Docker image:</p>
+          <code>docker run --rm -i -t -v /Users/chris/Desktop/Apps/:/root/Apps crspybits/swift-ubuntu:4.0.0</code>
+          <p>And, of course, the path `/Users/chris/Desktop/Apps/` is specific to my system.</p>
 
-        <p>On my system, the following command launches that Docker image:</p>
-        <code>docker run --rm -i -t -v /Users/chris/Desktop/Apps/:/root/Apps crspybits/swift-ubuntu:4.0.0</code>
-        <p>And, of course, the path `/Users/chris/Desktop/Apps/` is specific to my system.</p>
+          <p>And running under that Docker image, this builds the server:</p>
+          <code>swift build -Xswiftc -DDEBUG -Xswiftc -DSERVER</code>
+          <p></p>
+          <p>For runtime, I use <a href="https://github.com/crspybits/SyncServerII/blob/master/devops/Docker/Runtime/Dockerfile"> this Docker base-image</a> 
+          and I <a href="https://github.com/crspybits/SyncServerII/blob/master/devops/release.sh">run the script</a> to create a Docker image for a specific release of the SyncServerII server code. Those release builds of the server Docker images live at <a href="https://hub.docker.com/r/crspybits/syncserver-runner/">hub.docker.</a>
+          </p>
 
-        <p>And this builds the server:</p>
-        <code>swift build -Xswiftc -DDEBUG -Xswiftc -DSERVER</code>
-        <p></p>
-        <p>For runtime, I use <a href="https://github.com/crspybits/SyncServerII/blob/master/devops/Docker/Runtime/Dockerfile"> this Docker base-image</a> 
-        and I <a href="https://github.com/crspybits/SyncServerII/blob/master/devops/release.sh">run the script</a> to create a Docker image for a specific release of the SyncServerII server code. Those release builds of the server Docker images live at <a href="https://hub.docker.com/r/crspybits/syncserver-runner/">hub.docker.</a>
-        </p>
+          <h3>AWS Elastic Beanstalk</h3>
+          <p>I use <a href="https://aws.amazon.com/elasticbeanstalk/">AWS's Elastic Beanstalk</a> for reasons including: 
+            <ol style="list-style-type: lower-alpha">
+              <li>ease of deploying new versions of my server</li>
+              <li>its ability to run servers from Docker images</li>
+              <li>the relative ease of spinning up (and down) of new server environments-- so I can create and use a staging or testing environment for just a few hours</li>
+              <li>my (potential) eventual need for scaling the server to deal with a larger load from client apps.</li>
+            </ol>
+          </p>
+          <p>
+          My <a href="https://github.com/crspybits/SyncServerII/blob/master/devops/AWS-ElasticBeanstalk/Docs/LaunchingEnvironment.md">deployment process to the AWS Elastic Beanstalk</a> takes several steps, some of them manual.
+          </p>
 
-        <h3>AWS Elastic Beanstalk</h3>
-        <p>I use <a href="https://aws.amazon.com/elasticbeanstalk/">AWS's Elastic Beanstalk</a> for reasons including: 
-          <ol style="list-style-type: lower-alpha">
-            <li>ease of deploying new versions of my server</li>
-            <li>its ability to run servers from Docker images</li>
-            <li>the relative ease of spinning up (and down) of new server environments-- so I can create and use a staging or testing environment for just a few hours</li>
-            <li>my (potential) eventual need for scaling the server to deal with a larger load from client apps.</li>
-          </ol>
-        </p>
-        <p>
-        My <a href="https://github.com/crspybits/SyncServerII/blob/master/devops/AWS-ElasticBeanstalk/Docs/LaunchingEnvironment.md">deployment process to the AWS Elastic Beanstalk</a> takes several steps, some of them manual.
-        </p>
-
-        <h3><a id="SERVER_CONFIG"></a>Server configuration</h3>
-        <p>
-        When the server starts, it reads configuration information from a JSON file. 
-        The following details the format of that configuration file.
-        </p>
-        <pre>
-          <code>
-{
-  "mySQL.host": "URL-for-mySQL-server",
-  "mySQL.user": "usernameForMySQL",
-  "mySQL.password": "passwordForMySQL",
-  "mySQL.database": "mySQL-database-name",
-  "port": "8080",
-  "allowedSignInTypes.Facebook": "true",
-  "allowedSignInTypes.Google": "true",
-  "allowedSignInTypes.Dropbox": "true",
-  "ssl.selfSigning": "false",
-  "GoogleServerClientId": "Get this when you create your Google app",
-  "GoogleServerSecret": "as above",
-  "FacebookClientId" : "Get this when you create your Facebook app",
-  "FacebookClientSecret": "as above",
-  "owningUserAccountCreation.initialFileName": "IMPORTANT_README.txt",
-  "owningUserAccountCreation.initialFileContents": "IMPORTANT: The files placed in this directory should not be changed in any way. They were created by the EXAMPLE app. If they are changed, that can cause the EXAMPLE app to crash or behave unpredictably. Of course, if you want to stop using EXAMPLE, these are your files, and you are fully able to use them as you wish."
-}
-          </code>
-        </pre>
-      
-        <p>
-          When a new owning user account is created (i.e., one with cloud storage), a single non-shareable file is first created. That file has a name given by <em>owningUserAccountCreation.initialFileName</em> and contents given by <em>owningUserAccountCreation.initialFileContents</em>. 
-          The intent is that this file serve as a warning to users to not modify the files used by the app.
-        </p>
+          <h3><a id="SERVER_CONFIG"></a>Server configuration</h3>
+          <p>
+          When the server starts, it reads configuration information from a JSON file. 
+          The following details the format of that configuration file.
+          </p>
+          <pre>
+            <code>
+  {
+    "mySQL.host": "URL-for-mySQL-server",
+    "mySQL.user": "usernameForMySQL",
+    "mySQL.password": "passwordForMySQL",
+    "mySQL.database": "mySQL-database-name",
+    "port": "8080",
+    "allowedSignInTypes.Facebook": "true",
+    "allowedSignInTypes.Google": "true",
+    "allowedSignInTypes.Dropbox": "true",
+    "ssl.selfSigning": "false",
+    "GoogleServerClientId": "Get this when you create your Google app",
+    "GoogleServerSecret": "as above",
+    "FacebookClientId" : "Get this when you create your Facebook app",
+    "FacebookClientSecret": "as above",
+    "owningUserAccountCreation.initialFileName": "IMPORTANT_README.txt",
+    "owningUserAccountCreation.initialFileContents": "IMPORTANT: The files placed in this directory should not be changed in any way. They were created by the EXAMPLE app. If they are changed, that can cause the EXAMPLE app to crash or behave unpredictably. Of course, if you want to stop using EXAMPLE, these are your files, and you are fully able to use them as you wish."
+  }
+            </code>
+          </pre>
+        
+          <p>
+            When a new owning user account is created (i.e., one with cloud storage), a single non-shareable file is first created. That file has a name given by <em>owningUserAccountCreation.initialFileName</em> and contents given by <em>owningUserAccountCreation.initialFileContents</em>. 
+            The intent is that this file serves as a warning to users to not modify the files used by the app.
+          </p>
+        </div>
       </div>
-      
+
       <a class="anchor" id="INSTALLAPP"></a>
       <div class="row row-striped padded">
         <h2>Installation in a new iOS app</h2>
-
-        <p>The best instructions for setting up a new iOS app are likely found by looking over the <a href="http://github.com/crspybits/SharedImages">SharedImages</a> app, but some details are also given below.</p>
-        
-        <p>The <a href="https://github.com/crspybits/SyncServer-iOSClient">example app in the iOS client repo</a> can also provide some information on setting up your iOS app.</p>
-
-        <ol id="PODFILE">
-          <li>Setup your <em>Podfile</em>. </li>
-              The SyncServer iOS client API is a Cocoapod. 
-              Google Drive and Dropbox are the current options for cloud storage.
-              Facebook can be used to allow shared sign-in's, and is optional.
-<pre>
-source 'https://github.com/CocoaPods/Specs.git'
-source 'https://github.com/crspybits/Specs.git'
-
-use_frameworks!
-
-target 'YourApp' do
-    # The iOS client.
-    pod 'SyncServer'
-    
-    # Only needed if you are allowing Facebook users to share.
-    pod 'SyncServer/Facebook'
-
-    # Only needed if you are using Dropbox for cloud storage
-    pod 'SyncServer/Dropbox'
-    
-    # For cloud storage and shared sign-in's with Google Drive/Google.
-    pod 'GoogleSignIn', '4.1'
-    
-    target 'YourAppTests' do
-        inherit! :search_paths
-    end
-end
-</pre>
+        <div style="margin-left: 1em">
+          <p>The best instructions for setting up a new iOS app are likely found by looking over the <a href="http://github.com/crspybits/SharedImages">SharedImages</a> app, but some details are also given below.</p>
           
-          <li>Drag the `GoogleSignIn.swift` file into your project</li>
-            Due to technical issues, you will need to separately download the iOS client repo, and do this (The Google sign-in Cocoapod uses a static library and this causes transitive dependency issues if the GoogleSignIn pod is included in the SyncServer pod). Do:
-          <pre>git clone https://github.com/crspybits/SyncServer-iOSClient.git</pre>
-          Drag `SyncServer-iOSClient/Client/SignIn/GoogleSignIn.swift` into your Xcode project.
-                    
-          <li>Additions to your AppDelegate</li>
-          
-          <ol type="a">
-            <li>Add the following import</li>
-              <pre>import SyncServer</pre>
+          <p>The <a href="https://github.com/crspybits/SyncServer-iOSClient">example app in the iOS client repo</a> can also provide information on setting up your iOS app.</p>
 
-            <li>Setup your sign-in's in the didFinishLaunchingWithOptions method</li>
-               At a minimum, this will involve:
-<pre>
-let googleSignIn = GoogleSyncServerSignIn(serverClientId: serverClientId, appClientId: appClientId)
-SignInManager.session.addSignIn(googleSignIn, launchOptions: options)        
-</pre>
+          <ol id="PODFILE">
+            <li>Setup your <em>Podfile</em>. </li>
+                The SyncServer iOS client API is a Cocoapod. 
+                Google Drive and Dropbox are the current options for cloud storage.
+                Facebook can be used to allow shared sign-in's, and is optional.
+  <pre>
+  # Some pods used by SyncServer haven't yet been released to cocoapods.org, so the following is needed.
+  source 'https://github.com/crspybits/Specs.git'
+  source 'https://github.com/CocoaPods/Specs.git'
 
-            If you are also using Facebook sign-in, you'll need:
-<pre>
-let facebookSignIn = FacebookSyncServerSignIn()
-SignInManager.session.addSignIn(facebookSignIn, launchOptions: options)
-</pre>     
+  use_frameworks!
 
-            if you are also using Dropbox sign-in, you'll need:
-<pre>
-let dropboxSignIn = DropboxSyncServerSignIn(appKey: dropboxAppKey)
-SignInManager.session.addSignIn(dropboxSignIn, launchOptions: options)
-</pre>
+  target 'YourApp' do
+      # The iOS client.
+      pod 'SyncServer'
+      
+      # Only needed if you are allowing Facebook users to share.
+      pod 'SyncServer/Facebook'
+
+      # Only needed if you are using Dropbox for cloud storage
+      pod 'SyncServer/Dropbox'
+      
+      # Only needed if you are using Google Drive for cloud storage
+      pod 'SyncServer/Google'
+      
+      target 'YourAppTests' do
+          inherit! :search_paths
+      end
+  end
+  </pre>
+
+            <li>Additions to your AppDelegate</li>
             
-              <div style="position:relative; left: 2em;">
-              Where: <em>serverClientId</em> and <em>appClientId</em> come from setting up your app with Google. See below.
-              </div>
+            <ol type="a">
+              <li>Add the following import</li>
+                <pre>import SyncServer</pre>
+
+              <li>Setup your sign-in's in the didFinishLaunchingWithOptions method</li>
+                If you are allowing use of Google Drive, you will need:
+  <pre>
+  let googleSignIn = GoogleSyncServerSignIn(serverClientId: serverClientId, appClientId: appClientId)
+  SignInManager.session.addSignIn(googleSignIn, launchOptions: options)        
+  </pre>
+
+                If you are also using Dropbox, you'll need:
+  <pre>
+  let dropboxSignIn = DropboxSyncServerSignIn(appKey: dropboxAppKey)
+  SignInManager.session.addSignIn(dropboxSignIn, launchOptions: options)
+  </pre>
+
+              If you are also using Facebook sign-in, you'll need:
+  <pre>
+  let facebookSignIn = FacebookSyncServerSignIn()
+  SignInManager.session.addSignIn(facebookSignIn, launchOptions: options)
+  </pre>     
+
+
+              
+                <div style="position:relative; left: 2em;">
+                Where: <em>serverClientId</em> and <em>appClientId</em> come from setting up your app with Google. See below.
+                </div>
+              
+              <li>Also in the didFinishLaunchingWithOptions method, you need to call</li>
+                <pre>SyncServer.session.appLaunchSetup(withServerURL: serverURL, cloudFolderName:cloudFolderName)</pre>
+                <div style="position:relative; left: 2em;">
+                Where: 
+                <ul>
+                  <li><em>serverURL</em> is the URL of your SyncServer server. </li>
+
+                  <li><em>cloudFolderName</em> is the folder name (not a path, just a folder) within Google Drive in which your files will be stored (if you are using Google Drive). Dropbox, if you are using that, doesn't need this.</li> 
+                    E.g., I'm using "SharedImages.Folder" for the SharedImages app.  
+                </ul>
+                </div>
+                      
+              <li>Add the following into the app:open:options: method</li>
+  <pre>
+  func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+      return SignInManager.session.application(app, open: url, options: options) ||
+      SharingInvitation.session.application(app, open: url, options: options)
+  }
+  </pre>         
+
+              <li>To enable background downloading/uploading add this into your AppDelegate</li>
+  <pre>
+  func application(_ application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: @escaping () -> Void) {
+    SyncServer.session.application(application, handleEventsForBackgroundURLSession: identifier, completionHandler: completionHandler)
+  }
+  </pre>
+            </ol>
             
-            <li>Also in the didFinishLaunchingWithOptions method, you need to call</li>
-              <pre>SyncServer.session.appLaunchSetup(withServerURL: serverURL, cloudFolderName:cloudFolderName)</pre>
-              <div style="position:relative; left: 2em;">
-              Where: 
-              <ul>
-                <li><em>serverURL</em> is the URL of your SyncServer server. </li>
+            <li>Setup the <em>SharingInvitationDelegate</em> to deal with sharing invitations received.</li>
+                For an example of how this is done, search for <em>SharingInvitationDelegate</em> in the <a href="http://github.com/crspybits/SharedImages">SharedImages</a> app.
+            
+            <li>Setup the UI for sign-in's in your app.</li>
+              <ol type="a">
+                You will need to do this for at least Google.
+                      For an example of how this is done, look in the <a href="http://github.com/crspybits/SharedImages">SharedImages</a> app.
+                <li>Call the `setupSignInButton` and setup delegates for your selected sign-ins. For example:</li>
+  <pre>
+  // For the GoogleSyncServerSignIn, the delegate in this params argument must a view controller abiding by GoogleSignInUIProtocol
+  let googleSignInButton = googleSignIn.setupSignInButton(params: ["delegate": self])
+  googleSignIn.delegate = self // abiding by GenericSignInDelegate
 
-                <li><em>cloudFolderName</em> is the folder name (not a path, just a folder) within Google Drive in which your files will be stored (if you are using Google Drive). Dropbox, if you are using that, doesn't need this.</li> 
-                  E.g., I'm using "SharedImages.Folder" for the SharedImages app.  
-              </ul>
-              </div>
-                    
-            <li>Add the following into the app:open:options: method</li>
-<pre>
-func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-    return SignInManager.session.application(app, open: url, options: options) ||
-    SharingInvitation.session.application(app, open: url, options: options)
-}
-</pre>         
+  // If you are using Facebook sign-in:
+  let facebookSignInButton = facebookSignIn.setupSignInButton(params:nil)
+  // Just to balance out the lengths of the sign-in buttons-- the Google button is shorter.
+  facebookSignInButton.frameWidth = googleSignInButton.frameWidth
+  facebookSignIn.delegate = self
 
-            <li>To enable background downloading/uploading add this into your AppDelegate</li>
-<pre>
-func application(_ application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: @escaping () -> Void) {
-  SyncServer.session.application(application, handleEventsForBackgroundURLSession: identifier, completionHandler: completionHandler)
-}
-</pre>
+  // If you are using Dropbox sign-in:
+  let dropboxSignInButton = dropboxSignIn.setupSignInButton(params: ["viewController": self])
+  dropboxSignInButton.frameSize = CGSize(width: googleSignInButton.frameWidth, height: googleSignInButton.frameHeight * 0.75)
+  dropboxSignIn.delegate = self
+  </pre>
+                
+                <li>For convenience if you are using multiple sign-in's (say, Google, Facebook, and Dropbox, the SyncServer <em>SignIn</em> widget can enable you to display the sign-in's automatically:</li>
+                
+  <pre>
+  let signIn:SignIn = SignIn.createFromXib()!
+  // and add this SignIn view into an appropriate view controller in your UI.
+  </pre>
+                The SignIn view uses the SyncServer SignInManager to determine which sign-in buttons to display. The <a href="http://github.com/crspybits/SharedImages">SharedImages</a> app uses the SignIn view, so see that for additional code details.
+              </ol>
           </ol>
-          
-          <li>Setup the <em>SharingInvitationDelegate</em> to deal with sharing invitations received.</li>
-              For an example of how this is done, look in the <a href="http://github.com/crspybits/SharedImages">SharedImages</a> app.
-          
-          <li>Setup the UI for sign-in's in your app.</li>
-          	<ol type="a">
-              You will need to do this for at least Google.
-                    For an example of how this is done, look in the <a href="http://github.com/crspybits/SharedImages">SharedImages</a> app.
-              <li>Call the `setupSignInButton` and setup delegates for your selected sign-ins. For example:</li>
-<pre>
-// For the GoogleSyncServerSignIn, the delegate in this params argument must a view controller abiding by GoogleSignInUIProtocol
-let googleSignInButton = googleSignIn.setupSignInButton(params: ["delegate": self])
-googleSignIn.delegate = self // abiding by GenericSignInDelegate
-
-// If you are using Facebook sign-in:
-let facebookSignInButton = facebookSignIn.setupSignInButton(params:nil)
-// Just to balance out the lengths of the sign-in buttons-- the Google button is shorter.
-facebookSignInButton.frameWidth = googleSignInButton.frameWidth
-facebookSignIn.delegate = self
-
-// If you are using Dropbox sign-in:
-let dropboxSignInButton = dropboxSignIn.setupSignInButton(params: ["viewController": self])
-dropboxSignInButton.frameSize = CGSize(width: googleSignInButton.frameWidth, height: googleSignInButton.frameHeight * 0.75)
-dropboxSignIn.delegate = self
-</pre>
-              
-              <li>For convenience if you are using multiple sign-in's (say, Google, Facebook, and Dropbox), the SyncServer SignIn widget will enable you to display the sign-in's automatically.</li>
-              
-<pre>
-let signIn:SignIn = SignIn.createFromXib()!
-// and add this SignIn view into an appropriate view controller in your UI.
-</pre>
-              The SignIn view uses the SyncServer SignInManager to determine which sign-in buttons to display. The <a href="http://github.com/crspybits/SharedImages">SharedImages</a> app uses the SignIn view, so see that for additional code details.
-          	</ol>
-        </ol>
+        </div>
       </div>
       
       <a class="anchor" id="GOOGLE"></a>
@@ -680,7 +718,7 @@ let signIn:SignIn = SignIn.createFromXib()!
         <h2>Using Google Drive and Google Sign-In (optional)</h2>
         <ol>
           <li>Create Google App/Developer Credentials</li>
-            To enable access to user Google Drive accounts, you must create Google Developer credentials for your iOS app and SyncServer server. These credentials need to be installed in your app making use of the SyncServer client Framework. Go to <a href="https://developers.google.com/identity/sign-in/ios/start">https://developers.google.com/identity/sign-in/ios/start</a> and click on `GET A CONFIGURATION FILE`. 
+            To enable access to user Google Drive accounts, you must create Google Developer credentials for your iOS app and SyncServer server. These credentials need to be installed in your app making use of the SyncServer client Framework. Go to <a href="https://developers.google.com/identity/sign-in/ios/start">https://developers.google.com/identity/sign-in/ios/start</a>. 
             <p></p>
             <p>You need to generate a configuration file-- this will typically be named: `GoogleService-Info.plist`, and add that file to your Xcode project. Amongst other information, this .plist file contains the Google `CLIENT_ID` for your iOS app.</p>
 
@@ -689,7 +727,7 @@ let signIn:SignIn = SignIn.createFromXib()!
           
           <li>Obtain your `OAuth 2.0 client IDs`.</li>
             Within <a href="https://console.developers.google.com">https://console.developers.google.com</a>, you also need to obtain the `OAuth 2.0 client IDs` for your `Web client` (see under "Credentials).
-            I call this the `GoogleServerClientId`. You will need both the `CLIENT_ID` (for your iOS app) and the `GoogleServerClientId` (for the SyncServer server) in order for users to sign in to Google Drive from your iOS app.
+            In the SyncServer configuration file this is called the <a href="#SERVER_CONFIG">GoogleServerClientId</a>. You will need both the `CLIENT_ID` (for your iOS app) and the GoogleServerClientId (for the SyncServer server) in order for users to sign in to Google Drive from your iOS app.
           
           <li>Add URL scheme for Google Sign in to your app.</li>
             You do this in XCode under the "Info" tab. Look for "URL Types" and paste the CLIENT_ID into the "URL Schemes" field of a new URL Type (press the "+" button).
@@ -707,7 +745,7 @@ let signIn:SignIn = SignIn.createFromXib()!
             After signing in, in the upper right, under "My Apps", click on "Add a New App". Follow the instructions. They're pretty good.
           
           <li>For the Server: ClientId and Secret.</li>
-            You will need the Facebook ClientId (App ID) and Secret (App Secret) for the SyncServer server Server.json file from your new app on <a href="https://developers.facebook.com">https://developers.facebook.com</a>.
+            You will need the <a href="#SERVER_CONFIG">FacebookClientId</a> (App ID) and <a href="#SERVER_CONFIG">FacebookClientSecret</a> (App Secret) for the SyncServer server Server.json file from your new app on <a href="https://developers.facebook.com">https://developers.facebook.com</a>.
         </ol>        
       </div>
 

@@ -583,7 +583,7 @@
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServer.swift",
-      "line": 550,
+      "line": 553,
       "symbol": "SyncServer.Stats.downloadDeletionsAvailable",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"

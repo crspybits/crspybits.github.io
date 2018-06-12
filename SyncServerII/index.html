@@ -288,7 +288,7 @@
                 Every time a client app asks for or sends data to the server, it gives what it thinks is the current master version.
                 If that master version is actually out of date (i.e., doesn't match the master version known to the server), then the server rejects the client request.
                 And then the client must recover from this rejection.
-                Since synchronization, and hence these rejections, should occur only infrequently, this recovery shuld be infrequent.
+                Since synchronization, and hence these rejections, should occur only infrequently, this recovery should be infrequent.
                 This rejection recovery occurs purely within the iOS client layer, and is not seen by the mobile app developer (except perhaps for some event reporting).
               </p>
 
@@ -404,12 +404,12 @@
               </p>
               <p style="margin-left: 1em">
                 The SyncServer client leaves the details of conflict resolution decisions to the app developer, but provides some mechanisms to assist in this process.
-                One reason that the details of conflict resolution are left to the app developer is because app developers can chose representations, in some cases, to make conflict resolution eaiser.
+                One reason that the details of conflict resolution are left to the app developer is because app developers can choose representations, in some cases, to make conflict resolution easier.
                 For example, in the first conflict situation above, between two changes in a discussion thread file, SharedImages handles this relatively easily by disallowing individual comments to be modified, by giving each discussion comment a unique identifier, and by putting timestamps onto each comment.
                 These app-specific decisions enable two conflicting versions of the same discussion thread file to be easily merged, and thus conflict resolution in this case is simplified.
               </p>
               <p style="margin-left: 1em">
-                The SyncServer client provides mechananisms to assist in dealing with conflicts in the following manner. 
+                The SyncServer client provides mechanisms to assist in dealing with conflicts in the following manner. 
                 First, conflicts are categorized into <em>content download</em> and <em>download deletion</em> conflicts.
                 Content download conflicts are conflicts between a modified file and/or appMetaData being downloaded from the server, and the same file and/or appMetaData, modified (or deleted) by the local user and being uploaded.
                 When these conflicts occur, the following SyncServer delegate method is called:
@@ -423,8 +423,8 @@ func syncServerMustResolveContentDownloadConflict(
                   </code>
                 </pre>
               <p style="margin-left: 1em">
-                The above delegate method enables client apps to chose how they want to deal with the content download conflict.
-                For example, a client app might chose to always prioritize downloads from the server and ignore conflicting uploads.
+                The above delegate method enables client apps to choose how they want to deal with the content download conflict.
+                For example, a client app might choose to always prioritize downloads from the server and ignore conflicting uploads.
               </p>
 
               <p style="margin-left: 1em">
@@ -439,8 +439,8 @@ func syncServerMustResolveDownloadDeletionConflicts(
                 </pre>
 
               <p style="margin-left: 1em">
-                  The above delegate method enables client apps to chose how they want to deal with the download deletion conflicts.
-                  For example, a client app might chose to always prioritize download deletions from the server and ignore conflicting uploads.
+                  The above delegate method enables client apps to choose how they want to deal with the download deletion conflicts.
+                  For example, a client app might choose to always prioritize download deletions from the server and ignore conflicting uploads.
                 </p>
 
               <p style="margin-left: 1em">
@@ -467,14 +467,14 @@ func syncServerMustResolveDownloadDeletionConflicts(
               We do not use just the fileUUID to name the file in the cloud service because the server does not hold a lock across multiple file uploads, and we need to make sure that we don't have a conflict when two or more devices attempt to concurrently upload the same file. 
               <em>FileExtension</em>'s correspond directly to the mime type of a file used when uploading using the client interface.
             </p>
-            <p style="margin-left: 1em">For example, here is a example of files stored in a Google Drive account by the SharedImages app:
+            <p style="margin-left: 1em">For example, here is an example of files stored in a Google Drive account by the SharedImages app:
             </p>
             <p></p>
             <img src="Figures/SharedImagesFiles.png" style="width: 100%; height: auto;"/>
             <p></p>
             <p style="margin-left: 1em">
               In the above figure, you can notice that all of the image (.jpg) file are at version 0-- SharedImages doesn't generally let you modify an image once uploaded.
-              You can also notice that some of the .txt files (used for discussion threads) are at versions &gt; 0-- this is because various users of the SharedImages app contribute to the discussion threads, and upload different versions of disussion thread files corresponding to those changes.
+              You can also notice that some of the .txt files (used for discussion threads) are at versions &gt; 0-- this is because various users of the SharedImages app contribute to the discussion threads, and upload different versions of discussion thread files corresponding to those changes.
             </p>
           </ul>
         </ul>

@@ -99,6 +99,7 @@
           <li>Installation</li>
             <h3><a href="#INSTALLSERVER">Standing up a Server</a></h3>
             <h3><a href="#INSTALLAPP">Installation in a new iOS app</a></h3>
+            <h3><a href="#SHAREDIMAGES">Building and Running SharedImages</a></h3>
             <h3><a href="#GOOGLE">Using Google Drive and Google Sign-In (optional)</a></h3>
             <h3><a href="#FACEBOOK">Using Facebook Sign-In (optional)</a></h3>
             <h3><a href="#DROPBOX">Using Dropbox Sign-In (optional)</a></h3>
@@ -712,7 +713,35 @@ func syncServerMustResolveDownloadDeletionConflicts(
           </ol>
         </div>
       </div>
-      
+
+      <a class="anchor" id="SHAREDIMAGES"></a>
+      <div class="row row-striped padded">
+        <h2>Building and Running SharedImages</h2>
+        <p style="margin-left: 1em">
+          Downloading <a href="http://github.com/crspybits/SharedImages">SharedImages</a> and building it in Xcode will not give a clean build. You will get something like this:
+        </p>
+
+        <img src="Figures/SharedImagesBuildErrors.png" style="width: 100%; height: auto;"/>
+        <p></p>
+        <p style="margin-left: 1em">
+          These errors occur because two files, <em>Server.plist</em> and <em>GoogleService-Info.plist</em> are present only as symbolic links-- you need to populate them for your own server and for your own <a href="#GOOGLE">Google Sign In</a> setup.
+        </p>
+
+        <h3>Your own server</h3>
+        <p style="margin-left: 1em">
+            SharedImages relies on having a SyncServerII instance running. 
+            The Server.plist file references this server, and other setup-- for Google and Dropbox sign-in's.
+            Thus, you will need to <a href="#INSTALLSERVER">stand up a SyncServerII server</a>.
+            Once you have done that, the format of the Server.plist file is:
+        </p>
+
+        <img src="Figures/Server.plist.png" style="width: 100%; height: auto;"/>
+        <p></p>
+        <p style="margin-left: 1em">
+          The references to <em>Staging</em> in the above .plist can be ignored if you are not using a staging server.
+        </p>
+      </div>
+
       <a class="anchor" id="GOOGLE"></a>
       <div class="row row-striped padded">
         <h2>Using Google Drive and Google Sign-In (optional)</h2>

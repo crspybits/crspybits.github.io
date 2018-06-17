@@ -494,7 +494,7 @@ func syncServerMustResolveDownloadDeletionConflicts(
         <h2>Current Limitations</h2>
         <ul>
           <li><a href="https://github.com/crspybits/SyncServerII/issues/74">
-            Only the initial user in a sharing group can be the owning user.</a>     
+            Only the initial user in a sharing group can be the owning user.</a>
           </li>
           <li><a href="https://github.com/crspybits/SyncServerII/issues/27">
             A user can only be a member of a single sharing group.</a></li>
@@ -503,6 +503,9 @@ func syncServerMustResolveDownloadDeletionConflicts(
           <li><a href="https://github.com/crspybits/SyncServerII/issues/63">No file checksums yet</a>.</li>
           <li>Cryptic file names in cloud storage.</li>
             It would be good to have an <a href="https://github.com/crspybits/SyncServerII/issues/68">index.html</a> file that could let the users see the purpose of the files in some organized manner.
+          <li>Limited background file uploading/downloading</li>
+            Currently, the iOS Client will only continue downloading or uploading files in a very limited manner if the user puts the client app into the background. 
+            For example, when an app has a large number of files (e.g., SharedImages), and a user new to a sharing group starts using the app, it is limiting to have to have the app remain in the foreground to initially download all the necessary files.
         </ul>
       </div>
       

@@ -504,8 +504,12 @@ func syncServerMustResolveDownloadDeletionConflicts(
           <li>Cryptic file names in cloud storage.</li>
             It would be good to have an <a href="https://github.com/crspybits/SyncServerII/issues/68">index.html</a> file that could let the users see the purpose of the files in some organized manner.
           <li>Limited background file uploading/downloading</li>
-            Currently, the iOS Client will only continue downloading or uploading files in a very limited manner if the user puts the client app into the background. 
-            For example, when an app has a large number of files (e.g., SharedImages), and a user new to a sharing group starts using the app, it is limiting to have to have the app remain in the foreground to initially download all the necessary files.
+            Currently, the iOS Client will only continue downloading or uploading a single file if the user puts the client app into the background. 
+          <li><a href="https://github.com/crspybits/SyncServer-iOSClient/issues/45">Practically limited numbers of files in sharing groups</a></li>
+            Currently, when a user joins a sharing group (or a recovery operation is carried out) the SyncServer iOS client downloads all files for that sharing group at once to the mobile device.
+            This has practical limitations.
+            Suppose there were thousands of images in a sharing group for SharedImages.
+            Downloading that many images at once is likely not practical.
         </ul>
       </div>
       

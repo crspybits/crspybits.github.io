@@ -440,6 +440,8 @@
 <li>If the attr.appMetaData is given as nil, and an earlier version had non-nil appMetaData, then the nil appMetaData is ignored&ndash; i.e., the existing app meta data is not set to nil.</li>
 </ol>
 
+<p>The sharingGroupId for a series of files up until a sync() operation must be the same. If you want to change to dealing with a different sharing group, you must call sync().</p>
+
 <p><code>Warning</code>: If you indicate that the mime type is <q>text/plain</q>, and you are using Google Drive and the text contains unusual characters, you may run into problems&ndash; e.g., downloading the files may fail.</p>
 
                       </div>
@@ -582,7 +584,7 @@
 
 <p>If there is a file with the same uuid, which has been enqueued for upload but not yet <code>sync</code>&lsquo;ed, it will be removed.</p>
 
-<p>This operation does not access the server, and thus runss quickly and synchronously.</p>
+<p>This operation does not access the server, and thus runs quickly and synchronously.</p>
 
 <p>This operation undoes its work if it throws an error.</p>
 
@@ -666,9 +668,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10SyncServerAAC4syncyyF"></a>
-                    <a name="//apple_ref/swift/Method/sync()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10SyncServerAAC4syncyyF">sync()</a>
+                    <a name="/s:10SyncServerAAC4syncys5Int64V14sharingGroupId_tF"></a>
+                    <a name="//apple_ref/swift/Method/sync(sharingGroupId:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC4syncys5Int64V14sharingGroupId_tF">sync(sharingGroupId:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -676,7 +678,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>If no other <code>sync</code> is taking place, this will asynchronously do pending downloads, file uploads, and upload deletions. If there is a <code>sync</code> currently taking place, this closes the collection of uploads/deletions queued, and will wait until after the current sync is done, and try again.</p>
+                        <p>If no other <code>sync</code> is taking place, this will asynchronously do pending downloads, file uploads, and upload deletions for the given sharing group. If there is a <code>sync</code> currently taking place (for any sharing group), this closes the collection of uploads/deletions queued, and will wait until after the current sync is done, and try again.</p>
 
 <p>If a stopSync is currently pending, then this call will be ignored.</p>
 
@@ -687,7 +689,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">sync</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">sync</span><span class="p">(</span><span class="nv">sharingGroupId</span><span class="p">:</span> <span class="kt">SharingGroupId</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -798,9 +800,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10SyncServerAAC8getStatsyyAB0D0VSgc10completion_tF"></a>
-                    <a name="//apple_ref/swift/Method/getStats(completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10SyncServerAAC8getStatsyyAB0D0VSgc10completion_tF">getStats(completion:)</a>
+                    <a name="/s:10SyncServerAAC8getStatsys5Int64V14sharingGroupId_yAB0D0VSgc10completiontF"></a>
+                    <a name="//apple_ref/swift/Method/getStats(sharingGroupId:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC8getStatsys5Int64V14sharingGroupId_yAB0D0VSgc10completiontF">getStats(sharingGroupId:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -815,7 +817,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getStats</span><span class="p">(</span><span class="nv">completion</span><span class="p">:</span><span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Classes/SyncServer/Stats.html">Stats</a></span><span class="p">?)</span><span class="o">-&gt;</span><span class="p">())</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getStats</span><span class="p">(</span><span class="nv">sharingGroupId</span><span class="p">:</span> <span class="kt">SharingGroupId</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span><span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Classes/SyncServer/Stats.html">Stats</a></span><span class="p">?)</span><span class="o">-&gt;</span><span class="p">())</span></code></pre>
 
                         </div>
                       </div>
@@ -1023,9 +1025,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10SyncServerAAC16consistencyCheckySaySSG10localFiles_Sb6repairys5Error_pSgcSg10completiontF"></a>
-                    <a name="//apple_ref/swift/Method/consistencyCheck(localFiles:repair:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10SyncServerAAC16consistencyCheckySaySSG10localFiles_Sb6repairys5Error_pSgcSg10completiontF">consistencyCheck(localFiles:repair:completion:)</a>
+                    <a name="/s:10SyncServerAAC16consistencyCheckys5Int64V14sharingGroupId_SaySSG10localFilesSb6repairys5Error_pSgcSg10completiontF"></a>
+                    <a name="//apple_ref/swift/Method/consistencyCheck(sharingGroupId:localFiles:repair:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC16consistencyCheckys5Int64V14sharingGroupId_SaySSG10localFilesSb6repairys5Error_pSgcSg10completiontF">consistencyCheck(sharingGroupId:localFiles:repair:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1040,7 +1042,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">consistencyCheck</span><span class="p">(</span><span class="nv">localFiles</span><span class="p">:[</span><span class="kt"><a href="../Other Typealiases.html#/s:10SyncServer10UUIDStringa">UUIDString</a></span><span class="p">],</span> <span class="nv">repair</span><span class="p">:</span><span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:((</span><span class="kt">Error</span><span class="p">?)</span><span class="o">-&gt;</span><span class="p">())?)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">consistencyCheck</span><span class="p">(</span><span class="nv">sharingGroupId</span><span class="p">:</span> <span class="kt">SharingGroupId</span><span class="p">,</span> <span class="nv">localFiles</span><span class="p">:[</span><span class="kt"><a href="../Other Typealiases.html#/s:10SyncServer10UUIDStringa">UUIDString</a></span><span class="p">],</span> <span class="nv">repair</span><span class="p">:</span><span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:((</span><span class="kt">Error</span><span class="p">?)</span><span class="o">-&gt;</span><span class="p">())?)</span></code></pre>
 
                         </div>
                       </div>
@@ -1052,7 +1054,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/crspybits/SyncServer-iOSClient" target="_blank" rel="external">Spastic Muffin, LLC</a>. All rights reserved. (Last updated: 2018-06-07)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/crspybits/SyncServer-iOSClient" target="_blank" rel="external">Spastic Muffin, LLC</a>. All rights reserved. (Last updated: 2018-07-28)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

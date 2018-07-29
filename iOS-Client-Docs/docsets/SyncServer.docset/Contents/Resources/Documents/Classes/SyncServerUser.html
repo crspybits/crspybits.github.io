@@ -286,6 +286,59 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:10SyncServer0aB4UserC15sharingGroupIdsSays5Int64VGSgvp"></a>
+                    <a name="//apple_ref/swift/Property/sharingGroupIds" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB4UserC15sharingGroupIdsSays5Int64VGSgvp">sharingGroupIds</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This is set at app launch, and is an error if a user is signed in and there are no sharingGroupIds.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">internal(set)</span> <span class="k">var</span> <span class="nv">sharingGroupIds</span><span class="p">:</span> <span class="p">[</span><span class="kt">SharingGroupId</span><span class="p">]?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB4UserC15cloudFolderNameSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/cloudFolderName" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB4UserC15cloudFolderNameSSSgvp">cloudFolderName</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">cloudFolderName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:10SyncServer0aB4UserC7sessionACvpZ"></a>
                     <a name="//apple_ref/swift/Variable/session" class="dashAnchor"></a>
                     <a class="token" href="#/s:10SyncServer0aB4UserC7sessionACvpZ">session</a>
@@ -367,9 +420,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10SyncServer0aB4UserC03addC0yAA18GenericCredentials_p5creds_ys5Error_pSgc10completiontF"></a>
+                    <a name="/s:10SyncServer0aB4UserC03addC0yAA18GenericCredentials_p5creds_ys5Int64VSg_s5Error_pSgtc10completiontF"></a>
                     <a name="//apple_ref/swift/Method/addUser(creds:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10SyncServer0aB4UserC03addC0yAA18GenericCredentials_p5creds_ys5Error_pSgc10completiontF">addUser(creds:completion:)</a>
+                    <a class="token" href="#/s:10SyncServer0aB4UserC03addC0yAA18GenericCredentials_p5creds_ys5Int64VSg_s5Error_pSgtc10completiontF">addUser(creds:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -384,7 +437,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">addUser</span><span class="p">(</span><span class="nv">creds</span><span class="p">:</span> <span class="kt"><a href="../Protocols/GenericCredentials.html">GenericCredentials</a></span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span><span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span><span class="p">())</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">addUser</span><span class="p">(</span><span class="nv">creds</span><span class="p">:</span> <span class="kt"><a href="../Protocols/GenericCredentials.html">GenericCredentials</a></span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span><span class="kd">@escaping</span> <span class="p">(</span><span class="kt">SharingGroupId</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span><span class="p">())</span></code></pre>
 
                         </div>
                       </div>
@@ -394,9 +447,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10SyncServer0aB4UserC23createSharingInvitationy0aB7_Shared0E10PermissionO04withH0_ySSSg_s5Error_pSgtcSg10completiontF"></a>
-                    <a name="//apple_ref/swift/Method/createSharingInvitation(withPermission:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10SyncServer0aB4UserC23createSharingInvitationy0aB7_Shared0E10PermissionO04withH0_ySSSg_s5Error_pSgtcSg10completiontF">createSharingInvitation(withPermission:completion:)</a>
+                    <a name="/s:10SyncServer0aB4UserC23createSharingInvitationy0aB7_Shared10PermissionO04withH0_s5Int64V14sharingGroupIdySSSg_s5Error_pSgtcSg10completiontF"></a>
+                    <a name="//apple_ref/swift/Method/createSharingInvitation(withPermission:sharingGroupId:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB4UserC23createSharingInvitationy0aB7_Shared10PermissionO04withH0_s5Int64V14sharingGroupIdySSSg_s5Error_pSgtcSg10completiontF">createSharingInvitation(withPermission:sharingGroupId:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -411,7 +464,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">createSharingInvitation</span><span class="p">(</span><span class="n">withPermission</span> <span class="nv">permission</span><span class="p">:</span> <span class="kt">SharingPermission</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">((</span><span class="n">_</span> <span class="nv">invitationCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="kt">Void</span><span class="p">))?)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">createSharingInvitation</span><span class="p">(</span><span class="n">withPermission</span> <span class="nv">permission</span><span class="p">:</span> <span class="kt">Permission</span><span class="p">,</span> <span class="nv">sharingGroupId</span><span class="p">:</span> <span class="kt">SharingGroupId</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">((</span><span class="n">_</span> <span class="nv">invitationCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="kt">Void</span><span class="p">))?)</span></code></pre>
 
                         </div>
                       </div>
@@ -421,9 +474,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10SyncServer0aB4UserC23redeemSharingInvitationyAA18GenericCredentials_p5creds_SS14invitationCodeySSSg_s5Error_pSgtcSg10completiontF"></a>
-                    <a name="//apple_ref/swift/Method/redeemSharingInvitation(creds:invitationCode:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10SyncServer0aB4UserC23redeemSharingInvitationyAA18GenericCredentials_p5creds_SS14invitationCodeySSSg_s5Error_pSgtcSg10completiontF">redeemSharingInvitation(creds:invitationCode:completion:)</a>
+                    <a name="/s:10SyncServer0aB4UserC23redeemSharingInvitationyAA18GenericCredentials_p5creds_SS14invitationCodeSSSg15cloudFolderNameyAH_s5Int64VSgs5Error_pSgtcSg10completiontF"></a>
+                    <a name="//apple_ref/swift/Method/redeemSharingInvitation(creds:invitationCode:cloudFolderName:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB4UserC23redeemSharingInvitationyAA18GenericCredentials_p5creds_SS14invitationCodeSSSg15cloudFolderNameyAH_s5Int64VSgs5Error_pSgtcSg10completiontF">redeemSharingInvitation(creds:invitationCode:cloudFolderName:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -438,7 +491,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">redeemSharingInvitation</span><span class="p">(</span><span class="nv">creds</span><span class="p">:</span> <span class="kt"><a href="../Protocols/GenericCredentials.html">GenericCredentials</a></span><span class="p">,</span> <span class="nv">invitationCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">((</span><span class="n">_</span> <span class="nv">accessToken</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())?)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">redeemSharingInvitation</span><span class="p">(</span><span class="nv">creds</span><span class="p">:</span> <span class="kt"><a href="../Protocols/GenericCredentials.html">GenericCredentials</a></span><span class="p">,</span> <span class="nv">invitationCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">cloudFolderName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">((</span><span class="n">_</span> <span class="nv">accessToken</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="n">_</span> <span class="nv">sharingGroupId</span><span class="p">:</span> <span class="kt">SharingGroupId</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())?)</span></code></pre>
 
                         </div>
                       </div>
@@ -450,7 +503,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/crspybits/SyncServer-iOSClient" target="_blank" rel="external">Spastic Muffin, LLC</a>. All rights reserved. (Last updated: 2018-06-07)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/crspybits/SyncServer-iOSClient" target="_blank" rel="external">Spastic Muffin, LLC</a>. All rights reserved. (Last updated: 2018-07-28)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

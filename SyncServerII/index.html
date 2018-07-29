@@ -112,12 +112,14 @@
         <h2>Development Status</h2>
         <ul>
           <li>Google Drive and Dropbox are supported in terms of cloud storage systems.</li>
-          <li>Google, Dropbox, and Facebook sign-in's are supported (Facebook is only for sharing; Dropbox is only for owning).</li>
+          <li>Google, Dropbox, and Facebook sign-in's are supported.</li>
           <li>Optimistic synchronization is used for ensuring clients have a consistent view of data (e.g., <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.8.7606&rep=rep1&type=pdf">see</a>).</li>
           <li>Sharing can be done with permissions of read, write (includes read), or admin (read, write and invite others to share).</li>
           <li>Multi-version files and multi-version per-file meta data.</li>
           <li>File content conflicts and meta-data conflicts are resolved with application defined conflict resolution rules.</li>
           <li>Support for application-specific groups of files so that downloads are presented to applications in terms of changes to those groups.</li>
+          <li>Each user in a sharing group that has cloud storage (e.g., Dropbox, or Google Drive) uploads new files to their <em>own</em> cloud storage, but those files are all shared amongst the group.
+          </li>
           <li>Builds of releases of the server are published to <a href="https://hub.docker.com/r/crspybits/syncserver-runner/">hub.docker</a>.</li>
           <li>An example server is currently running on the AWS Elastic Beanstalk, 
               supporting the <a href="http://github.com/crspybits/SharedImages">SharedImages</a> iPhone/iPad app</li>
@@ -493,11 +495,10 @@ func syncServerMustResolveDownloadDeletionConflicts(
       <div class="row row-striped padded">
         <h2>Current Limitations</h2>
         <ul>
-          <li><a href="https://github.com/crspybits/SyncServerII/issues/74">
-            Only the initial user in a sharing group can be the owning user.</a>
-          </li>
           <li><a href="https://github.com/crspybits/SyncServerII/issues/27">
             A user can only be a member of a single sharing group.</a></li>
+          <li><a href="https://github.com/crspybits/SyncServer-iOSClient/issues/30">
+            System is sensitive to user changing files or file names in cloud storage.</a></li>
           <li>No streaming or chunking of file uploads/downloads</li>
             This will presumably result in file size limitations and/or performance limitations with the server.
           <li><a href="https://github.com/crspybits/SyncServerII/issues/63">No file checksums yet</a>.</li>

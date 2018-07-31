@@ -118,6 +118,7 @@
           <li>Multi-version files and multi-version per-file meta data.</li>
           <li>File content conflicts and meta-data conflicts are resolved with application defined conflict resolution rules.</li>
           <li>Support for application-specific groups of files so that downloads are presented to applications in terms of changes to those groups.</li>
+          <li>Support for sharing groups: A collection of users and the files being shared amongst those users.</li>
           <li>Each user in a sharing group that has cloud storage (e.g., Dropbox, or Google Drive) uploads new files to their <em>own</em> cloud storage, but those files are all shared amongst the group.
           </li>
           <li>Builds of releases of the server are published to <a href="https://hub.docker.com/r/crspybits/syncserver-runner/">hub.docker</a>.</li>
@@ -203,34 +204,35 @@
         <ul>
           <li>General</li>
           <ul>
-            <li>Sharing User Groups</li>
+            <li>Owning versus Sharing</li>
+              <p style="margin-left: 1em">
+                Users who have their uploaded files stored in their own cloud storage are termed <em>owning users</em> (e.g., a Dropbox or Google Drive user). 
+                Users who sign in with non-cloud storage accounts (e.g., Facebook) are termed <em>sharing users</em>-- any files they upload must be stored in an owning users cloud storage.
+              </p>
+
+            <li>Sharing Groups</li>
               <div>
                 <p style="margin-left: 1em">
                   Sharing is a key element in the design of SyncServer: It enables groups of users to share files.
-                  An initial user starts a sharing group by creating an account on a SyncServer-based app -- using their cloud storage system credentials (e.g., Google Drive or Dropbox).
-                  This initial user is termed an <em>owning</em> user because they own the files they upload to the cloud storage system.
-                  They can then expand the number of the users in the group by inviting other users to share their files-- these other users are invited with specific permissions: read, write, or admin.
+                  An initial user implicitly creates a sharing group by creating an account on a SyncServer-based app -- using their cloud storage system credentials (e.g., Google Drive or Dropbox).
+                  This initial user must be an <em>owning</em> user because they own the files they upload to the cloud storage system.
+                </p>
+                <p style="margin-left: 1em">
+                  Other users can then be invited to the sharing group with specific permissions: read, write, or admin.
                   Users invited with admin permissions can invite others to the group, and expand the number of users sharing the files in the group.
-                  Currently (6/2/18), only the initial user in a group can be the owning user.
-                  When other users upload files, they all are uploaded into that owning users cloud storage.
-                  This situation is planned to change shortly, however.
-                  <a href="https://github.com/crspybits/SyncServerII/issues/74">Other users who join the sharing group with cloud storage credentials will own the files they upload.</a>
+                  Owning users (e.g., Dropbox, Google Drive) that accept sharing invitations will have their files uploaded to their own cloud storage.
+                  Sharing users (e.g., Facebook) that accept sharing invitations, but don't have cloud storage will have their files uploaded to the inviting users cloud storage
+                  (or if that user was a non-owning user, the owning user originating the invitation chain).
                 </p>
                 <p></p>
                 <img src="Figures/SingleUserSharingGroup.png" style="width: 100%; height: auto;"/>
                 <p></p>
                 <p style="margin-left: 1em">
-                  The figure above depicts a user group after <a href="https://github.com/crspybits/SyncServerII/issues/74">the change to have multiple owning users per sharing group</a>.
-                  Note that all access to cloud storage is routed through the SyncServerII server, and so controls the access that others have to a single users cloud storage.
+                  The figure above depicts a sharing group.
+                  Note that all access to cloud storage is routed through the SyncServerII server, which controls the access that others have to any single users cloud storage.
                   That is, I only grant the sharing group access to specific files in my cloud storage, and only with specific permissions.
                 </p>
               </div>
-
-            <li>Owning versus Sharing</li>
-              <p style="margin-left: 1em">
-                Users who have their uploaded files stored in their own cloud storage are termed <em>owning users</em>. 
-                Users who sign in with non-cloud storage accounts (e.g., Facebook) are termed <em>sharing users</em>-- any files they upload must be stored in an owning users cloud storage.
-              </p>
 
             <li>Files and fileUUID's</li>
               <p style="margin-left: 1em">
@@ -277,6 +279,17 @@
                   Clients are responsible for creating these fileGroupUUID's and giving them to the client interface.
               </p>
 
+              <li><a id="SHARING_GROUP"></a>Sharing Groups and sharingGroupId's</li>
+              <p style="margin-left: 1em">
+                Sharing groups represent collections of files and users.
+                Currently (as of 7/30/18), each user can be in a single sharing group (<a href="https://github.com/crspybits/SyncServerII/issues/27">though that is planned to change</a>).
+                Also, each file can be in a single sharing group.
+                Sharing groups are intended as larger collections of files than file groups represented with fileGroupUUID's.
+              </p>
+              <p style="margin-left: 1em">
+                  Sharing Groups are uniquely referenced by identifiers assigned by the server called <em>sharingGroupId</em>'s.
+              </p>
+
             <li>Optimistic Synchronization and the Master Version</li>
               <p style="margin-left: 1em">
                 Another key element in the design of SyncServer is synchronization.
@@ -285,7 +298,7 @@
                 The synchronization is optimistic in that it is generally assumed that simultaneous updates of the data being shared by a group of users will be relatively infrequent.
               </p>
               <p style="margin-left: 1em">
-                For the data for a group of users, a single integer called the <em>master version</em> is persistently maintained (in the SyncServer mySQL database).
+                For the data for a single sharing group, a single integer called the <em>master version</em> is persistently maintained (in the SyncServer mySQL database).
                 Each time a group of files is uploaded by an app, the master version is incremented.
                 Thus, the master version represents the overall (or <em>master</em>) version of a collection of files (and appMetaData) being shared by a group of users.
                 Every time a client app asks for or sends data to the server, it gives what it thinks is the current master version.
@@ -367,13 +380,21 @@
               </p>
 <pre>
   <code>
+    guard let sharingGroupIds = SyncServerUser.session.sharingGroupIds, sharingGroupIds.count > 0 else {
+        // Should not happen if a user is signed in
+        return
+    }
+
+    let sharingGroupId = sharingGroupIds[0]
+
     do {
+        // sharingGroupId must be used in attr1 and attr2
         try SyncServer.session.uploadImmutable(localFile: url1, withAttributes: attr1)
         try SyncServer.session.uploadImmutable(localFile: url1, withAttributes: attr2)
     } catch {
     }
 
-    SyncServer.session.sync()
+    SyncServer.session.sync(sharingGroupId: sharingGroupId)
   </code>
 </pre>
 
@@ -382,6 +403,11 @@
                   Each time you call the `sync` method of the SyncServer iOS client, the current pending queue of upload items is "closed", and readied for upload. 
                   This collection of files is uploaded atomically-- either all of the files make it to the server, or none of the files make it.
                   A suitable use of this capability is to only call `sync` when you have queued uploads for all files in a single <a href="#FILE_GROUP">file group</a>.
+              </p>
+
+              <p style="margin-left: 1em">
+                The <em>sharingGroupId</em> indicates which <a href="#SHARING_GROUP">sharing group</a> is being sync'ed.
+                The <em>sharingGroupId</em> is explicitly given to the <em>sync</em> call in order to know which sharing group to check for downloads.
               </p>
 
             <li>Download Prioritization</li>
@@ -478,6 +504,9 @@ func syncServerMustResolveDownloadDeletionConflicts(
             <p style="margin-left: 1em">
               In the above figure, you can notice that all of the image (.jpg) file are at version 0-- SharedImages doesn't generally let you modify an image once uploaded.
               You can also notice that some of the .txt files (used for discussion threads) are at versions &gt; 0-- this is because various users of the SharedImages app contribute to the discussion threads, and upload different versions of discussion thread files corresponding to those changes.
+            </p>
+            <p style="margin-left: 1em">
+              Note that the <em>deviceUUID</em> for a particular file changes when a different device (e.g., different user) uploads a new version of the file.
             </p>
           </ul>
         </ul>

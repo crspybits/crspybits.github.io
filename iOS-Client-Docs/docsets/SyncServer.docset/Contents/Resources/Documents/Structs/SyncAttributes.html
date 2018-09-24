@@ -44,6 +44,9 @@
                 <a href="../Classes/SyncServer/LocalConsistencyResults.html">– LocalConsistencyResults</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Classes/SyncServer/SharingGroup.html">– SharingGroup</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/SyncAttributes.html">SyncAttributes</a>
               </li>
               <li class="nav-group-task">
@@ -260,9 +263,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10SyncServer0A10AttributesV14sharingGroupIdSQys5Int64VGvp"></a>
-                    <a name="//apple_ref/swift/Property/sharingGroupId" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10SyncServer0A10AttributesV14sharingGroupIdSQys5Int64VGvp">sharingGroupId</a>
+                    <a name="/s:10SyncServer0A10AttributesV16sharingGroupUUIDSQySSGvp"></a>
+                    <a name="//apple_ref/swift/Property/sharingGroupUUID" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0A10AttributesV16sharingGroupUUIDSQySSGvp">sharingGroupUUID</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -277,7 +280,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">sharingGroupId</span><span class="p">:</span> <span class="kt">SharingGroupId</span><span class="o">!</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">sharingGroupUUID</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span></code></pre>
 
                         </div>
                       </div>
@@ -419,9 +422,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10SyncServer0A10AttributesVACSS8fileUUID_s5Int64V14sharingGroupId0aB7_Shared8MimeTypeO04mimeL0SSSg0dhE010Foundation4DateVSg08creationO0AQ06updateO0tcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(fileUUID:sharingGroupId:mimeType:fileGroupUUID:creationDate:updateDate:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10SyncServer0A10AttributesVACSS8fileUUID_s5Int64V14sharingGroupId0aB7_Shared8MimeTypeO04mimeL0SSSg0dhE010Foundation4DateVSg08creationO0AQ06updateO0tcfc">init(fileUUID:sharingGroupId:mimeType:fileGroupUUID:creationDate:updateDate:)</a>
+                    <a name="/s:10SyncServer0A10AttributesVACSS8fileUUID_SS012sharingGroupE00aB7_Shared8MimeTypeO04mimeJ0SSSg0dgE010Foundation4DateVSg08creationM0AO06updateM0tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(fileUUID:sharingGroupUUID:mimeType:fileGroupUUID:creationDate:updateDate:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0A10AttributesVACSS8fileUUID_SS012sharingGroupE00aB7_Shared8MimeTypeO04mimeJ0SSSg0dgE010Foundation4DateVSg08creationM0AO06updateM0tcfc">init(fileUUID:sharingGroupUUID:mimeType:fileGroupUUID:creationDate:updateDate:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -435,7 +438,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">fileUUID</span><span class="p">:</span><span class="kt"><a href="../Other Typealiases.html#/s:10SyncServer10UUIDStringa">UUIDString</a></span><span class="p">,</span> <span class="nv">sharingGroupId</span><span class="p">:</span> <span class="kt">SharingGroupId</span><span class="p">,</span> <span class="nv">mimeType</span><span class="p">:</span><span class="kt">MimeType</span><span class="p">,</span> <span class="nv">fileGroupUUID</span><span class="p">:</span> <span class="kt"><a href="../Other Typealiases.html#/s:10SyncServer10UUIDStringa">UUIDString</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">creationDate</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">updateDate</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">fileUUID</span><span class="p">:</span><span class="kt"><a href="../Other Typealiases.html#/s:10SyncServer10UUIDStringa">UUIDString</a></span><span class="p">,</span> <span class="nv">sharingGroupUUID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">mimeType</span><span class="p">:</span><span class="kt">MimeType</span><span class="p">,</span> <span class="nv">fileGroupUUID</span><span class="p">:</span> <span class="kt"><a href="../Other Typealiases.html#/s:10SyncServer10UUIDStringa">UUIDString</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">creationDate</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">updateDate</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -499,7 +502,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/crspybits/SyncServer-iOSClient" target="_blank" rel="external">Spastic Muffin, LLC</a>. All rights reserved. (Last updated: 2018-07-28)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/crspybits/SyncServer-iOSClient" target="_blank" rel="external">Spastic Muffin, LLC</a>. All rights reserved. (Last updated: 2018-09-23)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

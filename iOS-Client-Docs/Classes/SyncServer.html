@@ -44,6 +44,9 @@
                 <a href="../Classes/SyncServer/LocalConsistencyResults.html">– LocalConsistencyResults</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Classes/SyncServer/SharingGroup.html">– SharingGroup</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/SyncAttributes.html">SyncAttributes</a>
               </li>
               <li class="nav-group-task">
@@ -261,6 +264,32 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:10SyncServerAAC14backgroundTest9SMCoreLib17SMPersistItemBoolCvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/backgroundTest" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC14backgroundTest9SMCoreLib17SMPersistItemBoolCvpZ">backgroundTest</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">backgroundTest</span><span class="p">:</span> <span class="kt">SMPersistItemBool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:10SyncServerAAC13eventsDesiredAA05EventD0Vvp"></a>
                     <a name="//apple_ref/swift/Property/eventsDesired" class="dashAnchor"></a>
                     <a class="token" href="#/s:10SyncServerAAC13eventsDesiredAA05EventD0Vvp">eventsDesired</a>
@@ -440,7 +469,9 @@
 <li>If the attr.appMetaData is given as nil, and an earlier version had non-nil appMetaData, then the nil appMetaData is ignored&ndash; i.e., the existing app meta data is not set to nil.</li>
 </ol>
 
-<p>The sharingGroupId for a series of files up until a sync() operation must be the same. If you want to change to dealing with a different sharing group, you must call sync().</p>
+<p>The sharingGroupUUID (in the <code><a href="../Structs/SyncAttributes.html">SyncAttributes</a></code>) for a series of files up until a sync() operation must be the same. If you want to change to dealing with a different sharing group, you must call sync().</p>
+
+<p>A single file (a single fileUUID) can only be stored in a single sharingGroupUUID. It is an error to attempt to upload the same fileUUID to a different sharingGroupUUID.</p>
 
 <p><code>Warning</code>: If you indicate that the mime type is <q>text/plain</q>, and you are using Google Drive and the text contains unusual characters, you may run into problems&ndash; e.g., downloading the files may fail.</p>
 
@@ -668,9 +699,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10SyncServerAAC4syncys5Int64V14sharingGroupId_tF"></a>
-                    <a name="//apple_ref/swift/Method/sync(sharingGroupId:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10SyncServerAAC4syncys5Int64V14sharingGroupId_tF">sync(sharingGroupId:)</a>
+                    <a name="/s:10SyncServerAAC18createSharingGroupySS07sharingE4UUID_SSSg0fE4NametKF"></a>
+                    <a name="//apple_ref/swift/Method/createSharingGroup(sharingGroupUUID:sharingGroupName:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC18createSharingGroupySS07sharingE4UUID_SSSg0fE4NametKF">createSharingGroup(sharingGroupUUID:sharingGroupName:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -678,7 +709,115 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>If no other <code>sync</code> is taking place, this will asynchronously do pending downloads, file uploads, and upload deletions for the given sharing group. If there is a <code>sync</code> currently taking place (for any sharing group), this closes the collection of uploads/deletions queued, and will wait until after the current sync is done, and try again.</p>
+                        <p>Enqueue sharing group creation operation. The current queue of upload operations must be empty (e.g., you must have done a sync operation).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">createSharingGroup</span><span class="p">(</span><span class="nv">sharingGroupUUID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">sharingGroupName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServerAAC18updateSharingGroupySS07sharingE4UUID_SS03newdE4NametKF"></a>
+                    <a name="//apple_ref/swift/Method/updateSharingGroup(sharingGroupUUID:newSharingGroupName:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC18updateSharingGroupySS07sharingE4UUID_SS03newdE4NametKF">updateSharingGroup(sharingGroupUUID:newSharingGroupName:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Enqueue request to update the given sharing group. If there is a sharing group update operation queued already (and unsynced), it will be removed and this will replace that. I.e., multiple sharing group updates result in the last update being applied.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">updateSharingGroup</span><span class="p">(</span><span class="nv">sharingGroupUUID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">newSharingGroupName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServerAAC22removeFromSharingGroupySS07sharingF4UUID_tKF"></a>
+                    <a name="//apple_ref/swift/Method/removeFromSharingGroup(sharingGroupUUID:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC22removeFromSharingGroupySS07sharingF4UUID_tKF">removeFromSharingGroup(sharingGroupUUID:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Enqueue request to remove the current user from the given sharing group. Since this is removing the user from the sharing group: (a) The current queue of upload operations must be empty (e.g., you must have done a sync operation), and (b) you must do a sync() operation immediately after this call. I.e., it&rsquo;s an error to queue further operations for the same sharing group.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">removeFromSharingGroup</span><span class="p">(</span><span class="nv">sharingGroupUUID</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServerAAC13sharingGroupsSayAB12SharingGroupVGvp"></a>
+                    <a name="//apple_ref/swift/Property/sharingGroups" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC13sharingGroupsSayAB12SharingGroupVGvp">sharingGroups</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The sharing groups that the user is currently a member of, and known to the server.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">sharingGroups</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/SyncServer/SharingGroup.html">SharingGroup</a></span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServerAAC4syncySS16sharingGroupUUID_tKF"></a>
+                    <a name="//apple_ref/swift/Method/sync(sharingGroupUUID:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC4syncySS16sharingGroupUUID_tKF">sync(sharingGroupUUID:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>If no other <code>sync</code> is taking place, this will asynchronously do pending downloads, file uploads, and upload deletions for the given sharing group. If there is a <code>sync</code> currently taking place (for any sharing group), this closes the collection of uploads/deletions queued (if any), and will wait until after the current sync is done, and try again.</p>
 
 <p>If a stopSync is currently pending, then this call will be ignored.</p>
 
@@ -689,7 +828,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">sync</span><span class="p">(</span><span class="nv">sharingGroupId</span><span class="p">:</span> <span class="kt">SharingGroupId</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">sync</span><span class="p">(</span><span class="nv">sharingGroupUUID</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span></code></pre>
 
                         </div>
                       </div>
@@ -709,7 +848,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Stop an ongoing sync operation. This will stop the operation at the next <q>natural</q> stopping point. E.g., after a next download completes. No effect if no ongoing sync operation. Any delayed sync is cancelled.</p>
+                        <p>Stop an ongoing sync operation. This will stop the operation at the next <q>natural</q> stopping point. E.g., after a next download completes. No effect if no ongoing sync operation. Any delayed sync(s) are cancelled.</p>
 
                       </div>
                       <div class="declaration">
@@ -800,9 +939,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10SyncServerAAC8getStatsys5Int64V14sharingGroupId_yAB0D0VSgc10completiontF"></a>
-                    <a name="//apple_ref/swift/Method/getStats(sharingGroupId:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10SyncServerAAC8getStatsys5Int64V14sharingGroupId_yAB0D0VSgc10completiontF">getStats(sharingGroupId:completion:)</a>
+                    <a name="/s:10SyncServerAAC8getStatsySS16sharingGroupUUID_yAB0D0VSgc10completiontF"></a>
+                    <a name="//apple_ref/swift/Method/getStats(sharingGroupUUID:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC8getStatsySS16sharingGroupUUID_yAB0D0VSgc10completiontF">getStats(sharingGroupUUID:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -817,7 +956,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getStats</span><span class="p">(</span><span class="nv">sharingGroupId</span><span class="p">:</span> <span class="kt">SharingGroupId</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span><span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Classes/SyncServer/Stats.html">Stats</a></span><span class="p">?)</span><span class="o">-&gt;</span><span class="p">())</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getStats</span><span class="p">(</span><span class="nv">sharingGroupUUID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span><span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Classes/SyncServer/Stats.html">Stats</a></span><span class="p">?)</span><span class="o">-&gt;</span><span class="p">())</span></code></pre>
 
                         </div>
                       </div>
@@ -1025,9 +1164,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10SyncServerAAC16consistencyCheckys5Int64V14sharingGroupId_SaySSG10localFilesSb6repairys5Error_pSgcSg10completiontF"></a>
-                    <a name="//apple_ref/swift/Method/consistencyCheck(sharingGroupId:localFiles:repair:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10SyncServerAAC16consistencyCheckys5Int64V14sharingGroupId_SaySSG10localFilesSb6repairys5Error_pSgcSg10completiontF">consistencyCheck(sharingGroupId:localFiles:repair:completion:)</a>
+                    <a name="/s:10SyncServerAAC16consistencyCheckySS16sharingGroupUUID_SaySSG10localFilesSb6repairys5Error_pSgcSg10completiontKF"></a>
+                    <a name="//apple_ref/swift/Method/consistencyCheck(sharingGroupUUID:localFiles:repair:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC16consistencyCheckySS16sharingGroupUUID_SaySSG10localFilesSb6repairys5Error_pSgcSg10completiontKF">consistencyCheck(sharingGroupUUID:localFiles:repair:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1042,7 +1181,38 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">consistencyCheck</span><span class="p">(</span><span class="nv">sharingGroupId</span><span class="p">:</span> <span class="kt">SharingGroupId</span><span class="p">,</span> <span class="nv">localFiles</span><span class="p">:[</span><span class="kt"><a href="../Other Typealiases.html#/s:10SyncServer10UUIDStringa">UUIDString</a></span><span class="p">],</span> <span class="nv">repair</span><span class="p">:</span><span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:((</span><span class="kt">Error</span><span class="p">?)</span><span class="o">-&gt;</span><span class="p">())?)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">consistencyCheck</span><span class="p">(</span><span class="nv">sharingGroupUUID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">localFiles</span><span class="p">:[</span><span class="kt"><a href="../Other Typealiases.html#/s:10SyncServer10UUIDStringa">UUIDString</a></span><span class="p">],</span> <span class="nv">repair</span><span class="p">:</span><span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:((</span><span class="kt">Error</span><span class="p">?)</span><span class="o">-&gt;</span><span class="p">())?)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServerAAC12SharingGroupV"></a>
+                    <a name="//apple_ref/swift/Struct/SharingGroup" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC12SharingGroupV">SharingGroup</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                        <a href="../Classes/SyncServer/SharingGroup.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">SharingGroup</span></code></pre>
 
                         </div>
                       </div>
@@ -1054,7 +1224,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/crspybits/SyncServer-iOSClient" target="_blank" rel="external">Spastic Muffin, LLC</a>. All rights reserved. (Last updated: 2018-07-28)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/crspybits/SyncServer-iOSClient" target="_blank" rel="external">Spastic Muffin, LLC</a>. All rights reserved. (Last updated: 2018-09-23)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

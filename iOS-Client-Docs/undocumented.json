@@ -78,6 +78,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/MiscTypes.swift",
+      "line": 59,
+      "symbol": "SyncServer.SharingGroup.permission",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SharingInvitation.swift",
       "line": 13,
       "symbol": "SharingInvitationDelegate",
@@ -283,7 +290,7 @@
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SignIn/GenericSignIn.swift",
       "line": 32,
-      "symbol": "UserActionNeeded.createSharingUser",
+      "symbol": "UserActionNeeded.createSharingUser(invitationCode:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
@@ -339,14 +346,14 @@
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SignIn/GenericSignIn.swift",
       "line": 42,
-      "symbol": "UserActionOccurred.sharingUserCreated",
+      "symbol": "UserActionOccurred.sharingUserCreated(sharingGroupUUID:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SignIn/GenericSignIn.swift",
       "line": 43,
-      "symbol": "UserActionOccurred.owningUserCreated",
+      "symbol": "UserActionOccurred.owningUserCreated(sharingGroupUUID:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
@@ -688,16 +695,9 @@
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServer.swift",
-      "line": 30,
+      "line": 35,
       "symbol": "SyncServer.backgroundTest",
       "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServer.swift",
-      "line": 876,
-      "symbol": "SyncServer.Stats.downloadDeletionsAvailable",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
@@ -745,7 +745,7 @@
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerConflict.swift",
       "line": 69,
-      "symbol": "ContentDownloadResolution.rejectContentDownload",
+      "symbol": "ContentDownloadResolution.rejectContentDownload(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
@@ -766,7 +766,7 @@
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerConflict.swift",
       "line": 74,
-      "symbol": "ServerContentType.file",
+      "symbol": "ServerContentType.file(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
@@ -801,7 +801,7 @@
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerConflict.swift",
       "line": 95,
-      "symbol": "ConflictingClientOperation.contentUpload",
+      "symbol": "ConflictingClientOperation.contentUpload(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
@@ -815,265 +815,279 @@
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
       "line": 17,
-      "symbol": "SyncEvent.willStartUploads",
+      "symbol": "SyncEvent.willStartUploads(numberContentUploads:numberUploadDeletions:numberSharingGroupOperatioms:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
       "line": 22,
-      "symbol": "SyncEvent.singleAppMetaDataUploadComplete",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
-      "line": 24,
-      "symbol": "SyncEvent.singleUploadDeletionComplete",
+      "symbol": "SyncEvent.singleAppMetaDataUploadComplete(fileUUID:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
       "line": 25,
-      "symbol": "SyncEvent.contentUploadsCompleted",
+      "symbol": "SyncEvent.singleUploadDeletionComplete(fileUUID:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
       "line": 26,
-      "symbol": "SyncEvent.uploadDeletionsCompleted",
+      "symbol": "SyncEvent.contentUploadsCompleted(numberOfFiles:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
-      "line": 28,
-      "symbol": "SyncEvent.syncDelayed",
+      "line": 27,
+      "symbol": "SyncEvent.uploadDeletionsCompleted(numberOfFiles:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
       "line": 29,
-      "symbol": "SyncEvent.syncStarted",
+      "symbol": "SyncEvent.SharingGroupUploadOperation",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
+      "line": 30,
+      "symbol": "SyncEvent.SharingGroupUploadOperation.creation",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
+      "line": 31,
+      "symbol": "SyncEvent.SharingGroupUploadOperation.userRemoval",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
+      "line": 32,
+      "symbol": "SyncEvent.SharingGroupUploadOperation.update",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
       "line": 34,
-      "symbol": "SyncEvent.syncDone",
+      "symbol": "SyncEvent.sharingGroupUploadOperationCompleted(sharingGroup:operation:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
       "line": 36,
-      "symbol": "SyncEvent.refreshingCredentials",
+      "symbol": "SyncEvent.syncDelayed",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
-      "line": 39,
-      "symbol": "SyncEvent.sharingGroups",
+      "line": 37,
+      "symbol": "SyncEvent.syncStarted",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
-      "line": 41,
-      "symbol": "SyncEvent.sharingGroupUploadOperationCompleted",
+      "line": 42,
+      "symbol": "SyncEvent.syncDone",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
       "line": 44,
+      "symbol": "SyncEvent.refreshingCredentials",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
+      "line": 47,
       "symbol": "EventDesired",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
-      "line": 48,
+      "line": 51,
       "symbol": "EventDesired.willStartDownloads",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
-      "line": 49,
+      "line": 52,
       "symbol": "EventDesired.willStartUploads",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
-      "line": 51,
+      "line": 54,
       "symbol": "EventDesired.singleFileUploadComplete",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
-      "line": 52,
+      "line": 55,
       "symbol": "EventDesired.singleAppMetaDataUploadComplete",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
-      "line": 53,
+      "line": 56,
       "symbol": "EventDesired.singleUploadDeletionComplete",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
-      "line": 54,
+      "line": 57,
       "symbol": "EventDesired.contentUploadsCompleted",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
-      "line": 55,
+      "line": 58,
       "symbol": "EventDesired.uploadDeletionsCompleted",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
-      "line": 57,
-      "symbol": "EventDesired.syncDelayed",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
-      "line": 58,
-      "symbol": "EventDesired.syncStarted",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
-      "line": 59,
-      "symbol": "EventDesired.syncDone",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
-      "line": 61,
-      "symbol": "EventDesired.syncStopping",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
-      "line": 63,
-      "symbol": "EventDesired.refreshingCredentials",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
-      "line": 64,
-      "symbol": "EventDesired.sharingGroups",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
-      "line": 66,
+      "line": 60,
       "symbol": "EventDesired.sharingGroupUploadOperationCompleted",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
+      "line": 62,
+      "symbol": "EventDesired.syncDelayed",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
+      "line": 63,
+      "symbol": "EventDesired.syncStarted",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
+      "line": 64,
+      "symbol": "EventDesired.syncDone",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
+      "line": 66,
+      "symbol": "EventDesired.syncStopping",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
       "line": 68,
+      "symbol": "EventDesired.refreshingCredentials",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
+      "line": 70,
       "symbol": "EventDesired.defaults",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
-      "line": 71,
+      "line": 73,
       "symbol": "EventDesired.all",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
-      "line": 129,
+      "line": 128,
       "symbol": "ServerVersion",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
-      "line": 130,
+      "line": 129,
       "symbol": "ServerVersion.rawValue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
-      "line": 170,
+      "line": 169,
       "symbol": "DownloadOperation",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
-      "line": 171,
+      "line": 170,
       "symbol": "DownloadOperation.OperationType",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
-      "line": 172,
+      "line": 171,
       "symbol": "DownloadOperation.OperationType.appMetaData",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
-      "line": 177,
+      "line": 176,
       "symbol": "DownloadOperation.OperationType.deletion",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
-      "line": 180,
+      "line": 179,
       "symbol": "DownloadOperation.type",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
-      "line": 181,
+      "line": 180,
       "symbol": "DownloadOperation.attr",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
-      "line": 195,
+      "line": 194,
       "symbol": "SyncServerDelegate.DownloadDeletionConflict",
       "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerDelegate.swift",
-      "line": 223,
+      "line": 225,
       "symbol": "SyncServerDelegate.syncServerErrorOccurred(error:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -1165,14 +1179,14 @@
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerError.swift",
       "line": 33,
-      "symbol": "SyncServerError.couldNotFindFileUUID",
+      "symbol": "SyncServerError.couldNotFindFileUUID(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerError.swift",
       "line": 34,
-      "symbol": "SyncServerError.versionForFileWasNil",
+      "symbol": "SyncServerError.versionForFileWasNil(fileUUUID:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
@@ -1270,14 +1284,14 @@
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerError.swift",
       "line": 48,
-      "symbol": "SyncServerError.jsonSerializationError",
+      "symbol": "SyncServerError.jsonSerializationError(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerError.swift",
       "line": 49,
-      "symbol": "SyncServerError.urlSessionError",
+      "symbol": "SyncServerError.urlSessionError(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
@@ -1291,7 +1305,7 @@
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerError.swift",
       "line": 51,
-      "symbol": "SyncServerError.non200StatusCode",
+      "symbol": "SyncServerError.non200StatusCode(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
@@ -1347,28 +1361,28 @@
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerError.swift",
       "line": 59,
-      "symbol": "SyncServerError.coreDataError",
+      "symbol": "SyncServerError.coreDataError(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerError.swift",
       "line": 60,
-      "symbol": "SyncServerError.otherError",
+      "symbol": "SyncServerError.otherError(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerError.swift",
       "line": 61,
-      "symbol": "SyncServerError.fileManagerError",
+      "symbol": "SyncServerError.fileManagerError(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerError.swift",
       "line": 62,
-      "symbol": "SyncServerError.generic",
+      "symbol": "SyncServerError.generic(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
@@ -1424,7 +1438,7 @@
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SyncServerUser.swift",
       "line": 64,
-      "symbol": "SyncServerUser.CheckForExistingUserResult.user",
+      "symbol": "SyncServerUser.CheckForExistingUserResult.user(accessToken:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     }

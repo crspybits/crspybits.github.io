@@ -14,7 +14,7 @@
     <a title="SyncServerDelegate Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">SyncServer Docs</a> (43% documented)</p>
+        <p><a href="../index.html">SyncServer Docs</a> (42% documented)</p>
         <p class="header-right"><a href="https://github.com/crspybits/SyncServer-iOSClient.git"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -35,9 +35,6 @@
                 <a href="../Classes/SyncServer.html">SyncServer</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/SyncServer/Stats.html">– Stats</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Classes/SyncServer/ResetType.html">– ResetType</a>
               </li>
               <li class="nav-group-task">
@@ -54,6 +51,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Enums/SyncEvent.html">SyncEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SyncEvent/SharingGroupUploadOperation.html">– SharingGroupUploadOperation</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/EventDesired.html">EventDesired</a>
@@ -237,9 +237,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10SyncServer0aB8DelegateP04syncB34MustResolveContentDownloadConflictyAA0bG4TypeO_AA0A10AttributesV010downloadedgK0AA0abI0CyAA0gH10ResolutionOG06uploadI0tF"></a>
+                    <a name="/s:10SyncServer0aB8DelegateP04syncB34MustResolveContentDownloadConflict_010downloadedG10Attributes06uploadI0yAA0bG4TypeO_AA0aK0VAA0abI0CyAA0gH10ResolutionOGtF"></a>
                     <a name="//apple_ref/swift/Method/syncServerMustResolveContentDownloadConflict(_:downloadedContentAttributes:uploadConflict:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10SyncServer0aB8DelegateP04syncB34MustResolveContentDownloadConflictyAA0bG4TypeO_AA0A10AttributesV010downloadedgK0AA0abI0CyAA0gH10ResolutionOG06uploadI0tF">syncServerMustResolveContentDownloadConflict(_:downloadedContentAttributes:uploadConflict:)</a>
+                    <a class="token" href="#/s:10SyncServer0aB8DelegateP04syncB34MustResolveContentDownloadConflict_010downloadedG10Attributes06uploadI0yAA0bG4TypeO_AA0aK0VAA0abI0CyAA0gH10ResolutionOGtF">syncServerMustResolveContentDownloadConflict(_:downloadedContentAttributes:uploadConflict:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -294,9 +294,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10SyncServer0aB8DelegateP04syncB36MustResolveDownloadDeletionConflictsySayAA0A10AttributesV08downloadH0_AA0aB8ConflictCyAA0gH10ResolutionOG06uploadL0tG9conflicts_tF"></a>
+                    <a name="/s:10SyncServer0aB8DelegateP04syncB36MustResolveDownloadDeletionConflicts9conflictsySayAA0A10AttributesV08downloadH0_AA0aB8ConflictCyAA0gH10ResolutionOG06uploadM0tG_tF"></a>
                     <a name="//apple_ref/swift/Method/syncServerMustResolveDownloadDeletionConflicts(conflicts:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10SyncServer0aB8DelegateP04syncB36MustResolveDownloadDeletionConflictsySayAA0A10AttributesV08downloadH0_AA0aB8ConflictCyAA0gH10ResolutionOG06uploadL0tG9conflicts_tF">syncServerMustResolveDownloadDeletionConflicts(conflicts:)</a>
+                    <a class="token" href="#/s:10SyncServer0aB8DelegateP04syncB36MustResolveDownloadDeletionConflicts9conflictsySayAA0A10AttributesV08downloadH0_AA0aB8ConflictCyAA0gH10ResolutionOG06uploadM0tG_tF">syncServerMustResolveDownloadDeletionConflicts(conflicts:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -327,9 +327,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10SyncServer0aB8DelegateP04syncB25FileGroupDownloadCompleteySayAA0G9OperationVG5group_tF"></a>
+                    <a name="/s:10SyncServer0aB8DelegateP04syncB25FileGroupDownloadComplete5groupySayAA0G9OperationVG_tF"></a>
                     <a name="//apple_ref/swift/Method/syncServerFileGroupDownloadComplete(group:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10SyncServer0aB8DelegateP04syncB25FileGroupDownloadCompleteySayAA0G9OperationVG5group_tF">syncServerFileGroupDownloadComplete(group:)</a>
+                    <a class="token" href="#/s:10SyncServer0aB8DelegateP04syncB25FileGroupDownloadComplete5groupySayAA0G9OperationVG_tF">syncServerFileGroupDownloadComplete(group:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -364,9 +364,36 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10SyncServer0aB8DelegateP04syncB13ErrorOccurredyAA0abE0O5error_tF"></a>
+                    <a name="/s:10SyncServer0aB8DelegateP04syncB23SharingGroupsDownloaded7created7updated7deletedySayA2AC0E5GroupVG_A2KtF"></a>
+                    <a name="//apple_ref/swift/Method/syncServerSharingGroupsDownloaded(created:updated:deleted:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServer0aB8DelegateP04syncB23SharingGroupsDownloaded7created7updated7deletedySayA2AC0E5GroupVG_A2KtF">syncServerSharingGroupsDownloaded(created:updated:deleted:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Called when sharing group operations occur because of downloads (i.e., changes by other users). <code>updated</code> has the specific meaning that SyncServer <code>updateSharingGroup</code> was performed by another app. <code>syncNeeded</code> in sharing groups will be nil.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">syncServerSharingGroupsDownloaded</span><span class="p">(</span><span class="nv">created</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/SyncServer.html">SyncServer</a></span><span class="o">.</span><span class="kt">SharingGroup</span><span class="p">],</span> <span class="nv">updated</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/SyncServer.html">SyncServer</a></span><span class="o">.</span><span class="kt">SharingGroup</span><span class="p">],</span> <span class="nv">deleted</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/SyncServer.html">SyncServer</a></span><span class="o">.</span><span class="kt">SharingGroup</span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServer0aB8DelegateP04syncB13ErrorOccurred5erroryAA0abE0O_tF"></a>
                     <a name="//apple_ref/swift/Method/syncServerErrorOccurred(error:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10SyncServer0aB8DelegateP04syncB13ErrorOccurredyAA0abE0O5error_tF">syncServerErrorOccurred(error:)</a>
+                    <a class="token" href="#/s:10SyncServer0aB8DelegateP04syncB13ErrorOccurred5erroryAA0abE0O_tF">syncServerErrorOccurred(error:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -390,9 +417,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10SyncServer0aB8DelegateP04syncB13EventOccurredyAA0aE0O5event_tF"></a>
+                    <a name="/s:10SyncServer0aB8DelegateP04syncB13EventOccurred5eventyAA0aE0O_tF"></a>
                     <a name="//apple_ref/swift/Method/syncServerEventOccurred(event:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10SyncServer0aB8DelegateP04syncB13EventOccurredyAA0aE0O5event_tF">syncServerEventOccurred(event:)</a>
+                    <a class="token" href="#/s:10SyncServer0aB8DelegateP04syncB13EventOccurred5eventyAA0aE0O_tF">syncServerEventOccurred(event:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -419,7 +446,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/crspybits/SyncServer-iOSClient" target="_blank" rel="external">Spastic Muffin, LLC</a>. All rights reserved. (Last updated: 2018-09-23)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/crspybits/SyncServer-iOSClient" target="_blank" rel="external">Spastic Muffin, LLC</a>. All rights reserved. (Last updated: 2018-10-14)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

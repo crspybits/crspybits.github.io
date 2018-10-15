@@ -121,6 +121,10 @@
           <li>Support for sharing groups: A collection of users and the files being shared amongst those users.</li>
           <li>Each user that has cloud storage (e.g., Dropbox, or Google Drive), in a sharing group, uploads new files to their <em>own</em> cloud storage, but those files are all shared amongst the users of the sharing group.
           </li>
+          <li><a href="https://github.com/crspybits/SyncServerII/issues/27">
+            A user can be a member of multiple sharing groups.</a>
+          </li>
+
           <li>Builds of releases of the server are published to <a href="https://hub.docker.com/r/crspybits/syncserver-runner/">hub.docker</a>.</li>
           <li>An example server is currently running on the AWS Elastic Beanstalk, 
               supporting the <a href="http://github.com/crspybits/SharedImages">SharedImages</a> iPhone/iPad app</li>
@@ -214,8 +218,9 @@
               <div>
                 <p style="margin-left: 1em">
                   Sharing is a key element in the design of SyncServer: It enables groups of users to share files.
-                  An initial user implicitly creates a sharing group by creating an account on a SyncServer-based app -- using their cloud storage system credentials (e.g., Google Drive or Dropbox).
+                  An initial owning user implicitly creates a sharing group by creating an account on a SyncServer-based app -- using their cloud storage system credentials (e.g., Google Drive or Dropbox).
                   This initial user must be an <em>owning</em> user because they own the files they upload to the cloud storage system.
+                  Owning users are able to create new sharing groups; sharing users are not able to create new sharing groups.
                 </p>
                 <p style="margin-left: 1em">
                   Other users can then be invited to the sharing group with specific permissions: read, write, or admin.
@@ -230,7 +235,8 @@
                 <p style="margin-left: 1em">
                   The figure above depicts a sharing group.
                   Note that all access to cloud storage is routed through the SyncServerII server, which controls the access that others have to any single users cloud storage.
-                  That is, I only grant the sharing group access to specific files in my cloud storage, and only with specific permissions.
+                  That is, I only grant the sharing group access to specific files in my cloud storage. 
+                  Each user in that sharing group has access rights to the files in that sharing group granted through their invitation permissions to the sharing group; other users have no access to files in that sharing group.
                 </p>
               </div>
 
@@ -279,15 +285,15 @@
                   Clients are responsible for creating these fileGroupUUID's and giving them to the client interface.
               </p>
 
-              <li><a id="SHARING_GROUP"></a>Sharing Groups and sharingGroupId's</li>
+              <li><a id="SHARING_GROUP"></a>Sharing Groups and sharingGroupUUID's</li>
               <p style="margin-left: 1em">
                 Sharing groups represent collections of files and users.
-                Currently (as of 7/30/18), each user can be in a single sharing group (<a href="https://github.com/crspybits/SyncServerII/issues/27">though that is planned to change</a>).
-                Also, each file can be in a single sharing group.
+                Each user can be a member of multiple single sharing groups.
+                Each file can be in a single sharing group.
                 Sharing groups are intended as larger collections of files than file groups represented with fileGroupUUID's.
               </p>
               <p style="margin-left: 1em">
-                  Sharing Groups are uniquely referenced by identifiers assigned by the server called <em>sharingGroupId</em>'s.
+                  Sharing Groups are uniquely referenced by UUID's assigned by clients called <em>sharingGroupUUID's</em>'s.
               </p>
 
             <li>Optimistic Synchronization and the Master Version</li>
@@ -313,7 +319,7 @@
               <p style="margin-left: 1em">
                 The left panel of the above figure depicts a successful exchange between the client app and the SyncServerII server-- the client knows the exact value of the current master version for the sharing group.
                 The right panel of the above figure depicts an unsuccessful exchange between the client app and the SyncServerII server-- the client's value for the master version is out of date.
-                Note that in the case of an unsuccessful exchange, the client can still perform certain server requests -- for example, the client can do a FileIndex endpoint request to get (a) the current master version value, and (b) the file meta data (<em>not</em> the appMetaData) for the current collection of files in the file sharing group (e.g., fileUUID's, and file versions.
+                Note that in the case of an unsuccessful exchange, the client can still perform certain server requests -- for example, the client can do an Index endpoint request to get (a) the current master version value, and (b) the file meta data (<em>not</em> the appMetaData) for the current collection of files in a file sharing group (e.g., fileUUID's, and file versions).
               </p>   
 
             <li>Privacy, Safety, &amp; Security</li>
@@ -524,8 +530,6 @@ func syncServerMustResolveDownloadDeletionConflicts(
       <div class="row row-striped padded">
         <h2>Current Limitations</h2>
         <ul>
-          <li><a href="https://github.com/crspybits/SyncServerII/issues/27">
-            A user can only be a member of a single sharing group.</a></li>
           <li><a href="https://github.com/crspybits/SyncServer-iOSClient/issues/30">
             System is sensitive to user changing files or file names in cloud storage.</a>
             <a href="https://github.com/crspybits/SyncServerII/issues/63">File checksums are needed along with perhaps some other robustness changes.</a>

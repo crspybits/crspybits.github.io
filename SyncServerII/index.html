@@ -534,11 +534,16 @@ func syncServerMustResolveDownloadDeletionConflicts(
             System is sensitive to user changing files or file names in cloud storage.</a>
             <a href="https://github.com/crspybits/SyncServerII/issues/63">File checksums are needed along with perhaps some other robustness changes.</a>
           </li>
+
+          <li id="TEMPORARY-DOWNLOAD">All upload and download data is processed through the server.</li>
+          While this provides safety, so that clients only get access to the files that are supposed to be shared, it does load the server with data traffic.
+          It may be possible, at least for downloads, to enable clients to directly download from cloud storage, <em>without compromising safety</em>. For example, <a href="https://www.dropbox.com/developers/documentation/http/documentation#files-get_temporary_link">Dropbox's get temporary link</a> allows for four hours of downloading of a file. (However, it appears that Google Drive API V3 only allows for permanent download links to files, <a href="https://stackoverflow.com/questions/48921493/how-to-generate-temporary-download-link-for-file-with-google-drive-api">not temporary links</a>; see <a href="https://developers.google.com/drive/api/v3/reference/files">webContentLink</a>-- though I'm not sure if that needs an access token).
+
           <li>No streaming or chunking of file uploads/downloads</li>
             This will presumably result in file size limitations and/or performance limitations with the server.
           <li>Cryptic file names in cloud storage.</li>
             It would be good to have an <a href="https://github.com/crspybits/SyncServerII/issues/68">index.html</a> file that could let the users see the purpose of the files in some organized manner.
-          <li>Limited background file uploading/downloading</li>
+          <li>Limited client background file uploading/downloading</li>
             Currently, the iOS Client will only continue downloading or uploading a single file if the user puts the client app into the background. 
           <li><a href="https://github.com/crspybits/SyncServer-iOSClient/issues/45">Practically limited numbers of files in sharing groups</a></li>
             Currently, when a user joins a sharing group (or a recovery operation is carried out) the SyncServer iOS client downloads all files for that sharing group at once to the mobile device.

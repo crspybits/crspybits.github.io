@@ -871,9 +871,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10SyncServerAAC13getAttributes7forUUIDAA0aD0VSS_tKF"></a>
-                    <a name="//apple_ref/swift/Method/getAttributes(forUUID:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10SyncServerAAC13getAttributes7forUUIDAA0aD0VSS_tKF">getAttributes(forUUID:)</a>
+                    <a name="/s:10SyncServerAAC13getAttributes11forFileUUIDAA0aD0VSS_tKF"></a>
+                    <a name="//apple_ref/swift/Method/getAttributes(forFileUUID:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC13getAttributes11forFileUUIDAA0aD0VSS_tKF">getAttributes(forFileUUID:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -881,14 +881,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Operates synchronously and quickly. A file must have already been uploaded (or downloaded) for you to be able to get its attributes. It is an error to call this for a uuid that doesn&rsquo;t yet exist, or for one that has already been deleted.</p>
+                        <p>Operates synchronously and quickly. A file must have already been uploaded (or downloaded) for you to be able to get its attributes. It is an error to call this for a file UUID that doesn&rsquo;t yet exist, or for one that has already been deleted.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getAttributes</span><span class="p">(</span><span class="n">forUUID</span> <span class="nv">uuid</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/SyncAttributes.html">SyncAttributes</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getAttributes</span><span class="p">(</span><span class="n">forFileUUID</span> <span class="nv">fileUUID</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/SyncAttributes.html">SyncAttributes</a></span></code></pre>
 
                         </div>
                       </div>
@@ -899,7 +899,7 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>forUUID</em>
+                                <em>forFileUUID</em>
                                 </code>
                               </td>
                               <td>
@@ -910,6 +910,33 @@
                             </tr>
                           </tbody>
                         </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10SyncServerAAC15requestDownload11forFileUUIDySS_tKF"></a>
+                    <a name="//apple_ref/swift/Method/requestDownload(forFileUUID:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC15requestDownload11forFileUUIDySS_tKF">requestDownload(forFileUUID:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Use this to request the re-download of a file, on a subsequent sync with the relevant sharing group UUID. E.g., for when a file could not be read due to some kind of corruption. Requests to download a file that is already <code>gone</code> are ignored. Use the <code>reAttemptGoneDownloads</code> flag of the sync method instead. Note that this is a <q>request</q> for download because normal sync operations can take priority. E.g., it is possible that the file might be deleted by a server download deletion before this request gets a chance to operate.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">requestDownload</span><span class="p">(</span><span class="n">forFileUUID</span> <span class="nv">fileUUID</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -1156,7 +1183,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/crspybits/SyncServer-iOSClient" target="_blank" rel="external">Spastic Muffin, LLC</a>. All rights reserved. (Last updated: 2018-11-18)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/crspybits/SyncServer-iOSClient" target="_blank" rel="external">Spastic Muffin, LLC</a>. All rights reserved. (Last updated: 2018-11-25)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

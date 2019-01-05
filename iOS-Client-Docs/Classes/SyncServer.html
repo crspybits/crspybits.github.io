@@ -14,7 +14,7 @@
     <a title="SyncServer Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">SyncServer Docs</a> (43% documented)</p>
+        <p><a href="../index.html">SyncServer Docs</a> (44% documented)</p>
         <p class="header-right"><a href="https://github.com/crspybits/SyncServer-iOSClient.git"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -224,7 +224,7 @@
             <h1>SyncServer</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">SyncServer</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">SyncServer</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                 </div>
               </div>
@@ -237,9 +237,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10SyncServerAAC7sessionABvpZ"></a>
+                    <a name="/c:@M@SyncServer@objc(cs)SyncServer(cpy)session"></a>
                     <a name="//apple_ref/swift/Variable/session" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10SyncServerAAC7sessionABvpZ">session</a>
+                    <a class="token" href="#/c:@M@SyncServer@objc(cs)SyncServer(cpy)session">session</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -264,9 +264,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10SyncServerAAC14backgroundTest9SMCoreLib17SMPersistItemBoolCvpZ"></a>
+                    <a name="/c:@M@SyncServer@objc(cs)SyncServer(cpy)backgroundTest"></a>
                     <a name="//apple_ref/swift/Variable/backgroundTest" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10SyncServerAAC14backgroundTest9SMCoreLib17SMPersistItemBoolCvpZ">backgroundTest</a>
+                    <a class="token" href="#/c:@M@SyncServer@objc(cs)SyncServer(cpy)backgroundTest">backgroundTest</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -344,9 +344,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10SyncServerAAC14appLaunchSetup04withB3URL15cloudFolderName07minimumB7Versiony10Foundation0G0V_SSSgAA0bL0VSgtF"></a>
-                    <a name="//apple_ref/swift/Method/appLaunchSetup(withServerURL:cloudFolderName:minimumServerVersion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10SyncServerAAC14appLaunchSetup04withB3URL15cloudFolderName07minimumB7Versiony10Foundation0G0V_SSSgAA0bL0VSgtF">appLaunchSetup(withServerURL:cloudFolderName:minimumServerVersion:)</a>
+                    <a name="/s:10SyncServerAAC14appLaunchSetup04withB3URL15cloudFolderName07minimumB7Version015failoverMessageG0y10Foundation0G0V_SSSgAA0bL0VSgAJSgtF"></a>
+                    <a name="//apple_ref/swift/Method/appLaunchSetup(withServerURL:cloudFolderName:minimumServerVersion:failoverMessageURL:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10SyncServerAAC14appLaunchSetup04withB3URL15cloudFolderName07minimumB7Version015failoverMessageG0y10Foundation0G0V_SSSgAA0bL0VSgAJSgtF">appLaunchSetup(withServerURL:cloudFolderName:minimumServerVersion:failoverMessageURL:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -361,7 +361,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">appLaunchSetup</span><span class="p">(</span><span class="n">withServerURL</span> <span class="nv">serverURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="nv">cloudFolderName</span><span class="p">:</span><span class="kt">String</span><span class="p">?,</span> <span class="nv">minimumServerVersion</span><span class="p">:</span><span class="kt"><a href="../Structs/ServerVersion.html">ServerVersion</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">appLaunchSetup</span><span class="p">(</span><span class="n">withServerURL</span> <span class="nv">serverURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="nv">cloudFolderName</span><span class="p">:</span><span class="kt">String</span><span class="p">?,</span> <span class="nv">minimumServerVersion</span><span class="p">:</span><span class="kt"><a href="../Structs/ServerVersion.html">ServerVersion</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">failoverMessageURL</span><span class="p">:</span><span class="kt">URL</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -405,6 +405,18 @@
                                 </div>
                               </td>
                             </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failoverMessageURL</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optional URL on which to do a GET for a message if the server fails, to show a message to the user.</p>
+                                </div>
+                              </td>
+                            </tr>
                           </tbody>
                         </table>
                       </div>
@@ -414,9 +426,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10SyncServerAAC11application_35handleEventsForBackgroundURLSession17completionHandlerySo13UIApplicationC_SSyyctF"></a>
+                    <a name="/c:@M@SyncServer@objc(cs)SyncServer(im)application:handleEventsForBackgroundURLSession:completionHandler:"></a>
                     <a name="//apple_ref/swift/Method/application(_:handleEventsForBackgroundURLSession:completionHandler:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10SyncServerAAC11application_35handleEventsForBackgroundURLSession17completionHandlerySo13UIApplicationC_SSyyctF">application(_:handleEventsForBackgroundURLSession:completionHandler:)</a>
+                    <a class="token" href="#/c:@M@SyncServer@objc(cs)SyncServer(im)application:handleEventsForBackgroundURLSession:completionHandler:">application(_:handleEventsForBackgroundURLSession:completionHandler:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -601,9 +613,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10SyncServerAAC6delete12fileWithUUIDySS_tKF"></a>
+                    <a name="/c:@M@SyncServer@objc(cs)SyncServer(im)deleteWithFileWithUUID:error:"></a>
                     <a name="//apple_ref/swift/Method/delete(fileWithUUID:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10SyncServerAAC6delete12fileWithUUIDySS_tKF">delete(fileWithUUID:)</a>
+                    <a class="token" href="#/c:@M@SyncServer@objc(cs)SyncServer(im)deleteWithFileWithUUID:error:">delete(fileWithUUID:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -653,9 +665,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10SyncServerAAC6delete14filesWithUUIDsySaySSG_tKF"></a>
+                    <a name="/c:@M@SyncServer@objc(cs)SyncServer(im)deleteWithFilesWithUUIDs:error:"></a>
                     <a name="//apple_ref/swift/Method/delete(filesWithUUIDs:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10SyncServerAAC6delete14filesWithUUIDsySaySSG_tKF">delete(filesWithUUIDs:)</a>
+                    <a class="token" href="#/c:@M@SyncServer@objc(cs)SyncServer(im)deleteWithFilesWithUUIDs:error:">delete(filesWithUUIDs:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -699,9 +711,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10SyncServerAAC18createSharingGroup07sharingE4UUID0fE4NameySS_SSSgtKF"></a>
+                    <a name="/c:@M@SyncServer@objc(cs)SyncServer(im)createSharingGroupWithSharingGroupUUID:sharingGroupName:error:"></a>
                     <a name="//apple_ref/swift/Method/createSharingGroup(sharingGroupUUID:sharingGroupName:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10SyncServerAAC18createSharingGroup07sharingE4UUID0fE4NameySS_SSSgtKF">createSharingGroup(sharingGroupUUID:sharingGroupName:)</a>
+                    <a class="token" href="#/c:@M@SyncServer@objc(cs)SyncServer(im)createSharingGroupWithSharingGroupUUID:sharingGroupName:error:">createSharingGroup(sharingGroupUUID:sharingGroupName:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -726,9 +738,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10SyncServerAAC18updateSharingGroup07sharingE4UUID03newdE4NameySS_SStKF"></a>
+                    <a name="/c:@M@SyncServer@objc(cs)SyncServer(im)updateSharingGroupWithSharingGroupUUID:newSharingGroupName:error:"></a>
                     <a name="//apple_ref/swift/Method/updateSharingGroup(sharingGroupUUID:newSharingGroupName:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10SyncServerAAC18updateSharingGroup07sharingE4UUID03newdE4NameySS_SStKF">updateSharingGroup(sharingGroupUUID:newSharingGroupName:)</a>
+                    <a class="token" href="#/c:@M@SyncServer@objc(cs)SyncServer(im)updateSharingGroupWithSharingGroupUUID:newSharingGroupName:error:">updateSharingGroup(sharingGroupUUID:newSharingGroupName:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -753,9 +765,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10SyncServerAAC22removeFromSharingGroup07sharingF4UUIDySS_tKF"></a>
+                    <a name="/c:@M@SyncServer@objc(cs)SyncServer(im)removeFromSharingGroupWithSharingGroupUUID:error:"></a>
                     <a name="//apple_ref/swift/Method/removeFromSharingGroup(sharingGroupUUID:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10SyncServerAAC22removeFromSharingGroup07sharingF4UUIDySS_tKF">removeFromSharingGroup(sharingGroupUUID:)</a>
+                    <a class="token" href="#/c:@M@SyncServer@objc(cs)SyncServer(im)removeFromSharingGroupWithSharingGroupUUID:error:">removeFromSharingGroup(sharingGroupUUID:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -771,6 +783,33 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">removeFromSharingGroup</span><span class="p">(</span><span class="nv">sharingGroupUUID</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@SyncServer@objc(cs)SyncServer(py)uploadsPending"></a>
+                    <a name="//apple_ref/swift/Property/uploadsPending" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@SyncServer@objc(cs)SyncServer(py)uploadsPending">uploadsPending</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Are there operation uploads pending? Pending uploads are those that were enqueued and committed with a sync. This includes file uploads, groups, and deletions.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">uploadsPending</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -807,9 +846,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10SyncServerAAC4sync16sharingGroupUUID22reAttemptGoneDownloadsySSSg_SbtKF"></a>
+                    <a name="/c:@M@SyncServer@objc(cs)SyncServer(im)syncWithSharingGroupUUID:reAttemptGoneDownloads:error:"></a>
                     <a name="//apple_ref/swift/Method/sync(sharingGroupUUID:reAttemptGoneDownloads:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10SyncServerAAC4sync16sharingGroupUUID22reAttemptGoneDownloadsySSSg_SbtKF">sync(sharingGroupUUID:reAttemptGoneDownloads:)</a>
+                    <a class="token" href="#/c:@M@SyncServer@objc(cs)SyncServer(im)syncWithSharingGroupUUID:reAttemptGoneDownloads:error:">sync(sharingGroupUUID:reAttemptGoneDownloads:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -826,6 +865,8 @@
 <p>2) If you give a nil-sharingGroupUUID, only synchronizes the <code><a href="../Classes/SyncServer.html#/s:10SyncServerAAC13sharingGroupsSayAB12SharingGroupVGvp">sharingGroups</a></code> property. Doesn&rsquo;t do pending downloads or uploads etc. And doesn&rsquo;t close a collection of queued operations (reAttemptGoneDownloads ignored in this case).</p>
 
 <p>If a stopSync is currently pending, then this call will be ignored.</p>
+
+<p>If there is no network connection, the sync will be attempted next time the app is in the foreground and there is a network connection.</p>
 
 <p>Non-blocking in all cases.</p>
 
@@ -844,9 +885,36 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10SyncServerAAC04stopA0yyF"></a>
+                    <a name="/c:@M@SyncServer@objc(cs)SyncServer(py)isSyncing"></a>
+                    <a name="//apple_ref/swift/Property/isSyncing" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@SyncServer@objc(cs)SyncServer(py)isSyncing">isSyncing</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Is there a <code>sync</code> operation in progress?</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isSyncing</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@SyncServer@objc(cs)SyncServer(im)stopSync"></a>
                     <a name="//apple_ref/swift/Method/stopSync()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10SyncServerAAC04stopA0yyF">stopSync()</a>
+                    <a class="token" href="#/c:@M@SyncServer@objc(cs)SyncServer(im)stopSync">stopSync()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -917,9 +985,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10SyncServerAAC15requestDownload11forFileUUIDySS_tKF"></a>
+                    <a name="/c:@M@SyncServer@objc(cs)SyncServer(im)requestDownloadForFileUUID:error:"></a>
                     <a name="//apple_ref/swift/Method/requestDownload(forFileUUID:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10SyncServerAAC15requestDownload11forFileUUIDySS_tKF">requestDownload(forFileUUID:)</a>
+                    <a class="token" href="#/c:@M@SyncServer@objc(cs)SyncServer(im)requestDownloadForFileUUID:error:">requestDownload(forFileUUID:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1022,9 +1090,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10SyncServerAAC14logAllTracking10completionyyycSg_tF"></a>
+                    <a name="/c:@M@SyncServer@objc(cs)SyncServer(im)logAllTrackingWithCompletion:"></a>
                     <a name="//apple_ref/swift/Method/logAllTracking(completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10SyncServerAAC14logAllTracking10completionyyycSg_tF">logAllTracking(completion:)</a>
+                    <a class="token" href="#/c:@M@SyncServer@objc(cs)SyncServer(im)logAllTrackingWithCompletion:">logAllTracking(completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1123,9 +1191,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10SyncServerAAC16consistencyCheck16sharingGroupUUID10localFiles6repair10completionySS_SaySSGSbys5Error_pSgcSgtKF"></a>
+                    <a name="/c:@M@SyncServer@objc(cs)SyncServer(im)consistencyCheckWithSharingGroupUUID:localFiles:repair:error:completion:"></a>
                     <a name="//apple_ref/swift/Method/consistencyCheck(sharingGroupUUID:localFiles:repair:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10SyncServerAAC16consistencyCheck16sharingGroupUUID10localFiles6repair10completionySS_SaySSGSbys5Error_pSgcSgtKF">consistencyCheck(sharingGroupUUID:localFiles:repair:completion:)</a>
+                    <a class="token" href="#/c:@M@SyncServer@objc(cs)SyncServer(im)consistencyCheckWithSharingGroupUUID:localFiles:repair:error:completion:">consistencyCheck(sharingGroupUUID:localFiles:repair:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1183,7 +1251,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/crspybits/SyncServer-iOSClient" target="_blank" rel="external">Spastic Muffin, LLC</a>. All rights reserved. (Last updated: 2018-11-25)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/crspybits/SyncServer-iOSClient" target="_blank" rel="external">Spastic Muffin, LLC</a>. All rights reserved. (Last updated: 2019-01-05)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

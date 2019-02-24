@@ -846,9 +846,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@SyncServer@objc(cs)SyncServer(im)syncWithSharingGroupUUID:reAttemptGoneDownloads:error:"></a>
-                    <a name="//apple_ref/swift/Method/sync(sharingGroupUUID:reAttemptGoneDownloads:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@SyncServer@objc(cs)SyncServer(im)syncWithSharingGroupUUID:reAttemptGoneDownloads:error:">sync(sharingGroupUUID:reAttemptGoneDownloads:)</a>
+                    <a name="/c:@M@SyncServer@objc(cs)SyncServer(im)syncWithSharingGroupUUID:reAttemptGoneDownloads:pushNotificationMessage:error:"></a>
+                    <a name="//apple_ref/swift/Method/sync(sharingGroupUUID:reAttemptGoneDownloads:pushNotificationMessage:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@SyncServer@objc(cs)SyncServer(im)syncWithSharingGroupUUID:reAttemptGoneDownloads:pushNotificationMessage:error:">sync(sharingGroupUUID:reAttemptGoneDownloads:pushNotificationMessage:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -860,6 +860,8 @@
 
 <p>1) If you give a non-nil sharingGroupUUID, if no other <code>sync</code> is taking place, this will asynchronously do pending downloads, file uploads, and upload deletions for the given sharing group. If there is a <code>sync</code> currently taking place (for any sharing group), this closes the collection of uploads/deletions queued (if any) for the sharingGroupUUID, and will wait until after the current sync is done, and try again. Also synchronizes the <code><a href="../Classes/SyncServer.html#/s:10SyncServerAAC13sharingGroupsSayAB12SharingGroupVGvp">sharingGroups</a></code> property with the server.</p>
 <pre class="highlight swift"><code><span class="kt">In</span> <span class="n">this</span> <span class="k">case</span> <span class="n">you</span> <span class="n">can</span> <span class="n">also</span> <span class="n">give</span> <span class="n">reAttemptGoneDownloads</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="n">which</span> <span class="n">will</span> <span class="n">reattempt</span> <span class="n">downloads</span> <span class="k">for</span> <span class="n">files</span> <span class="n">previously</span> <span class="n">marked</span> <span class="k">as</span> <span class="n">gone</span><span class="o">.</span> <span class="kt">See</span> <span class="kt">SyncAttributes</span><span class="o">.</span>
+
+<span class="kt">You</span> <span class="n">can</span> <span class="n">also</span> <span class="n">give</span> <span class="n">pushNotificationMessage</span> <span class="k">in</span> <span class="n">this</span> <span class="k">case</span><span class="p">,</span> <span class="n">which</span> <span class="n">will</span> <span class="n">be</span> <span class="n">sent</span> <span class="n">to</span> <span class="n">all</span> <span class="n">other</span> <span class="n">users</span> <span class="k">in</span> <span class="n">the</span> <span class="n">sharing</span> <span class="n">group</span> <span class="k">as</span> <span class="n">a</span> <span class="n">push</span> <span class="n">notification</span><span class="o">.</span>
 </code></pre>
 
 <p>2) If you give a nil-sharingGroupUUID, only synchronizes the <code><a href="../Classes/SyncServer.html#/s:10SyncServerAAC13sharingGroupsSayAB12SharingGroupVGvp">sharingGroups</a></code> property. Doesn&rsquo;t do pending downloads or uploads etc. And doesn&rsquo;t close a collection of queued operations (reAttemptGoneDownloads ignored in this case).</p>
@@ -875,7 +877,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">sync</span><span class="p">(</span><span class="nv">sharingGroupUUID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">reAttemptGoneDownloads</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">sync</span><span class="p">(</span><span class="nv">sharingGroupUUID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">reAttemptGoneDownloads</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="nv">pushNotificationMessage</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="k">throws</span></code></pre>
 
                         </div>
                       </div>
@@ -1251,7 +1253,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/crspybits/SyncServer-iOSClient" target="_blank" rel="external">Spastic Muffin, LLC</a>. All rights reserved. (Last updated: 2019-01-05)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/crspybits/SyncServer-iOSClient" target="_blank" rel="external">Spastic Muffin, LLC</a>. All rights reserved. (Last updated: 2019-02-24)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

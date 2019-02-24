@@ -103,6 +103,7 @@
             <h3><a href="#GOOGLE">Using Google Drive and Google Sign-In (optional)</a></h3>
             <h3><a href="#FACEBOOK">Using Facebook Sign-In (optional)</a></h3>
             <h3><a href="#DROPBOX">Using Dropbox Sign-In (optional)</a></h3>
+            <h3><a href="#AWSSNS">Using AWS SNS for Push Notifications (optional)</a></h3>
             <h3><a href="#FURTHERREADING">Further Reading &amp; Viewing</a></h3>
         </ul>
       </div>
@@ -130,6 +131,8 @@
           <li>Builds of releases of the server are published to <a href="https://hub.docker.com/r/crspybits/syncserver-runner/">hub.docker</a>.</li>
           <li>An example server is currently running on the AWS Elastic Beanstalk, 
               supporting the <a href="http://github.com/crspybits/SharedImages">SharedImages</a> iPhone/iPad app</li>
+
+          <li>Push notifications can be sent using AWS SNS</li>
 
           <li>Repos for this system are:</li>
             <ul>
@@ -830,6 +833,43 @@ func syncServerMustResolveDownloadDeletionConflicts(
             To do this, use <a href="https://www.dropbox.com/developers/apps">this Dropbox link</a>. The <a href="https://github.com/dropbox/SwiftyDropbox#get-started">more general Dropbox docs are here</a>.
           <li>Configure your project</li>
           You will need to then follow the steps under "Configure your project" in the <a href="https://github.com/dropbox/SwiftyDropbox#get-started">more general Dropbox docs</a>. You do *not* need to explicitly include the Dropbox Cocoapod in your Podfile for your Xcode project if you have followed the above <a href="#PODFILE">Podfile instructions</a>.
+        </ol>        
+      </div>
+
+      <a class="anchor" id="AWSSNS"></a>
+      <div class="row row-striped padded">
+        <h2>Using AWS SNS for Push Notifications (optional)</h2>
+        While the particular hosting service you use for running SyncServerII is your choice (I've used Docker containers, running under AWS and Elastic Beanstalk), the current implemention of push notifications in SyncServerII is specifically dependent on AWS SNS.
+
+        <ol>
+          <li>Create development and production certificates with Apple</a>
+            Currently only Apple Push Notifications are supported (APNS).
+            <a href="https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/HandlingRemoteNotifications.html#//apple_ref/doc/uid/TP40008194-CH6-SW1">For example, see.</a>
+
+          <li>Add code in your iOS app to incorporate push notifications</li>
+            <a href="https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/HandlingRemoteNotifications.html#//apple_ref/doc/uid/TP40008194-CH6-SW1">For example, see.</a>
+
+          <li>Register your SNS application with AWS SNS</li>
+            You also need to create a platform application arn for both development and production.
+
+            <a href="https://docs.aws.amazon.com/sns/latest/dg/mobile-push-apns.html#create-ios-app-apns">
+              For example, see</a>
+
+          <li>You also need an access key and secret key for AWS</a>
+
+          <li>Add the following keys into the .json configuration files for your development and production servers:</li>
+             "awssns.accessKeyId"
+             "awssns.secretKey"
+             "awssns.region"
+             "awssns.platformApplicationArn"
+
+            And, of course, give them their appropriate values.
+
+          <li>Modify your iOS app with messages.</li>
+            Push notifications can be included when you use the 
+              <em>SyncServer.session.sync</em> call. 
+            The intent is that you are able to send out a push notification when file(s) are uploaded or upload deleted.
+            These messages are included with the iOS app itself because the contents of push notification messages tends to be application specific.
         </ol>        
       </div>
       

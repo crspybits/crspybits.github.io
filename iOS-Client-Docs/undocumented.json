@@ -135,42 +135,42 @@
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SignIn/DropboxSignIn.swift",
-      "line": 71,
+      "line": 78,
       "symbol": "DropboxCredentials",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SignIn/DropboxSignIn.swift",
-      "line": 95,
+      "line": 102,
       "symbol": "DropboxCredentials.httpRequestHeaders",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SignIn/DropboxSignIn.swift",
-      "line": 110,
+      "line": 117,
       "symbol": "DropboxSyncServerSignIn",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SignIn/DropboxSignIn.swift",
-      "line": 139,
+      "line": 146,
       "symbol": "DropboxSyncServerSignIn.init(appKey:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SignIn/DropboxSignIn.swift",
-      "line": 174,
+      "line": 181,
       "symbol": "DropboxSyncServerSignIn.application(_:open:options:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SignIn/DropboxSignIn.swift",
-      "line": 256,
+      "line": 263,
       "symbol": "DropboxSyncServerSignIn.signUserOut()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -646,49 +646,49 @@
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SignIn/SignInManager.swift",
-      "line": 15,
+      "line": 16,
       "symbol": "SignInManager",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SignIn/SignInManager.swift",
-      "line": 18,
+      "line": 19,
       "symbol": "SignInManager.currentUserId",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SignIn/SignInManager.swift",
-      "line": 23,
+      "line": 26,
       "symbol": "SignInManager.session",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SignIn/SignInManager.swift",
-      "line": 25,
+      "line": 28,
       "symbol": "SignInManager.signInStateChanged",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SignIn/SignInManager.swift",
-      "line": 26,
+      "line": 29,
       "symbol": "SignInManager.lastStateChangeSignedUserIn",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SignIn/SignInManager.swift",
-      "line": 44,
+      "line": 52,
       "symbol": "SignInManager.getSignIns(for:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/chris/Desktop/Apps/repos/SyncServer-iOSClient/Client/Classes/Public/SignIn/SignInManager.swift",
-      "line": 132,
+      "line": 140,
       "symbol": "SignInManager.signInStateChanged(to:for:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
